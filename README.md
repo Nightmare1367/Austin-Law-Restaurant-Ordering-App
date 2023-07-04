@@ -1,2 +1,3 @@
-# Austin Law Restaurant Ordering App 2
- 
+Austin Law - Restaurant Ordering App
+
+This app will allow customers to order items that a specific restaurant offers. In the customers perspective, there will a final order screen on the right side the left side would display the items in a tile arrangement with an image, name and price of the item. They would also be able to access a item description screen which would describe what the item is and an enlarged image of the item. The programming language used in the code is TKinter and CustomTKinter.
