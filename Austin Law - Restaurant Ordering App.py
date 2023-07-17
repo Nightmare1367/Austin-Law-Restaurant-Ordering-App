@@ -53,9 +53,45 @@ class TopNavBar(customtkinter.CTkFrame):
         # endregion
 
 
-class MenuSelection(customtkinter.CTkFrame):
+class MainsSelection(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
+
+        # region | Label for the Mains Page
+        title = customtkinter.CTkLabel(self, text="Mains", 
+                                       font=customtkinter.CTkFont(size=50, weight="normal", 
+                                                                  underline=True, family="Verdana"), text_color="white")
+        title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
+        # endregion
+        
+        # ---------------------------------- Frames ---------------------------------- #
+        # region | Frames for the items in row 1
+        self.row1item1 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
+        self.row1item1.grid(column=0, row=1, sticky="nsew", pady=20, padx=20)
+        
+        self.row1item2 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
+        self.row1item2.grid(column=1, row=1, sticky="nsew", pady=20, padx=20)
+
+        self.row1item3 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
+        self.row1item3.grid(column=2, row=1, sticky="nsew", pady=20, padx=20)
+
+        self.row1item4 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
+        self.row1item4.grid(column=3, row=1, sticky="nsew", pady=20, padx=20)
+        # endregion
+
+        # region | Frames for the items in row 2
+        self.row2item1 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
+        self.row2item1.grid(column=0, row=2, sticky="nsew", pady=20, padx=20)
+        
+        self.row2item2 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
+        self.row2item2.grid(column=1, row=2, sticky="nsew", pady=20, padx=20)
+
+        self.row2item3 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
+        self.row2item3.grid(column=2, row=2, sticky="nsew", pady=20, padx=20)
+
+        self.row2item4 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
+        self.row2item4.grid(column=3, row=2, sticky="nsew", pady=20, padx=20)
+        # endregion
 
 
 class App(customtkinter.CTk):
@@ -75,9 +111,9 @@ class App(customtkinter.CTk):
         self.TopNavBarFrame.configure(corner_radius=0, height=75, fg_color="white")
 
         # Menu Selection
-        self.MenuSelectionFrame = MenuSelection(self)
-        self.MenuSelectionFrame.grid(column=0, row=1, sticky='news', columnspan=2)
-        self.MenuSelectionFrame.configure(corner_radius=0, height=1500, fg_color='transparent')
+        self.MainsSelectionFrame = MainsSelection(self)
+        self.MainsSelectionFrame.grid(column=0, row=1, sticky='news', columnspan=2)
+        self.MainsSelectionFrame.configure(height=1500, corner_radius=0)
         
         # Order List
         self.order_list = customtkinter.CTkFrame(self, corner_radius=0,  width=500, fg_color='blue')
