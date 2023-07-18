@@ -4,11 +4,16 @@ Written by Austin Law
 
 Note: Make sure you have CustomTkinter installed to ensure the program runs as intended.
 This can be done by typing "pip3 install customtkinter" in the command prompt when ran as administrator.
+
+You would also want to make sure that pillow is installed. 
+This is done by typing "pip install --upgrade pip" and "pip install --upgrade Pillow" 
+into the command prompt to install the 
 """
 
 # Importing the Modules
 import customtkinter
 from tkinter import *
+from PIL import Image, ImageTk
 
 class TopNavBar(customtkinter.CTkFrame):
     def __init__(self, master):
@@ -16,16 +21,16 @@ class TopNavBar(customtkinter.CTkFrame):
         # ---------------------------------- Widgets ---------------------------------- #
         # region | Buttons for the Top Navigation Bar
         main_btn = customtkinter.CTkButton(self, text="Mains", 
-                                           font=customtkinter.CTkFont(size=30, weight='bold'), 
+                                           font=customtkinter.CTkFont(family="Verdana", size=30), 
                                            fg_color="transparent", text_color="black", hover_color="gray",
                                            command=lambda: indicate(main_indicator))
         main_btn.grid(column=0, row=0, padx=10, pady=10, sticky='we')
 
-        appetisers_btn = customtkinter.CTkButton(self, text="Appetisers", font=customtkinter.CTkFont(family="Caprasimo", size=30, weight='bold'), 
+        appetisers_btn = customtkinter.CTkButton(self, text="Appetisers", font=customtkinter.CTkFont(family="Verdana", size=30), 
                                            fg_color="transparent",text_color="black", hover_color="gray", command=lambda: indicate(appetisers_indicator))
         appetisers_btn.grid(column=1, row=0, padx=10, pady=10, sticky='we')
 
-        dessert_btn = customtkinter.CTkButton(self, text="Desserts", font=customtkinter.CTkFont(family="Playfair Display", size=30, weight='bold'), 
+        dessert_btn = customtkinter.CTkButton(self, text="Desserts", font=customtkinter.CTkFont(family="Verdana", size=30), 
                                            fg_color="transparent",text_color="black", hover_color="gray", command=lambda: indicate(dessert_indicator))
         dessert_btn.grid(column=2, row=0, padx=10, pady=10, sticky='we')
         # endregion
@@ -63,35 +68,46 @@ class MainsSelection(customtkinter.CTkFrame):
                                                                   underline=True, family="Verdana"), text_color="white")
         title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
         # endregion
+
         
         # ---------------------------------- Frames ---------------------------------- #
-        # region | Frames for the items in row 1
-        self.row1item1 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
-        self.row1item1.grid(column=0, row=1, sticky="nsew", pady=20, padx=20)
+        dfl = 6               # Number of display frames
+        # List to store widgets 
+        display_frames_list = []
+        # Loop that runs depending on the dfl value divided by the desired number of columns
+        for make_list in range((round(dfl/3))):
+            display_frames_list.append([])        # Appends empty list into the main list 
+
+
+        # Loop that runs for for however long the dfl value is
+        for display_frame in range(dfl):
+            self.rowitem = customtkinter.CTkFrame(self, corner_radius=10, width=300)        # Creates a base frame for the item display
+
+            # ---------- If Conditions ---------- #
+            # Conditioned to only run when the display frame value is less than 3
+            if display_frame < 3:
+                self.rowitem.grid(column=0 + display_frame, row=1, sticky="nsew", pady=20, padx=15)     # Grids the frame to row 1 and increases by 1 in columns
+                display_frames_list[0].append(self.rowitem)
+            # Conditioned to run when the display frame value is more or equal to 3
+            if display_frame >= 3:
+                self.rowitem.grid(column=0 + (display_frame - 3), row=2, sticky="nsew", pady=20, padx=15)   # Grids the frame to row 2 and would subtract 3 to reset the column position
+                display_frames_list[1].append(self.rowitem)
         
-        self.row1item2 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
-        self.row1item2.grid(column=1, row=1, sticky="nsew", pady=20, padx=20)
+        # ---------------------------------- Images ---------------------------------- #
+        # Cutlet Image
+        cutlet = customtkinter.CTkImage(Image.open("Images/Cutlet.jpg"), size=(275, 200))
+        cutlet_lbl = customtkinter.CTkLabel(display_frames_list[0][0], image=cutlet, text="")
+        cutlet_lbl.grid(row=0, column=0, sticky="news", pady=20, padx=20)
 
-        self.row1item3 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
-        self.row1item3.grid(column=2, row=1, sticky="nsew", pady=20, padx=20)
+        # Lasagna Image
+        lasagna = customtkinter.CTkImage(Image.open("Images/Lasagna.jpg"), size=(275, 200))
+        lasagna_lbl = customtkinter.CTkLabel(display_frames_list[0][1], image=lasagna, text="")
+        lasagna_lbl.grid(row=0, column=0, sticky="news", pady=20, padx=20)
 
-        self.row1item4 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
-        self.row1item4.grid(column=3, row=1, sticky="nsew", pady=20, padx=20)
-        # endregion
-
-        # region | Frames for the items in row 2
-        self.row2item1 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
-        self.row2item1.grid(column=0, row=2, sticky="nsew", pady=20, padx=20)
-        
-        self.row2item2 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
-        self.row2item2.grid(column=1, row=2, sticky="nsew", pady=20, padx=20)
-
-        self.row2item3 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
-        self.row2item3.grid(column=2, row=2, sticky="nsew", pady=20, padx=20)
-
-        self.row2item4 = customtkinter.CTkFrame(self, corner_radius=10, width=300)
-        self.row2item4.grid(column=3, row=2, sticky="nsew", pady=20, padx=20)
-        # endregion
+        # Burger Image
+        burger = customtkinter.CTkImage(Image.open("Images/Burger.jpg"), size=(275, 200))
+        burger_lbl = customtkinter.CTkLabel(display_frames_list[0][2], image=burger, text="")
+        burger_lbl.grid(row=0, column=0, sticky="news", pady=20, padx=20)
 
 
 class App(customtkinter.CTk):
@@ -99,7 +115,7 @@ class App(customtkinter.CTk):
         super().__init__()
 
         self.title("Restaurant Ordering App")
-        self.attributes('-fullscreen',True)     # Sets the window to fullscreen
+        self.attributes('-fullscreen', True)     # Sets the window to fullscreen
 
         # ---------------------------- Grid Configuration ---------------------------- #
         self.grid_columnconfigure((0,1), weight=1)
