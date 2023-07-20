@@ -96,18 +96,37 @@ class MainsSelection(customtkinter.CTkFrame):
         # ---------------------------------- Images ---------------------------------- #
         # Cutlet Image
         cutlet = customtkinter.CTkImage(Image.open("Images/Cutlet.jpg"), size=(275, 200))
-        cutlet_lbl = customtkinter.CTkLabel(display_frames_list[0][0], image=cutlet, text="")
-        cutlet_lbl.grid(row=0, column=0, sticky="news", pady=20, padx=20)
+        cutlet_img = customtkinter.CTkLabel(display_frames_list[0][0], image=cutlet, text="")
+        cutlet_img.grid(row=0, column=0, sticky="news", pady=20, padx=20)
 
         # Lasagna Image
         lasagna = customtkinter.CTkImage(Image.open("Images/Lasagna.jpg"), size=(275, 200))
-        lasagna_lbl = customtkinter.CTkLabel(display_frames_list[0][1], image=lasagna, text="")
-        lasagna_lbl.grid(row=0, column=0, sticky="news", pady=20, padx=20)
+        lasagna_img = customtkinter.CTkLabel(display_frames_list[0][1], image=lasagna, text="")
+        lasagna_img.grid(row=0, column=0, sticky="news", pady=20, padx=20)
 
         # Burger Image
         burger = customtkinter.CTkImage(Image.open("Images/Burger.jpg"), size=(275, 200))
-        burger_lbl = customtkinter.CTkLabel(display_frames_list[0][2], image=burger, text="")
-        burger_lbl.grid(row=0, column=0, sticky="news", pady=20, padx=20)
+        """burger_img = customtkinter.CTkLabel(display_frames_list[0][2], image=burger, text="")
+        burger_img.grid(row=0, column=0, sticky="news", pady=20, padx=20)"""
+
+        # ----------------------------- Buttons / Labels ----------------------------- #
+        # Cutlet Button / Label
+        cutlet_lbl = customtkinter.CTkButton(display_frames_list[0][0], text="Chicken Cutlet \n Price:", 
+                                            font=customtkinter.CTkFont(family='Verdana', weight='bold', size=20))
+        cutlet_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Lasagna Button / Label
+        lasagna_lbl = customtkinter.CTkButton(display_frames_list[0][1], text="Lasagna", 
+                                             font=customtkinter.CTkFont(family='Verdana', weight='bold', size=20))
+        lasagna_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Burger Button / Label
+        burger_lbl = customtkinter.CTkButton(display_frames_list[0][2], text="Beef Burger", 
+                                             font=customtkinter.CTkFont(family='Verdana', weight='bold', size=20))
+        burger_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        burger_imgbtn = customtkinter.CTkButton(display_frames_list[0][2], image=burger, text="")
+        burger_imgbtn.grid(row=0, column=0, sticky="news", ipady=20, ipadx=10)
 
 
 class App(customtkinter.CTk):
