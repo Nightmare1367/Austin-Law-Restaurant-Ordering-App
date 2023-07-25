@@ -97,7 +97,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
             # ---------- If Conditions ---------- #
             # Conditioned to only run when the display frame value is less than 3
             if mains_frame < 3:
-                self.rowitem.grid(column=0 + mains_frame, row=1, sticky="nsew", pady=20, padx=15)     # Grids the frame to row 1 and increases by 1 in columns
+                self.rowitem.grid(column=0 + mains_frame, row=1, sticky="nsew", pady=20, padx=15)         # Grids the frame to row 1 and increases by 1 in columns
                 mains_frames_list[0].append(self.rowitem)
             # Conditioned to run when the display frame value is more or equal to 3
             if mains_frame >= 3 and mains_frame < 6:
@@ -135,10 +135,16 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         placeholder_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
 
         # ----------------------------- Buttons / Labels ----------------------------- #
-        # Cutlet Button / Label
+        # region | Cutlet Button / Label
         cutlet_lbl = customtkinter.CTkButton(mains_frames_list[0][0], text="Chicken Cutlet \n Price: $21.99", 
                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         cutlet_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Cutlet
+        ato_btn = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        ato_btn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
 
         # Lasagna Button / Label
         lasagna_lbl = customtkinter.CTkButton(mains_frames_list[0][1], text="Lasagna \n Price: $15.00", 
@@ -150,13 +156,8 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         burger_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
 
-        # Testing a add to order Button
-        ato_btn = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40,
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        ato_btn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
-
-class AppetiserSelection(customtkinter.CTkFrame):
+class AppetiserSelection(customtkinter.CTkScrollableFrame):
     def __init__(self, master):
         super().__init__(master)
         title = customtkinter.CTkLabel(self, text="Appetisers", 
@@ -211,7 +212,7 @@ main_windowframe.grid(column=0, row=1, sticky='news', columnspan=2)
 main_windowframe.columnconfigure(0, weight=1)
 
 # Menu Selection
-# Function to show the mains selection
+# region | Function to show the mains selection
 def mains_page():
     MainsSelectionFrame = MainsSelection(main_windowframe)          # Calls the Class as the frame
     MainsSelectionFrame.grid(column=0, row=0, sticky='news')        # Grids the frame 
@@ -221,7 +222,8 @@ def mains_page():
 def appetisers_page():
     AppetiserFrame = AppetiserSelection(main_windowframe)           # Calls the Class as the frame 
     AppetiserFrame.grid(column=0, row=0, sticky='news')             # Grids the frame
-    AppetiserFrame.configure(height=800, corner_radius=0)          # Configurations to the frame
+    AppetiserFrame.configure(height=875, corner_radius=0)          # Configurations to the frame
+# endregion
 
 # Function to show the desserts selection
 
