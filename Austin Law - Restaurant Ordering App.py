@@ -129,10 +129,20 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         burger_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding the image button
 
         # Placeholder Image
-        placeholder = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
-        placeholder_imgbtn = customtkinter.CTkButton(mains_frames_list[1][0], image=placeholder, text = "",
+        placeholder1 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
+        placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][0], image=placeholder1, text = "",
                                                      fg_color='transparent', hover_color="#333333")
-        placeholder_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        
+        placeholder2 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
+        placeholder2_imgbtn = customtkinter.CTkButton(mains_frames_list[2][1], image=placeholder2, text = "",
+                                                     fg_color='transparent', hover_color="#333333")
+        placeholder2_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+
+        placeholder3 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
+        placeholder3_imgbtn = customtkinter.CTkButton(mains_frames_list[2][2], image=placeholder3, text = "",
+                                                     fg_color='transparent', hover_color="#333333")
+        placeholder3_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
 
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Cutlet Button / Label
