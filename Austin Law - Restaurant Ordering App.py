@@ -111,37 +111,37 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         
         # ---------------------------------- Images ---------------------------------- #
         # Cutlet Image
-        cutlet = customtkinter.CTkImage(Image.open("Images/Cutlet.jpg"), size=(275, 200))               # Imports image 
+        cutlet = customtkinter.CTkImage(Image.open("Images/Mains/Cutlet.jpg"), size=(275, 200))               # Imports image 
         cutlet_imgbtn = customtkinter.CTkButton(mains_frames_list[0][0], image=cutlet, text="",         # Puts the image in a button
                                                 fg_color='transparent', hover_color="#333333")          # Configuration to button background
         cutlet_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding for the image button
 
         # Lasagna Image
-        lasagna = customtkinter.CTkImage(Image.open("Images/Lasagna.jpg"), size=(275, 200))             # Imports image 
+        lasagna = customtkinter.CTkImage(Image.open("Images/Mains/Lasagna.jpg"), size=(275, 200))             # Imports image 
         lasagna_imgbtn = customtkinter.CTkButton(mains_frames_list[0][1], image=lasagna, text="",       # Puts the image in a button
                                                  fg_color='transparent', hover_color="#333333")         # Configuration to button background
         lasagna_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                      # Gridding the image button
 
         # Burger Image
-        burger = customtkinter.CTkImage(Image.open("Images/Burger.jpg"), size=(275, 200))               # Imports image 
+        burger = customtkinter.CTkImage(Image.open("Images/Mains/Burger.jpg"), size=(275, 200))               # Imports image 
         burger_imgbtn = customtkinter.CTkButton(mains_frames_list[0][2], image=burger, text="",         # Puts the image in a button
                                                 fg_color='transparent', hover_color="#333333")          # Configuration to button background
         burger_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding the image button
 
         # Butter Chicken Image
-        butter_chicken = customtkinter.CTkImage(Image.open("Images/Butter_Chicken.jpg"), size=(275, 200))         # Imports image 
+        butter_chicken = customtkinter.CTkImage(Image.open("Images/Mains/Butter_Chicken.jpg"), size=(275, 200))         # Imports image 
         butter_chicken_imgbtn = customtkinter.CTkButton(mains_frames_list[1][0], image=butter_chicken, text="",   # Puts the image in a button
                                                 fg_color='transparent', hover_color="#333333")                    # Configuration to button background
         butter_chicken_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                         # Gridding the image button
 
         # Pasta Image
-        pasta = customtkinter.CTkImage(Image.open("Images/Pasta.jpg"), size=(275, 200))                 # Imports image 
+        pasta = customtkinter.CTkImage(Image.open("Images/Mains/Pasta.jpg"), size=(275, 200))                 # Imports image 
         pasta_imgbtn = customtkinter.CTkButton(mains_frames_list[1][1], image=pasta, text="",           # Puts the image in a button
                                                 fg_color='transparent', hover_color="#333333")          # Configuration to button background
         pasta_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding the image button
 
         # Pizza Image
-        pizza = customtkinter.CTkImage(Image.open("Images/Pizza.jpg"), size=(275, 200))                 # Imports image 
+        pizza = customtkinter.CTkImage(Image.open("Images/Mains/Pizza.jpg"), size=(275, 200))                 # Imports image 
         pizza_imgbtn = customtkinter.CTkButton(mains_frames_list[1][2], image=pizza, text="",           # Puts the image in a button
                                                 fg_color='transparent', hover_color="#333333")          # Configuration to button background
         pizza_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding the image button
@@ -210,7 +210,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Pizza Button / Label
-        pizza_lbl = customtkinter.CTkButton(mains_frames_list[1][2], text="Pasta \n Price: $13.99", 
+        pizza_lbl = customtkinter.CTkButton(mains_frames_list[1][2], text="Pizza \n Price: $13.99", 
                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         pizza_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
         # endregion
@@ -258,6 +258,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                        text_color="white")
         title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
 
+        # ---------------------------------- Frames ---------------------------------- #
         appetisers_displayframe = 9               # Number of display frames
         # List to store widgets 
         appetisers_frames_list = []
@@ -283,12 +284,71 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                 self.rowitem.grid(column=0 + (appetisers_frame - 6), row=3, sticky="nsew", pady=20, padx=15)   # Grids the frame to row 2 and would subtract 3 to reset the column position
                 appetisers_frames_list[2].append(self.rowitem)
 
+        # ---------------------------------- Images ---------------------------------- #
+        # Shoe String Fries Image
+        shoe_string = customtkinter.CTkImage(Image.open("Images/Appetiser/Shoe_String.jpg"), size=(275, 200))               # Imports image 
+        shoe_string_imgbtn = customtkinter.CTkButton(appetisers_frames_list[0][0], image=shoe_string, text="",              # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+        shoe_string_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
+
+        # Hand Cut Fries Image
+        hand_cut = customtkinter.CTkImage(Image.open("Images/Appetiser/Hand_Cut.jpg"), size=(275, 200))                     # Imports image 
+        hand_cut_imgbtn = customtkinter.CTkButton(appetisers_frames_list[0][1], image=hand_cut, text="",                    # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+        hand_cut_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
+
+        # Onion Rings Image
+        onion_rings = customtkinter.CTkImage(Image.open("Images/Appetiser/Onion_Rings.jpg"), size=(275, 200))               # Imports image 
+        onion_rings_imgbtn = customtkinter.CTkButton(appetisers_frames_list[0][2], image=onion_rings, text="",              # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+        onion_rings_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
+
+        # Caeser Salad Image
+        caeser_salad = customtkinter.CTkImage(Image.open("Images/Appetiser/Caesar_Salad.jpg"), size=(275, 200))             # Imports image 
+        caeser_salad_imgbtn = customtkinter.CTkButton(appetisers_frames_list[1][0], image=caeser_salad, text="",            # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+        caeser_salad_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
+
+        # Chicken Nibbles Image
+        chicken_nibbles = customtkinter.CTkImage(Image.open("Images/Appetiser/Chicken_Nibbles.jpg"), size=(275, 200))       # Imports image 
+        chicken_nibbles_imgbtn = customtkinter.CTkButton(appetisers_frames_list[1][1], image=chicken_nibbles, text="",      # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+        chicken_nibbles_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
+
+        # Garlic Bread Image
+        garlic_bread = customtkinter.CTkImage(Image.open("Images/Appetiser/Garlic_Bread.jpg"), size=(275, 200))             # Imports image 
+        garlic_bread_imgbtn = customtkinter.CTkButton(appetisers_frames_list[1][2], image=garlic_bread, text="",            # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+        garlic_bread_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+
+        # Seafood Chowder Image
+        seafood_chowder = customtkinter.CTkImage(Image.open("Images/Appetiser/Seafood_Chowder.jpg"), size=(275, 200))       # Imports image 
+        seafood_chowder_imgbtn = customtkinter.CTkButton(appetisers_frames_list[2][0], image=seafood_chowder, text="",      # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+        seafood_chowder_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+
+        # region | Placeholder Images
+        placeholder1 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
+        placeholder1_imgbtn = customtkinter.CTkButton(appetisers_frames_list[2][1], image=placeholder1, text = "",
+                                                     fg_color='transparent', hover_color="#333333")
+        placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        
+        placeholder2 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
+        placeholder2_imgbtn = customtkinter.CTkButton(appetisers_frames_list[2][2], image=placeholder2, text = "",
+                                                     fg_color='transparent', hover_color="#333333")
+        placeholder2_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        # endregion
+
+
+
 
 # ------------------------ Main Window Configurations ------------------------ #
 window=customtkinter.CTk()                 # Creates a window 
+window.title("Restaurant Ordering App")    # Title of the window
 # Sets the size of the window to fill screen 
 # The values in the string wil find the screen width and height and tuck it into the top left corner of the screen
 window.geometry("1536x945-8+0")
+
 
 # ---------------------------- Grid Configuration ---------------------------- #
 window.grid_columnconfigure((0, 1), weight=1)
