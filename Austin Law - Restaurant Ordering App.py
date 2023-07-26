@@ -128,7 +128,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
                                                 fg_color='transparent', hover_color="#333333")          # Font Configuration
         burger_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding the image button
 
-        # Placeholder Image
+        # region | Placeholder Images
         placeholder1 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
         placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][0], image=placeholder1, text = "",
                                                      fg_color='transparent', hover_color="#333333")
@@ -143,6 +143,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         placeholder3_imgbtn = customtkinter.CTkButton(mains_frames_list[2][2], image=placeholder3, text = "",
                                                      fg_color='transparent', hover_color="#333333")
         placeholder3_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        # endregion
 
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Cutlet Button / Label
@@ -151,20 +152,66 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         cutlet_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
 
         # Add to Order Button for Cutlet
-        ato_btn = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40,
+        ato_btn_cutlet = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40,
                                           font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        ato_btn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        ato_btn_cutlet.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
         # endregion
 
-        # Lasagna Button / Label
+        # region | Lasagna Button / Label
         lasagna_lbl = customtkinter.CTkButton(mains_frames_list[0][1], text="Lasagna \n Price: $15.00", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         lasagna_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
 
-        # Burger Button / Label
+        # Add to Order Button for Lasagna
+        ato_btn_lasagna = customtkinter.CTkButton(mains_frames_list[0][1], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        ato_btn_lasagna.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
+        # region | Burger Button / Label
         burger_lbl = customtkinter.CTkButton(mains_frames_list[0][2], text="Beef Burger \n Price: $13.00", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         burger_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Burger
+        ato_btn_Burger = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        ato_btn_Burger.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
+        # region | Placeholder Button \ Label
+        # Label for Placeholder 1
+        placeholder1_lbl = customtkinter.CTkButton(mains_frames_list[2][0], text="Placeholder \n Price: $25.00", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Placeholder 1
+        ato_btn_Placeholder1 = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        ato_btn_Placeholder1.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+
+
+        # Label for Placeholder 2
+        placeholder2_lbl = customtkinter.CTkButton(mains_frames_list[2][1], text="Placeholder \n Price: $25.00", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Placeholder 2
+        ato_btn_Placeholder2 = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        ato_btn_Placeholder2.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+
+
+        # Label for Placeholder 3
+        placeholder3_lbl = customtkinter.CTkButton(mains_frames_list[2][2], text="Placeholder \n Price: $25.00", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        placeholder3_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Placeholder 3
+        ato_btn_Placeholder3 = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        ato_btn_Placeholder3.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
 
 
 class AppetiserSelection(customtkinter.CTkScrollableFrame):
