@@ -113,20 +113,38 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # Cutlet Image
         cutlet = customtkinter.CTkImage(Image.open("Images/Cutlet.jpg"), size=(275, 200))               # Imports image 
         cutlet_imgbtn = customtkinter.CTkButton(mains_frames_list[0][0], image=cutlet, text="",         # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")          # Font Configuration
+                                                fg_color='transparent', hover_color="#333333")          # Configuration to button background
         cutlet_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding for the image button
 
         # Lasagna Image
         lasagna = customtkinter.CTkImage(Image.open("Images/Lasagna.jpg"), size=(275, 200))             # Imports image 
         lasagna_imgbtn = customtkinter.CTkButton(mains_frames_list[0][1], image=lasagna, text="",       # Puts the image in a button
-                                                 fg_color='transparent', hover_color="#333333")         # Font Configuration
+                                                 fg_color='transparent', hover_color="#333333")         # Configuration to button background
         lasagna_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                      # Gridding the image button
 
         # Burger Image
         burger = customtkinter.CTkImage(Image.open("Images/Burger.jpg"), size=(275, 200))               # Imports image 
         burger_imgbtn = customtkinter.CTkButton(mains_frames_list[0][2], image=burger, text="",         # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")          # Font Configuration
+                                                fg_color='transparent', hover_color="#333333")          # Configuration to button background
         burger_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding the image button
+
+        # Butter Chicken Image
+        butter_chicken = customtkinter.CTkImage(Image.open("Images/Butter_Chicken.jpg"), size=(275, 200))         # Imports image 
+        butter_chicken_imgbtn = customtkinter.CTkButton(mains_frames_list[1][0], image=butter_chicken, text="",   # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")                    # Configuration to button background
+        butter_chicken_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                         # Gridding the image button
+
+        # Pasta Image
+        pasta = customtkinter.CTkImage(Image.open("Images/Pasta.jpg"), size=(275, 200))                 # Imports image 
+        pasta_imgbtn = customtkinter.CTkButton(mains_frames_list[1][1], image=pasta, text="",           # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")          # Configuration to button background
+        pasta_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding the image button
+
+        # Pizza Image
+        pizza = customtkinter.CTkImage(Image.open("Images/Pizza.jpg"), size=(275, 200))                 # Imports image 
+        pizza_imgbtn = customtkinter.CTkButton(mains_frames_list[1][2], image=pizza, text="",           # Puts the image in a button
+                                                fg_color='transparent', hover_color="#333333")          # Configuration to button background
+        pizza_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding the image button
 
         # region | Placeholder Images
         placeholder1 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
@@ -177,6 +195,24 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         ato_btn_Burger = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40,
                                           font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         ato_btn_Burger.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
+        # region | Butter Chicken Button / Label
+        butter_chicken_lbl = customtkinter.CTkButton(mains_frames_list[1][0], text="Butter Chicken \n Price: $15.99", 
+                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        butter_chicken_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        # endregion
+
+        # region | Pasta Button / Label
+        pasta_lbl = customtkinter.CTkButton(mains_frames_list[1][1], text="Pasta \n Price: $20.00", 
+                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        pasta_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        # endregion
+
+        # region | Pizza Button / Label
+        pizza_lbl = customtkinter.CTkButton(mains_frames_list[1][2], text="Pasta \n Price: $13.99", 
+                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        pizza_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
         # endregion
 
         # region | Placeholder Button \ Label
