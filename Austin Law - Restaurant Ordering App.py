@@ -264,7 +264,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
         appetisers_frames_list = []
         # Loop that runs depending on the appetisers_displayframe value divided by the desired number of columns
         for make_list in range((round(appetisers_displayframe/3))):
-            appetisers_frames_list.append([])        # Appends empty list into the main list 
+            appetisers_frames_list.append([])        # Appends empty list into the main list             
 
         # Loop that runs for for however long the dfl value is
         for appetisers_frame in range(appetisers_displayframe):
@@ -339,8 +339,8 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
         placeholder2_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
-
-
+        # ----------------------------- Buttons / Labels ----------------------------- #
+        
 
 # ------------------------ Main Window Configurations ------------------------ #
 window=customtkinter.CTk()                 # Creates a window 
