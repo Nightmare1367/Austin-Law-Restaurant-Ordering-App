@@ -20,7 +20,7 @@ class TopNavBar(customtkinter.CTkFrame):
         super().__init__(master)
         # ---------------------------------- Widgets ---------------------------------- #
         # region | Buttons for the Top Navigation Bar
-        mains_btn = customtkinter.CTkButton(self, text="Mains", 
+        mains_btn = customtkinter.CTkButton(self, text="Mains",
                                            font=customtkinter.CTkFont(family="Calibri", size=35), 
                                            fg_color="transparent", text_color="black", hover_color="gray",
                                            command=lambda: indicate(mains_indicator, mains_page))
@@ -28,15 +28,21 @@ class TopNavBar(customtkinter.CTkFrame):
 
         appetisers_btn = customtkinter.CTkButton(self, text="Appetisers", 
                                                  font=customtkinter.CTkFont(family="Calibri", size=35), 
-                                                 fg_color="transparent",text_color="black", hover_color="gray", 
+                                                 fg_color="transparent", text_color="black", hover_color="gray", 
                                                  command=lambda: indicate(appetisers_indicator, appetisers_page))
         appetisers_btn.grid(column=1, row=0, padx=10, pady=10, sticky='we')
 
         dessert_btn = customtkinter.CTkButton(self, text="Desserts", 
                                               font=customtkinter.CTkFont(family="Calibri", size=35), 
-                                              fg_color="transparent",text_color="black", hover_color="gray", 
+                                              fg_color="transparent", text_color="black", hover_color="gray", 
                                               command=lambda: indicate(dessert_indicator, desserts_page))
         dessert_btn.grid(column=2, row=0, padx=10, pady=10, sticky='we')
+
+        drink_btn = customtkinter.CTkButton(self, text="Drinks", width=100,
+                                              font=customtkinter.CTkFont(family="Calibri", size=35), 
+                                              fg_color="transparent", text_color="black", hover_color="gray", 
+                                              command=lambda: indicate(drinks_indicator, drinks_page))
+        drink_btn.grid(column=3, row=0, padx=10, pady=10, sticky='we')
         # endregion
 
         # region | Frames which would act as an indicator for the buttons
@@ -48,6 +54,9 @@ class TopNavBar(customtkinter.CTkFrame):
 
         dessert_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=140, fg_color="white")
         dessert_indicator.grid(row=0, column=2, sticky='s',pady=5)
+
+        drinks_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=100, fg_color="white")
+        drinks_indicator.grid(row=0, column=3, sticky='s',pady=5)
         # endregion
         
         # ---------------------------------- Fucntions ---------------------------------- #
@@ -62,6 +71,7 @@ class TopNavBar(customtkinter.CTkFrame):
             mains_indicator.configure(fg_color="white")
             appetisers_indicator.configure(fg_color="white")
             dessert_indicator.configure(fg_color="white")
+            drinks_indicator.configure(fg_color="white")
 
         def indicate(fr, page):
             hide_indicate()                     # Calls the function to hide all indicators
@@ -632,6 +642,150 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
 
+class DrinkSelection(customtkinter.CTkScrollableFrame):
+    def __init__(self, master):
+        super().__init__(master)
+        title = customtkinter.CTkLabel(self, text="Drinks", 
+                                       font=customtkinter.CTkFont(size=50, weight="normal", underline=True, family="Calibri"), 
+                                       text_color="white")
+        title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
+
+        # ---------------------------------- Frames ---------------------------------- #
+        drinks_displayframe = 6               # Number of display frames
+        # List to store widgets 
+        drinks_frames_list = []
+        # Loop that runs depending on the drinks_displayframe value divided by the desired number of columns
+        for make_list in range((round(drinks_displayframe/3))):
+            drinks_frames_list.append([])        # Appends empty list into the main list             
+
+        # Loop that runs for for however long the dfl value is
+        for drinks_frame in range(drinks_displayframe):
+            self.rowitem = customtkinter.CTkFrame(self, corner_radius=10, width=300)        # Creates a base frame for the item display
+
+            # ---------- If Conditions ---------- #
+            # Conditioned to only run when the display frame value is less than 3
+            if drinks_frame < 3:
+                self.rowitem.grid(column=0 + drinks_frame, row=1, sticky="nsew", pady=20, padx=15)     # Grids the frame to row 1 and increases by 1 in columns
+                drinks_frames_list[0].append(self.rowitem)
+            # Conditioned to run when the display frame value is more or equal to 3
+            if drinks_frame >= 3 and drinks_frame < 6:
+                self.rowitem.grid(column=0 + (drinks_frame - 3), row=2, sticky="nsew", pady=20, padx=15)   # Grids the frame to row 2 and would subtract 3 to reset the column position
+                drinks_frames_list[1].append(self.rowitem)
+            
+            if drinks_frame >= 6:
+                self.rowitem.grid(column=0 + (drinks_frame - 6), row=3, sticky="nsew", pady=20, padx=15)   # Grids the frame to row 2 and would subtract 3 to reset the column position
+                drinks_frames_list[2].append(self.rowitem)
+
+        # ---------------------------------- Images ---------------------------------- #
+        # region | Coke Image
+        coke = customtkinter.CTkImage(Image.open("Images/Drinks/Coke.jpg"), size=(275,200))
+        coke_imgbtn = customtkinter.CTkButton(drinks_frames_list[0][0], image=coke, text="",        
+                                                fg_color='transparent', hover_color="#333333")
+        coke_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        # endregion
+
+        # region | Milkshake Image
+        milkshake = customtkinter.CTkImage(Image.open("Images/Drinks/Milkshake.jpg"), size=(275,200))
+        milkshake_imgbtn = customtkinter.CTkButton(drinks_frames_list[0][1], image=milkshake, text="",        
+                                                fg_color='transparent', hover_color="#333333")
+        milkshake_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        # endregion
+
+        # region | Strawberry Juice Image
+        strawberry_juice = customtkinter.CTkImage(Image.open("Images/Drinks/Strawberry_Juice.jpg"), size=(275,200))
+        strawberry_juice_imgbtn = customtkinter.CTkButton(drinks_frames_list[0][2], image=strawberry_juice, text="",        
+                                                fg_color='transparent', hover_color="#333333")
+        strawberry_juice_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        # endregion
+
+        # region | Bubble Tea Image
+        bubble_tea = customtkinter.CTkImage(Image.open("Images/Drinks/Boba.jpg"), size=(275,200))
+        bubble_tea_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][0], image=bubble_tea, text="",        
+                                                fg_color='transparent', hover_color="#333333")
+        bubble_tea_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        # endregion
+
+        # region | Hot Chocolate Image
+        hot_chocolate = customtkinter.CTkImage(Image.open("Images/Drinks/Hot_Chocolate.jpg"), size=(275,200))
+        hot_chocolate_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][1], image=hot_chocolate, text="",        
+                                                fg_color='transparent', hover_color="#333333")
+        hot_chocolate_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        # endregion
+
+        # region | Coffee Image
+        coffee = customtkinter.CTkImage(Image.open("Images/Drinks/Coffee.png"), size=(275,200))
+        coffee_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][2], image=coffee, text="",        
+                                                fg_color='transparent', hover_color="#333333")
+        coffee_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+        # endregion
+
+        # ----------------------------- Buttons / Labels ----------------------------- #
+        # region | Label for Coke Drink
+        coke_lbl = customtkinter.CTkButton(drinks_frames_list[0][0], text="Coca-Cola\nPrice: $10.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        coke_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Coke Drink
+        coke_atobtn = customtkinter.CTkButton(drinks_frames_list[0][0], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        coke_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
+        # region | Label for Chocolate Milkshake Drink
+        milkshake_lbl = customtkinter.CTkButton(drinks_frames_list[0][1], text="Chocolate Milkshake\nPrice: $10.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        milkshake_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Chocolate Milkshake Drink
+        milkshake_atobtn = customtkinter.CTkButton(drinks_frames_list[0][1], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        milkshake_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
+        # region | Label for Strawberry Juice
+        strawberry_juice_lbl = customtkinter.CTkButton(drinks_frames_list[0][2], text="Strawberry Juice\nPrice: $10.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        strawberry_juice_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Strawberry Juice
+        strawberry_juice_atobtn = customtkinter.CTkButton(drinks_frames_list[0][2], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        strawberry_juice_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
+        # region | Label for Bubble Tea Drink
+        boba_lbl = customtkinter.CTkButton(drinks_frames_list[1][0], text="Bubble Tea\nPrice: $10.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        boba_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Bubble Tea Drink
+        boba_atobtn = customtkinter.CTkButton(drinks_frames_list[1][0], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        boba_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
+        # region | Label for Hot Chocolate Drink
+        hot_chocolate_lbl = customtkinter.CTkButton(drinks_frames_list[1][1], text="Hot Chocolate\nPrice: $10.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        hot_chocolate_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Hot Chocolate Drink
+        hot_chocolate_atobtn = customtkinter.CTkButton(drinks_frames_list[1][1], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        hot_chocolate_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
+        # region | Label for Coffee Drink
+        coffee_lbl = customtkinter.CTkButton(drinks_frames_list[1][2], text="Coffee\nPrice: $10.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        coffee_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+
+        # Add to Order Button for Coffee Drink
+        coffee_atobtn = customtkinter.CTkButton(drinks_frames_list[1][2], text = "+", width=40,
+                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        coffee_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        # endregion
+
 # ------------------------ Main Window Configurations ------------------------ #
 window=customtkinter.CTk()                 # Creates a window 
 window.title("Restaurant Ordering App")    # Title of the window
@@ -674,6 +828,12 @@ def desserts_page():
     DessertFrame.configure(height=875, corner_radius=0)           # Configurations to the frame
 
 # Function to show the drinks selection
+def drinks_page():
+    global DrinksFrame
+    DrinksFrame = DrinkSelection(main_windowframe)                # Calls the Class as the frame
+    DrinksFrame.grid(column=0, row=0, sticky='news')              # Grids the frame
+    DrinksFrame.configure(height=875, corner_radius=0,            # Configurations to the frame
+                          scrollbar_button_color='#333333')    
 # endregion
 
 # Order List
