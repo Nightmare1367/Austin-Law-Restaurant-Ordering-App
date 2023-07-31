@@ -14,7 +14,58 @@ into the command prompt to install the
 import customtkinter
 from tkinter import *
 from PIL import Image, ImageTk
+checkout_txt = 0
+
 # endregion
+global order_row
+prices = {
+    # Mains
+    "Chicken Cutlet"      : 21.99,
+    "Lasagna"             : 15.00,
+    "Beef Burger"         : 13.00,
+    "Butter Chicken"      : 15.99,
+    "Pasta"               : 20.00,
+    "Pizza"               : 13.99,
+    "Placeholder"         : 25.00,
+
+    # Appetiser
+    "Shoe String Fries"   : 5.00,
+    "Hand Cut Fries"      : 4.50,
+    "Onion Rings"         : 6.99,
+    "Caesar Salad"        : 5.50,
+    "Chicken Nibbles"     : 5.50,
+    "Garlic Bread"        : 3.50,
+    "Seafood Chowder"     : 6.99,
+    "Placeholder"         : 3.99,
+
+    # Desserts
+    "Apple Crumble"       : 10.50,
+    "Brownie"             : 8.99,
+    "Cheesecake"          : 6.99,
+    "Ice Cream"           : 12.50,
+    "Macaron"             : 12.00,
+    "Panna Cotta"         : 5.90,
+
+    # Drinks
+    "Coca-Cola"           : 2.99,
+    "Chocolate Milkshake" : 7.99,
+    "Strawberry Juice"    : 4.99,
+    "Bubble Tea"          : 6.50,
+    "Hot Chocolate"       : 3.99,
+    "Coffee"              : 4.50,
+}
+
+def add(btn):
+    global checkout_txt
+    order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", font = customtkinter.CTkFont(family = "Calibri", size=25))
+    # updating the transaction label
+    current_order = order_list_lbl.cget("text")
+    added_dish = btn.cget("text") + " | " + str(prices[btn.cget("text")]) + "$ "
+    updated_order = current_order + added_dish
+    order_list_lbl.configure(text=updated_order)
+    # Label for the order list
+    order_list_lbl.grid(row=checkout_txt, column=0, pady=10, padx=10, sticky="nw")
+    checkout_txt += 1
 
 
 class TopNavBar(customtkinter.CTkFrame):
@@ -185,7 +236,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         cutlet_price.grid(row=2, column=0, sticky='news', pady=(0, 10), padx=10)
 
         # Add to Order Button for Cutlet
-        cutlet_atobtn = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40,
+        cutlet_atobtn = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40, command = lambda: add(cutlet_lbl),
                                           font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         cutlet_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
         # endregion
@@ -200,7 +251,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         lasagna_price.grid(row=2, column=0, sticky='news', pady=(0, 10), padx=10)
 
         # Add to Order Button for Lasagna
-        lasagna_atobtn = customtkinter.CTkButton(mains_frames_list[0][1], text = "+", width=40,
+        lasagna_atobtn = customtkinter.CTkButton(mains_frames_list[0][1], text = "+", width=40, command = lambda: add(lasagna_lbl),
                                           font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         lasagna_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
         # endregion
@@ -407,7 +458,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         shoe_string_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        shoe_string_price = customtkinter.CTkButton(appetisers_frames_list[0][0], text="Price: $25.00", 
+        shoe_string_price = customtkinter.CTkButton(appetisers_frames_list[0][0], text="Price: $5.00", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         shoe_string_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -422,7 +473,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         hand_cut_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        hand_cut_price = customtkinter.CTkButton(appetisers_frames_list[0][1], text="Price: $25.00", 
+        hand_cut_price = customtkinter.CTkButton(appetisers_frames_list[0][1], text="Price: $4.50", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         hand_cut_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -437,7 +488,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         onion_rings_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
         
-        onion_rings_price = customtkinter.CTkButton(appetisers_frames_list[0][2], text="Price: $25.00", 
+        onion_rings_price = customtkinter.CTkButton(appetisers_frames_list[0][2], text="Price: $6.99", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         onion_rings_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -452,7 +503,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         caeser_salad_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        caeser_salad_price = customtkinter.CTkButton(appetisers_frames_list[1][0], text="Price: $25.00", 
+        caeser_salad_price = customtkinter.CTkButton(appetisers_frames_list[1][0], text="Price: $5.50", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         caeser_salad_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -467,7 +518,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         chicken_nibbles_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        chicken_nibbles_price = customtkinter.CTkButton(appetisers_frames_list[1][1], text="Price: $25.00", 
+        chicken_nibbles_price = customtkinter.CTkButton(appetisers_frames_list[1][1], text="Price: $5.50", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         chicken_nibbles_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -482,7 +533,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         garlic_bread_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        garlic_bread_price = customtkinter.CTkButton(appetisers_frames_list[1][2], text="Price: $25.00", 
+        garlic_bread_price = customtkinter.CTkButton(appetisers_frames_list[1][2], text="Price: $3.50", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         garlic_bread_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -497,7 +548,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         seafood_chowder_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        seafood_chowder_price = customtkinter.CTkButton(appetisers_frames_list[2][0], text="Price: $25.00", 
+        seafood_chowder_price = customtkinter.CTkButton(appetisers_frames_list[2][0], text="Price: $6.99", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         seafood_chowder_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -513,7 +564,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        placeholder1_price = customtkinter.CTkButton(appetisers_frames_list[2][1], text="Price: $25.00", 
+        placeholder1_price = customtkinter.CTkButton(appetisers_frames_list[2][1], text="Price: $3.99", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         placeholder1_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -528,7 +579,7 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        placeholder2_price = customtkinter.CTkButton(appetisers_frames_list[2][2], text="Price: $25.00", 
+        placeholder2_price = customtkinter.CTkButton(appetisers_frames_list[2][2], text="Price: $3.99", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         placeholder2_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -978,6 +1029,7 @@ order_frame.grid(column=3, row=0, rowspan= 2, sticky='nsew')
 # ------------------------------ Order Section ------------------------------ #
 # Grid Configuration
 order_frame.grid_columnconfigure(0, weight=1)
+order_frame.grid_rowconfigure(1, weight =1)
 # region | Title for Order Section
 order_lbl = customtkinter.CTkLabel(order_frame, text = "Order:", 
                                    font=customtkinter.CTkFont(family="Calibri", size=50, weight='bold', underline=True))
@@ -988,6 +1040,11 @@ order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
 order_list_frame = customtkinter.CTkFrame(order_frame, corner_radius=10, height=700)
 order_list_frame.grid(row=1, column=0, pady=30, padx=20, sticky='news')
 # endregion
+
+# Label for the order list
+"""order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", 
+                                        font = customtkinter.CTkFont(family = "Calibri", size=25))
+order_list_lbl.grid(row=0, column=0, pady=10, padx=10, sticky="news")"""
 
 # region | Button to place order
 place_order_btn = customtkinter.CTkButton(order_frame, text="Place Order", text_color="black", fg_color="#333333",
