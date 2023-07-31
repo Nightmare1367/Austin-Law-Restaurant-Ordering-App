@@ -49,13 +49,13 @@ class TopNavBar(customtkinter.CTkFrame):
         mains_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=100, fg_color="black")
         mains_indicator.grid(row=0, column=0, sticky='s',pady=5)
         
-        appetisers_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=175, fg_color="white")
+        appetisers_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=175, fg_color="#DEE2E6")
         appetisers_indicator.grid(row=0, column=1, sticky='s',pady=5)
 
-        dessert_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=140, fg_color="white")
+        dessert_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=140, fg_color="#DEE2E6")
         dessert_indicator.grid(row=0, column=2, sticky='s',pady=5)
 
-        drinks_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=100, fg_color="white")
+        drinks_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=100, fg_color="#DEE2E6")
         drinks_indicator.grid(row=0, column=3, sticky='s',pady=5)
         # endregion
         
@@ -68,10 +68,10 @@ class TopNavBar(customtkinter.CTkFrame):
 
         # region | Function for the indicator
         def hide_indicate():                    # Changes the indicators white to match the background of the top navigation frame
-            mains_indicator.configure(fg_color="white")
-            appetisers_indicator.configure(fg_color="white")
-            dessert_indicator.configure(fg_color="white")
-            drinks_indicator.configure(fg_color="white")
+            mains_indicator.configure(fg_color="#DEE2E6")
+            appetisers_indicator.configure(fg_color="#DEE2E6")
+            dessert_indicator.configure(fg_color="#DEE2E6")
+            drinks_indicator.configure(fg_color="#DEE2E6")
 
         def indicate(fr, page):
             hide_indicate()                     # Calls the function to hide all indicators
@@ -246,7 +246,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
 
         # Add to Order Button for Placeholder 1
-        placeholder1_atobtn = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40,
+        placeholder1_atobtn = customtkinter.CTkButton(mains_frames_list[2][0], text = "+", width=40,
                                           font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         placeholder1_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
@@ -257,7 +257,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
 
         # Add to Order Button for Placeholder 2
-        placeholder2_atobtn = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40,
+        placeholder2_atobtn = customtkinter.CTkButton(mains_frames_list[2][1], text = "+", width=40,
                                           font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         placeholder2_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
@@ -268,7 +268,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         placeholder3_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
 
         # Add to Order Button for Placeholder 3
-        placeholder3_atobtn = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40,
+        placeholder3_atobtn = customtkinter.CTkButton(mains_frames_list[2][2], text = "+", width=40,
                                           font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         placeholder3_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
         # endregion
@@ -786,6 +786,8 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         coffee_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
         # endregion
 
+    
+
 # ------------------------ Main Window Configurations ------------------------ #
 window=customtkinter.CTk()                 # Creates a window 
 window.title("Restaurant Ordering App")    # Title of the window
@@ -795,13 +797,13 @@ window.geometry("1536x945-7+0")
 
 
 # ---------------------------- Grid Configuration ---------------------------- #
-window.grid_columnconfigure((0, 1), weight=1)
+window.grid_columnconfigure((0, 1, 3), weight=1)
 
 # ---------------------------------- Frames ---------------------------------- #
 # Top Navigation Bar
 TopNavBarFrame = TopNavBar(window)
 TopNavBarFrame.grid(column=0, row=0, sticky='nwes', columnspan=2)
-TopNavBarFrame.configure(corner_radius=0, height=75, fg_color="white")
+TopNavBarFrame.configure(corner_radius=0, height=75, fg_color="#DEE2E6")
 
 # Main Frame to store different frames (Mains, Appetisers and Desserts)
 main_windowframe = customtkinter.CTkFrame(window, height=800, corner_radius=0)
@@ -836,9 +838,34 @@ def drinks_page():
                           scrollbar_button_color='#333333')    
 # endregion
 
+# Seperator
+seperator_frame = customtkinter.CTkFrame(window, corner_radius=0, width=5, height=945, fg_color="black")
+seperator_frame.grid(row=0, column=2, rowspan=2, sticky='ns')
+
 # Order List
-order_list = customtkinter.CTkFrame(window, corner_radius=0,  width=500, fg_color='blue')
-order_list.grid(column=2, row=0, rowspan= 2, sticky='nsew')
+order_frame = customtkinter.CTkFrame(window, corner_radius=0,  width=500)
+order_frame.grid(column=3, row=0, rowspan= 2, sticky='nsew')
+
+
+# ------------------------------ Order Section ------------------------------ #
+# Grid Configuration
+order_frame.grid_columnconfigure(0, weight=1)
+# region | Title for Order Section
+order_lbl = customtkinter.CTkLabel(order_frame, text = "Order:", 
+                                   font=customtkinter.CTkFont(family="Calibri", size=50, weight='bold', underline=True))
+order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
+# endregion
+
+# region | Frame for Orders
+order_list_frame = customtkinter.CTkFrame(order_frame, corner_radius=10, height=700)
+order_list_frame.grid(row=1, column=0, pady=30, padx=20, sticky='news')
+# endregion
+
+# region | Button to place order
+place_order_btn = customtkinter.CTkButton(order_frame, text="Place Order", text_color="black", fg_color="#333333",
+                                          font=customtkinter.CTkFont(family="Calibri", size=50))
+place_order_btn.grid(row=2, column=0, sticky="news", pady=20, padx=20)
+# endregion
 
 mains_page()
 window.mainloop()
