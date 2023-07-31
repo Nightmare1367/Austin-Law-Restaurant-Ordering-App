@@ -628,9 +628,13 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
 
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Label for Apple Crumble
-        apple_crumble_lbl = customtkinter.CTkButton(desserts_frames_list[0][0], text="Apple Crumble\nPrice: $10.50", 
+        apple_crumble_lbl = customtkinter.CTkButton(desserts_frames_list[0][0], text="Apple Crumble", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        apple_crumble_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        apple_crumble_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        apple_crumble_price = customtkinter.CTkButton(desserts_frames_list[0][0], text="Price: $10.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        apple_crumble_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Apple Crumble
         apple_crumble_atobtn = customtkinter.CTkButton(desserts_frames_list[0][0], text = "+", width=40,
@@ -639,9 +643,13 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Brownie
-        brownie_lbl = customtkinter.CTkButton(desserts_frames_list[0][1], text="Brownie\nPrice: $8.99", 
+        brownie_lbl = customtkinter.CTkButton(desserts_frames_list[0][1], text="Brownie", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        brownie_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        brownie_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        brownie_price = customtkinter.CTkButton(desserts_frames_list[0][1], text="Price: $8.99", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        brownie_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Brownie
         brownie_atobtn = customtkinter.CTkButton(desserts_frames_list[0][1], text = "+", width=40,
@@ -650,9 +658,13 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Cheesecake
-        cheesecake_lbl = customtkinter.CTkButton(desserts_frames_list[0][2], text="Cheesecake\nPrice: $6.99", 
+        cheesecake_lbl = customtkinter.CTkButton(desserts_frames_list[0][2], text="Cheesecake", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        cheesecake_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        cheesecake_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        cheesecake_price = customtkinter.CTkButton(desserts_frames_list[0][2], text="Price: $6.99", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        cheesecake_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Cheesecake
         cheesecake_atobtn = customtkinter.CTkButton(desserts_frames_list[0][2], text = "+", width=40,
@@ -661,9 +673,13 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Ice Cream
-        ice_cream_lbl = customtkinter.CTkButton(desserts_frames_list[1][0], text="Ice Cream\nPrice: $12.50", 
+        ice_cream_lbl = customtkinter.CTkButton(desserts_frames_list[1][0], text="Ice Cream", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        ice_cream_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        ice_cream_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        ice_cream_price = customtkinter.CTkButton(desserts_frames_list[1][0], text="Price: $12.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        ice_cream_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Ice Cream
         ice_cream_atobtn = customtkinter.CTkButton(desserts_frames_list[1][0], text = "+", width=40,
@@ -672,9 +688,13 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Macaron
-        macaron_lbl = customtkinter.CTkButton(desserts_frames_list[1][1], text="Macaron\nPrice: $12.00", 
+        macaron_lbl = customtkinter.CTkButton(desserts_frames_list[1][1], text="Macaron", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        macaron_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        macaron_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        macaron_price = customtkinter.CTkButton(desserts_frames_list[1][1], text="Price: $12.00", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        macaron_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Macaron
         macaron_atobtn = customtkinter.CTkButton(desserts_frames_list[1][1], text = "+", width=40,
@@ -683,9 +703,13 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Panna Cotta
-        panna_cotta_lbl = customtkinter.CTkButton(desserts_frames_list[1][2], text="Panna Cotta\nPrice: $5.90", 
+        panna_cotta_lbl = customtkinter.CTkButton(desserts_frames_list[1][2], text="Panna Cotta", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        panna_cotta_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        panna_cotta_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        panna_cotta_price = customtkinter.CTkButton(desserts_frames_list[1][2], text="Price: $5.90", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        panna_cotta_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
         
         # Add to Order Button for Panna Cotta
         panna_cotta_atobtn = customtkinter.CTkButton(desserts_frames_list[1][2], text = "+", width=40,
@@ -695,9 +719,13 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
 
         # region | Placeholder Button \ Label
         # Label for Placeholder 1
-        placeholder1_lbl = customtkinter.CTkButton(desserts_frames_list[2][0], text="Placeholder\nPrice: $5.00", 
+        placeholder1_lbl = customtkinter.CTkButton(desserts_frames_list[2][0], text="Placeholder", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        placeholder1_price = customtkinter.CTkButton(desserts_frames_list[2][0], text="Price: $5.00", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        placeholder1_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Placeholder 1
         placeholder1_atobtn = customtkinter.CTkButton(desserts_frames_list[2][0], text = "+", width=40,
@@ -705,9 +733,13 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         placeholder1_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Label for Placeholder 2
-        placeholder2_lbl = customtkinter.CTkButton(desserts_frames_list[2][1], text="Placeholder\nPrice: $5.00", 
+        placeholder2_lbl = customtkinter.CTkButton(desserts_frames_list[2][1], text="Placeholder", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        placeholder2_price = customtkinter.CTkButton(desserts_frames_list[2][1], text="Price: $5.00", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        placeholder2_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Placeholder 2
         placeholder2_atobtn = customtkinter.CTkButton(desserts_frames_list[2][1], text = "+", width=40,
@@ -795,9 +827,13 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
 
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Label for Coke Drink
-        coke_lbl = customtkinter.CTkButton(drinks_frames_list[0][0], text="Coca-Cola\nPrice: $10.50", 
+        coke_lbl = customtkinter.CTkButton(drinks_frames_list[0][0], text="Coca-Cola", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        coke_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        coke_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        coke_price = customtkinter.CTkButton(drinks_frames_list[0][0], text="Price: $2.99", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        coke_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Coke Drink
         coke_atobtn = customtkinter.CTkButton(drinks_frames_list[0][0], text = "+", width=40,
@@ -806,9 +842,13 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Chocolate Milkshake Drink
-        milkshake_lbl = customtkinter.CTkButton(drinks_frames_list[0][1], text="Chocolate Milkshake\nPrice: $10.50", 
+        milkshake_lbl = customtkinter.CTkButton(drinks_frames_list[0][1], text="Chocolate Milkshake", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        milkshake_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        milkshake_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        milkshake_price = customtkinter.CTkButton(drinks_frames_list[0][1], text="Price: $7.99", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        milkshake_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Chocolate Milkshake Drink
         milkshake_atobtn = customtkinter.CTkButton(drinks_frames_list[0][1], text = "+", width=40,
@@ -817,9 +857,13 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Strawberry Juice
-        strawberry_juice_lbl = customtkinter.CTkButton(drinks_frames_list[0][2], text="Strawberry Juice\nPrice: $10.50", 
+        strawberry_juice_lbl = customtkinter.CTkButton(drinks_frames_list[0][2], text="Strawberry Juice", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        strawberry_juice_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        strawberry_juice_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        strawberry_juice_price = customtkinter.CTkButton(drinks_frames_list[0][2], text="Price: $4.99", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        strawberry_juice_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Strawberry Juice
         strawberry_juice_atobtn = customtkinter.CTkButton(drinks_frames_list[0][2], text = "+", width=40,
@@ -828,9 +872,13 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Bubble Tea Drink
-        boba_lbl = customtkinter.CTkButton(drinks_frames_list[1][0], text="Bubble Tea\nPrice: $10.50", 
+        boba_lbl = customtkinter.CTkButton(drinks_frames_list[1][0], text="Bubble Tea", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        boba_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        boba_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        boba_price = customtkinter.CTkButton(drinks_frames_list[1][0], text="Price: $6.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        boba_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Bubble Tea Drink
         boba_atobtn = customtkinter.CTkButton(drinks_frames_list[1][0], text = "+", width=40,
@@ -839,9 +887,13 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Hot Chocolate Drink
-        hot_chocolate_lbl = customtkinter.CTkButton(drinks_frames_list[1][1], text="Hot Chocolate\nPrice: $10.50", 
+        hot_chocolate_lbl = customtkinter.CTkButton(drinks_frames_list[1][1], text="Hot Chocolate", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        hot_chocolate_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        hot_chocolate_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        hot_chocolate_price = customtkinter.CTkButton(drinks_frames_list[1][1], text="Price: $3.99", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        hot_chocolate_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Hot Chocolate Drink
         hot_chocolate_atobtn = customtkinter.CTkButton(drinks_frames_list[1][1], text = "+", width=40,
@@ -850,9 +902,13 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # endregion
 
         # region | Label for Coffee Drink
-        coffee_lbl = customtkinter.CTkButton(drinks_frames_list[1][2], text="Coffee\nPrice: $10.50", 
+        coffee_lbl = customtkinter.CTkButton(drinks_frames_list[1][2], text="Coffee", 
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        coffee_lbl.grid(row=1, column=0, sticky='new', pady=(5,10), padx=10)
+        coffee_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+
+        coffee_price = customtkinter.CTkButton(drinks_frames_list[1][2], text="Price: $4.50", 
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        coffee_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Coffee Drink
         coffee_atobtn = customtkinter.CTkButton(drinks_frames_list[1][2], text = "+", width=40,
