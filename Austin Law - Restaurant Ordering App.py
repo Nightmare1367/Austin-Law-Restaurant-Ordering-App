@@ -57,19 +57,33 @@ prices = {
 
 def add(btn):
     # Globalling Variable
-    global checkout_txt
+    global checkout_txt, order_list_lbl
     # Label which will be configured when the user presses the add to order button
     order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", font = customtkinter.CTkFont(family = "Calibri", size=25))
     # Updating the Order
-    current_order = order_list_lbl.cget("text")                 # What is currently in the order
-    prices_value = (prices[btn.cget("text")])
-    decimal = "{:.2f}".format(prices_value)
+    current_order = order_list_lbl.cget("text")                    # What is currently in the order
+    prices_value = (prices[btn.cget("text")])                      # Gets the price of the product
+    decimal = "{:.2f}".format(prices_value)                        # Makes the price show with 2 decimal places
     added_item = btn.cget("text") + " | " + "$" + f'{decimal}'     # Looks at which product has been selected and it looks like "Name" | $XX
-    updated_order = current_order + added_item                  # Adds the current order and the new item
-    order_list_lbl.configure(text=updated_order)
+    updated_order = current_order + added_item                     # Adds the current order and the new item
+    order_list_lbl.configure(text=updated_order)                   # Updates the lable to show the new order
     # Gridding for the order list
     order_list_lbl.grid(row=checkout_txt, column=0, pady=5, padx=5, sticky="nw")
     checkout_txt += 1
+
+"""    # Updating the order total label
+    order_total = totalorder_lbl.cget("text").replace("TOTAL : ", "")
+    order_total = order_total.replace("$", "")
+    updated_total = int(order_total) + int(prices[btn.cget("text")])
+    decimal2 = "{:.2f}".format(updated_total)
+    test = float(decimal2)
+    totalorder_lbl.configure(text=f"TOTAL : {test} $")"""
+
+
+"""def remove(btn):
+    dish_to_remove = btn.cget("text") + "...." + str(prices[btn.cget("text")])
+    transaction_list = order_list_lbl.cget("text").split("$ ")
+    transaction_list.pop(len(transaction_list) - 1)"""
 
 
 class TopNavBar(customtkinter.CTkFrame):
@@ -1067,14 +1081,20 @@ order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
 # endregion
 
 # region | Frame for Orders
-order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=650)
-order_list_frame.grid(row=1, column=0, pady=30, padx=20, sticky='news', ipady=10, ipadx=10)
+order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=500)
+order_list_frame.grid(row=1, column=0, pady=(20,10), padx=20, sticky='news', ipady=10, ipadx=10)
+# endregion
+
+# region | Total Label
+totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "TOTAL : 0$", text_color="white", 
+                                        font=customtkinter.CTkFont(family="Calibri", size=30))
+totalorder_lbl.grid(row=2, column=0, sticky='nw', pady=5, padx=20)
 # endregion
 
 # region | Button to place order
 place_order_btn = customtkinter.CTkButton(order_frame, text="Place Order", text_color="black", fg_color="#333333",
                                           font=customtkinter.CTkFont(family="Calibri", size=50))
-place_order_btn.grid(row=2, column=0, sticky="news", pady=20, padx=20)
+place_order_btn.grid(row=3, column=0, sticky="news", pady=5, padx=20)
 # endregion
 
 mains_page()
