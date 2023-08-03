@@ -12,6 +12,7 @@ into the command prompt to install the
 
 # region | Importing the Modules
 import customtkinter
+import tkinter
 from tkinter import *
 from PIL import Image, ImageTk
 # endregion
@@ -71,13 +72,13 @@ def add(btn):
     order_list_lbl.grid(row=checkout_txt, column=0, pady=5, padx=5, sticky="nw")
     checkout_txt += 1
 
-"""    # Updating the order total label
-    order_total = totalorder_lbl.cget("text").replace("TOTAL : ", "")
+    """# Updating the order total label
+    order_total = totalorder_lbl.cget("text").replace("Total: ", "")
     order_total = order_total.replace("$", "")
     updated_total = int(order_total) + int(prices[btn.cget("text")])
     decimal2 = "{:.2f}".format(updated_total)
     test = float(decimal2)
-    totalorder_lbl.configure(text=f"TOTAL : {test} $")"""
+    totalorder_lbl.configure(text=f"Total: {test} $")"""
 
 
 """def remove(btn):
@@ -89,6 +90,7 @@ def add(btn):
 class TopNavBar(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
+        global indicate, mains_indicator, mains_page
         # ---------------------------------- Widgets ---------------------------------- #
         # region | Buttons for the Top Navigation Bar
         mains_btn = customtkinter.CTkButton(self, text="Mains",
@@ -117,7 +119,7 @@ class TopNavBar(customtkinter.CTkFrame):
         # endregion
 
         # region | Frames which would act as an indicator for the buttons
-        mains_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=100, fg_color="black")
+        mains_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=100, fg_color="#DEE2E6")
         mains_indicator.grid(row=0, column=0, sticky='s',pady=5)
         
         appetisers_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=175, fg_color="#DEE2E6")
@@ -152,14 +154,57 @@ class TopNavBar(customtkinter.CTkFrame):
         # endregion
 
 
+class WelcomePage(customtkinter.CTkFrame):
+    def __init__(self, master):
+        super().__init__(master)
+        # ---------- Grid Configurations ---------- #
+        self.grid_columnconfigure(0, weight=1)
+
+        # region | Title of the page
+        title_top = customtkinter.CTkLabel(self, text="Welcome", text_color="#DEE2E6",
+                                       font=customtkinter.CTkFont(family="Calibri", size=70, weight="bold"))
+        title_top.grid(column=0, row=0, pady=(200,0))
+
+        title_bottom = customtkinter.CTkLabel(self, text = "to Austin's Restaurant",  text_color="#DEE2E6",
+                                             font = customtkinter.CTkFont(family="Calibri", size=40))
+        title_bottom.grid(row=1, column=0)
+        # endregion
+        
+        # region | Seperator Frame between Title and Description
+        titledescription_frame = customtkinter.CTkFrame(self, fg_color='#DEE2E6', height=7, width=450, corner_radius=10)
+        titledescription_frame.grid(row=2, column=0, pady=10)
+        # endregion
+
+        # region | Description of restaurant
+        description = ("Austin's Restaurant offers a variety of dishes.\n"
+                       "Start by either selecting one of the categories\n"
+                       "on the top navigation bar or by clicking the \n"
+                       "'Get Started' button below.")
+        
+        description_lbl = customtkinter.CTkLabel(self, text=description, justify=CENTER, text_color="#DEE2E6",
+                                                 font=customtkinter.CTkFont(family="Calibri", size=25))
+        description_lbl.grid(row=3, column=0, pady=10)
+        # endregion
+
+        # region | Button To Mains Section
+        mains_button = customtkinter.CTkButton(self, text="Get Started", text_color="black", 
+                                               fg_color="#DEE2E6", hover_color="gray",
+                                               command = lambda: indicate(mains_indicator, mains_page),
+                                               font=customtkinter.CTkFont(family="Calibri", size=25))
+        mains_button.grid(row=4, column=0, pady=5, ipady=5, ipadx=10)
+        # endregion
+
+
+
+
 class MainsSelection(customtkinter.CTkScrollableFrame):
     def __init__(self, master):
         super().__init__(master)
         # region | Label for the Mains Page
-        title = customtkinter.CTkLabel(self, text="Mains", 
+        mains_title = customtkinter.CTkLabel(self, text="Mains", 
                                        font=customtkinter.CTkFont(size=50, weight="normal", 
                                                                   underline=True, family="Calibri"), text_color="white")
-        title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
+        mains_title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
         # endregion
 
         # ---------------------------------- Frames ---------------------------------- #
@@ -385,10 +430,10 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 class AppetiserSelection(customtkinter.CTkScrollableFrame):
     def __init__(self, master):
         super().__init__(master)
-        title = customtkinter.CTkLabel(self, text="Appetisers", 
+        appetisers_title = customtkinter.CTkLabel(self, text="Appetisers", 
                                        font=customtkinter.CTkFont(size=50, weight="normal", underline=True, family="Calibri"), 
                                        text_color="white")
-        title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
+        appetisers_title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
 
         # ---------------------------------- Frames ---------------------------------- #
         appetisers_displayframe = 9               # Number of display frames
@@ -621,10 +666,10 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
 class DessertSelection(customtkinter.CTkScrollableFrame):
     def __init__(self, master):
         super().__init__(master)
-        title = customtkinter.CTkLabel(self, text="Desserts", 
+        deeserts_title = customtkinter.CTkLabel(self, text="Desserts", 
                                        font=customtkinter.CTkFont(size=50, weight="normal", underline=True, family="Calibri"), 
                                        text_color="white")
-        title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
+        deeserts_title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
 
         # ---------------------------------- Frames ---------------------------------- #
         desserts_displayframe = 8               # Number of display frames
@@ -838,10 +883,10 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
 class DrinkSelection(customtkinter.CTkScrollableFrame):
     def __init__(self, master):
         super().__init__(master)
-        title = customtkinter.CTkLabel(self, text="Drinks", 
+        drinks_title = customtkinter.CTkLabel(self, text="Drinks", 
                                        font=customtkinter.CTkFont(size=50, weight="normal", underline=True, family="Calibri"), 
                                        text_color="white")
-        title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
+        drinks_title.grid(column=0, row=0, pady= 10, padx=35, sticky="nw")
 
         # ---------------------------------- Frames ---------------------------------- #
         drinks_displayframe = 6               # Number of display frames
@@ -1011,15 +1056,11 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
 
 
 # ------------------------ Main Window Configurations ------------------------ #
-window=customtkinter.CTk()                 # Creates a window 
-window.title("Restaurant Ordering App")    # Title of the window
+window=customtkinter.CTk()                          # Creates a window 
+window.title("Austin's Restaurant Ordering App")    # Title of the window
 # Sets the size of the window to fill screen 
 # The values in the string wil find the screen width and height and tuck it into the top left corner of the screen
 window.geometry("1536x945-7+0")
-
-
-# ---------------------------- Grid Configuration ---------------------------- #
-window.grid_columnconfigure((0, 1, 3), weight=1)
 
 
 # ---------------------------------- Frames ---------------------------------- #
@@ -1032,6 +1073,12 @@ TopNavBarFrame.configure(corner_radius=0, height=75, fg_color="#DEE2E6")
 main_windowframe = customtkinter.CTkFrame(window, height=800, corner_radius=0)
 main_windowframe.grid(column=0, row=1, sticky='news', columnspan=2)
 main_windowframe.columnconfigure(0, weight=1)
+
+# region |  Frame for when the user first opens the program
+welcome_frame = WelcomePage(main_windowframe)
+welcome_frame.grid(column=0, row=0, sticky='news')
+welcome_frame.configure(height=875, corner_radius=0)
+# endregion
 
 # region | Menu Selection
 # Function to show the mains selection
@@ -1070,6 +1117,12 @@ order_frame = customtkinter.CTkFrame(window, corner_radius=0,  width=500)
 order_frame.grid(column=3, row=0, rowspan= 2, sticky='nsew')
 
 
+# ---------------------------- Grid Configuration ---------------------------- #
+window.grid_columnconfigure((0, 1, 3), weight=1)
+window.grid_rowconfigure(1, weight =1)
+main_windowframe.grid_rowconfigure(0, weight=1)
+
+
 # ------------------------------ Order Section ------------------------------ #
 # Grid Configuration
 order_frame.grid_columnconfigure(0, weight=1)
@@ -1082,12 +1135,12 @@ order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
 
 # region | Frame for Orders
 order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=500)
-order_list_frame.grid(row=1, column=0, pady=(20,10), padx=20, sticky='news', ipady=10, ipadx=10)
+order_list_frame.grid(row=1, column=0, pady=(10,0), padx=20, sticky='news', ipady=10, ipadx=10)
 # endregion
 
 # region | Total Label
-totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "TOTAL : 0$", text_color="white", 
-                                        font=customtkinter.CTkFont(family="Calibri", size=30))
+totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "Total: 0$", text_color="white", 
+                                        font=customtkinter.CTkFont(family="Calibri", size=35))
 totalorder_lbl.grid(row=2, column=0, sticky='nw', pady=5, padx=20)
 # endregion
 
@@ -1097,5 +1150,4 @@ place_order_btn = customtkinter.CTkButton(order_frame, text="Place Order", text_
 place_order_btn.grid(row=3, column=0, sticky="news", pady=5, padx=20)
 # endregion
 
-mains_page()
 window.mainloop()
