@@ -195,8 +195,6 @@ class WelcomePage(customtkinter.CTkFrame):
         # endregion
 
 
-
-
 class MainsSelection(customtkinter.CTkScrollableFrame):
     def __init__(self, master):
         super().__init__(master)
