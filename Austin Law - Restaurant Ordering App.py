@@ -12,12 +12,15 @@ into the command prompt to install the
 
 # region | Importing the Modules
 import customtkinter
-import tkinter
 from tkinter import *
-from PIL import Image, ImageTk
+from PIL import Image
 # endregion
 
 checkout_txt = 0
+checkout_list = []
+
+# Dictionary to store name and price of product
+# This is used for the order section
 prices = {
     # Mains
     "Chicken Cutlet"        : 21.99,
@@ -59,8 +62,10 @@ prices = {
 def add(btn):
     # Globalling Variable
     global checkout_txt, order_list_lbl
+    
     # Label which will be configured when the user presses the add to order button
     order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", font = customtkinter.CTkFont(family = "Calibri", size=25))
+    
     # Updating the Order
     current_order = order_list_lbl.cget("text")                    # What is currently in the order
     prices_value = (prices[btn.cget("text")])                      # Gets the price of the product
@@ -68,23 +73,51 @@ def add(btn):
     added_item = btn.cget("text") + " | " + "$" + f'{decimal}'     # Looks at which product has been selected and it looks like "Name" | $XX
     updated_order = current_order + added_item                     # Adds the current order and the new item
     order_list_lbl.configure(text=updated_order)                   # Updates the lable to show the new order
+
+    checkout_list.append(updated_order)
+    #print(transaction_list)
+    
     # Gridding for the order list
     order_list_lbl.grid(row=checkout_txt, column=0, pady=5, padx=5, sticky="nw")
     checkout_txt += 1
 
-    """# Updating the order total label
-    order_total = totalorder_lbl.cget("text").replace("Total: ", "")
+    # Updating the order total label
+    order_total = totalorder_lbl.cget("text").replace("Total Price: ", "")
     order_total = order_total.replace("$", "")
-    updated_total = int(order_total) + int(prices[btn.cget("text")])
+    updated_total = float(order_total) + float(prices[btn.cget("text")])
     decimal2 = "{:.2f}".format(updated_total)
     test = float(decimal2)
-    totalorder_lbl.configure(text=f"Total: {test} $")"""
+    totalorder_lbl.configure(text=f"Total Price: ${test}")
 
 
-"""def remove(btn):
-    dish_to_remove = btn.cget("text") + "...." + str(prices[btn.cget("text")])
-    transaction_list = order_list_lbl.cget("text").split("$ ")
-    transaction_list.pop(len(transaction_list) - 1)"""
+def remove(btn):
+    order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", font = customtkinter.CTkFont(family = "Calibri", size=25))
+
+    prices_value = (prices[btn.cget("text")])
+    decimal = "{:.2f}".format(prices_value)
+    dish_to_remove = btn.cget("text") + " | " + "$" + f'{decimal}'
+    
+    
+    if dish_to_remove in checkout_list:
+        # update transaction label
+        checkout_list.remove(dish_to_remove)
+        updated_order = ""
+        for item in checkout_list:
+            updated_order += item + "$ "
+
+        print(order_list_lbl)
+
+        order_list_lbl.configure(text = updated_order)
+
+        # update transaction total
+        order_total = totalorder_lbl.cget("text").replace("Total Price: ", "")
+        order_total = order_total.replace("$", "")
+
+        updated_total = float(order_total) - float(decimal)
+        decimal2 = "{:.2f}".format(updated_total)
+        updated_total = float(decimal2)
+        totalorder_lbl.configure(text=f"Total Price: ${updated_total}")
+
 
 
 class TopNavBar(customtkinter.CTkFrame):
@@ -298,6 +331,11 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         cutlet_atobtn = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40, command = lambda: add(cutlet_lbl),
                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         cutlet_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+
+        # Remove Button for 
+        cutlet_remove = customtkinter.CTkButton(mains_frames_list[0][0], text = "-", width=40, command = lambda: remove(cutlet_lbl),
+                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        cutlet_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
         # endregion
 
         # region | Lasagna Button / Label
@@ -1137,7 +1175,7 @@ order_list_frame.grid(row=1, column=0, pady=(10,0), padx=20, sticky='news', ipad
 # endregion
 
 # region | Total Label
-totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "Total: 0$", text_color="white", 
+totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "Total Price: $0", text_color="white", 
                                         font=customtkinter.CTkFont(family="Calibri", size=35))
 totalorder_lbl.grid(row=2, column=0, sticky='nw', pady=5, padx=20)
 # endregion
