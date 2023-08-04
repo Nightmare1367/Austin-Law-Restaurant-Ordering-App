@@ -105,8 +105,6 @@ def remove(btn):
         for item in checkout_list:
             updated_order += item + "$ "
 
-        print(order_list_lbl)
-
         order_list_lbl.configure(text = updated_order)
 
         # update transaction total
