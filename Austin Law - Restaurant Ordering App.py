@@ -64,7 +64,8 @@ def add(btn):
     global checkout_txt, order_list_lbl
     
     # Label which will be configured when the user presses the add to order button
-    order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", font = customtkinter.CTkFont(family = "Calibri", size=25))
+    order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", wraplength=300,
+                                            font = customtkinter.CTkFont(family = "Calibri", size=25))
     
     # Updating the Order
     current_order = order_list_lbl.cget("text")                    # What is currently in the order
@@ -75,8 +76,7 @@ def add(btn):
     order_list_lbl.configure(text=updated_order)                   # Updates the lable to show the new order
 
     checkout_list.append(updated_order)
-    #print(transaction_list)
-    
+
     # Gridding for the order list
     order_list_lbl.grid(row=checkout_txt, column=0, pady=5, padx=5, sticky="nw")
     checkout_txt += 1
@@ -91,7 +91,8 @@ def add(btn):
 
 
 def remove(btn):
-    order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", font = customtkinter.CTkFont(family = "Calibri", size=25))
+    order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", 
+                                            font = customtkinter.CTkFont(family = "Calibri", size=25))
 
     prices_value = (prices[btn.cget("text")])
     decimal = "{:.2f}".format(prices_value)
