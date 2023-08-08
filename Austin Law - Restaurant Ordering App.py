@@ -1370,28 +1370,29 @@ main_windowframe.grid_rowconfigure(0, weight=1)
 
 # ------------------------------ Order Section ------------------------------ #
 # Grid Configuration
-order_frame.grid_columnconfigure(0, weight=1)
-order_frame.grid_rowconfigure(1, weight =1)
+order_frame.grid_columnconfigure(0, weight = 1)
+#order_frame.grid_rowconfigure(1, weight = 1)
 
 # region | Frame for Orders
-order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=500, width=200)
+order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=680, width=200)
 order_list_frame.grid(row=1, column=0, pady=(10,0), padx=20, sticky='news', ipady=10, ipadx=10)
 # endregion
 
 # region | Title for Order Section
-order_lbl = customtkinter.CTkLabel(order_frame, text = "Order:", 
+order_lbl = customtkinter.CTkLabel(order_frame, text = "Order:", text_color="#DEE2E6",
                                    font=customtkinter.CTkFont(family="Calibri", size=50, weight='bold', underline=True))
 order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
 # endregion
 
 # region | Total Label
-totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "Total Price: $0", text_color="white", 
-                                        font=customtkinter.CTkFont(family="Calibri", size=35))
-totalorder_lbl.grid(row=2, column=0, sticky='nw', pady=5, padx=20)
+totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "Total Price: $0", text_color="#DEE2E6", 
+                                        font=customtkinter.CTkFont(family="Calibri", size=30))
+totalorder_lbl.grid(row=2, column=0, sticky='nw', pady=5, padx=(20,0))
+
 # endregion
 
 # region | Button to place order
-place_order_btn = customtkinter.CTkButton(order_frame, text="Place Order", text_color="black", fg_color="#333333",
+place_order_btn = customtkinter.CTkButton(order_frame, text="Place Order", text_color="#DEE2E6", fg_color="#333333",
                                           font=customtkinter.CTkFont(family="Calibri", size=50))
 place_order_btn.grid(row=3, column=0, sticky="news", pady=5, padx=20)
 # endregion
