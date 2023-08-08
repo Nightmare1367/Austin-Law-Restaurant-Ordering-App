@@ -124,7 +124,7 @@ def printcart():
     rownum = 0
     for i in range(len(cart)):
         order_lbl = customtkinter.CTkLabel(order_list_frame, text = (cart[i][0] + " | x" + str(cart[i][1]) + " | $" + str(cart[i][2])), 
-                               font = customtkinter.CTkFont(family = "Calibri", size=25))
+                                           font = customtkinter.CTkFont(family = "Calibri", size=25))
         order_lbl.grid(row=rownum, column=0, pady=5, padx=5, sticky="nw")
         rownum += 1
  
@@ -212,7 +212,7 @@ class WelcomePage(customtkinter.CTkFrame):
 
         # region | Title of the page
         title_top = customtkinter.CTkLabel(self, text="Welcome", text_color="#DEE2E6",
-                                       font=customtkinter.CTkFont(family="Calibri", size=70, weight="bold"))
+                                           font=customtkinter.CTkFont(family="Calibri", size=70, weight="bold"))
         title_top.grid(column=0, row=0, pady=(200,0))
 
         title_bottom = customtkinter.CTkLabel(self, text = "to Austin's Restaurant",  text_color="#DEE2E6",
@@ -221,7 +221,8 @@ class WelcomePage(customtkinter.CTkFrame):
         # endregion
         
         # region | Seperator Frame between Title and Description
-        titledescription_frame = customtkinter.CTkFrame(self, fg_color='#DEE2E6', height=7, width=450, corner_radius=10)
+        titledescription_frame = customtkinter.CTkFrame(self, fg_color='#DEE2E6', 
+                                                        height=7, width=450, corner_radius=10)
         titledescription_frame.grid(row=2, column=0, pady=10)
         # endregion
 
@@ -304,33 +305,33 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # Butter Chicken Image
         butter_chicken = customtkinter.CTkImage(Image.open("Images/Mains/Butter_Chicken.jpg"), size=(275, 200))   # Imports image 
         butter_chicken_imgbtn = customtkinter.CTkButton(mains_frames_list[1][0], image=butter_chicken, text="",   # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                    # Configuration to button background
+                                                        fg_color='transparent', hover_color="#333333")            # Configuration to button background
         butter_chicken_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                         # Gridding the image button
 
         # Pasta Image
         pasta = customtkinter.CTkImage(Image.open("Images/Mains/Pasta.jpg"), size=(275, 200))           # Imports image 
         pasta_imgbtn = customtkinter.CTkButton(mains_frames_list[1][1], image=pasta, text="",           # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")          # Configuration to button background
+                                               fg_color='transparent', hover_color="#333333")           # Configuration to button background
         pasta_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding the image button
 
         # Pizza Image
         pizza = customtkinter.CTkImage(Image.open("Images/Mains/Pizza.jpg"), size=(275, 200))           # Imports image 
         pizza_imgbtn = customtkinter.CTkButton(mains_frames_list[1][2], image=pizza, text="",           # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")          # Configuration to button background
+                                               fg_color='transparent', hover_color="#333333")           # Configuration to button background
         pizza_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding the image button
 
         # region | Placeholder Images
         placeholder = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
         placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][0], image=placeholder, text = "",
-                                                     fg_color='transparent', hover_color="#333333")
+                                                      fg_color='transparent', hover_color="#333333")
         placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         
         placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][1], image=placeholder, text = "",
-                                                     fg_color='transparent', hover_color="#333333")
+                                                      fg_color='transparent', hover_color="#333333")
         placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
 
         placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][2], image=placeholder, text = "",
-                                                     fg_color='transparent', hover_color="#333333")
+                                                      fg_color='transparent', hover_color="#333333")
         placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
@@ -375,7 +376,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # Remove Button for Lasagna
         lasagna_remove = customtkinter.CTkButton(mains_frames_list[0][1], text = "-", width=40, 
                                                  command = lambda: remove(lasagna_lbl),
-                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         lasagna_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
         # endregion
 
@@ -419,7 +420,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # Remove Button for Butter Chicken
         butter_chicken_remove = customtkinter.CTkButton(mains_frames_list[1][0], text = "-", width=40, 
                                                         command = lambda: remove(butter_chicken_lbl),
-                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                        font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         butter_chicken_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
         # endregion
 
@@ -441,7 +442,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # Remove Button for Pasta
         pasta_remove = customtkinter.CTkButton(mains_frames_list[1][1], text = "-", width=40, 
                                                command = lambda: remove(pasta_lbl),
-                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                               font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         pasta_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
         # endregion
 
@@ -463,7 +464,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # Remove Button for Pizza
         pizza_remove = customtkinter.CTkButton(mains_frames_list[1][2], text = "-", width=40, 
                                                command = lambda: remove(pizza_lbl),
-                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                               font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         pizza_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
         # endregion
 
@@ -479,8 +480,8 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # Add to Order Button for Placeholder 1
         mains_placeholder1_atobtn = customtkinter.CTkButton(mains_frames_list[2][0], text = "+", bg_color="white",
-                                                      width=40, command = lambda: add(mains_placeholder1_lbl),
-                                                      font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                            width=40, command = lambda: add(mains_placeholder1_lbl),
+                                                            font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         mains_placeholder1_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Placeholder 1
@@ -492,17 +493,17 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # Label for Placeholder 2
         mains_placeholder2_lbl = customtkinter.CTkButton(mains_frames_list[2][1], text="Mains Placeholder", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
-        mains_placeholder2_price = customtkinter.CTkButton(mains_frames_list[2][1], text="Price: $25.00", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+        mains_placeholder2_price = customtkinter.CTkButton(mains_frames_list[2][1], text="Price: $25.00",
+                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder2_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Placeholder 2
         mains_placeholder2_atobtn = customtkinter.CTkButton(mains_frames_list[2][1], text = "+", bg_color="white",
-                                                      width=40, command = lambda: add(mains_placeholder2_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                            width=40, command = lambda: add(mains_placeholder2_lbl),
+                                                            font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         mains_placeholder2_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Placeholder 2 
@@ -514,17 +515,17 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # Label for Placeholder 3
         mains_placeholder3_lbl = customtkinter.CTkButton(mains_frames_list[2][2], text="Mains Placeholder", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder3_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         mains_placeholder3_price = customtkinter.CTkButton(mains_frames_list[2][2], text="Price: $25.00", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder3_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Placeholder 3
         mains_placeholder3_atobtn = customtkinter.CTkButton(mains_frames_list[2][2], text = "+", bg_color="white",
-                                                      width=40, command = lambda: add(mains_placeholder3_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                            width=40, command = lambda: add(mains_placeholder3_lbl),
+                                                            font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         mains_placeholder3_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Placeholder3
@@ -573,61 +574,61 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
         # Shoe String Fries Image
         shoe_string = customtkinter.CTkImage(Image.open("Images/Appetisers/Shoe_String.jpg"), size=(275, 200))               # Imports image 
         shoe_string_imgbtn = customtkinter.CTkButton(appetisers_frames_list[0][0], image=shoe_string, text="",              # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+                                                     fg_color='transparent', hover_color="#333333")                              # Configuration to button background
         shoe_string_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Hand Cut Fries Image
-        hand_cut = customtkinter.CTkImage(Image.open("Images/Appetisers/Hand_Cut.jpg"), size=(275, 200))                     # Imports image 
+        hand_cut = customtkinter.CTkImage(Image.open("Images/Appetisers/Hand_Cut.jpg"), size=(275, 200))                    # Imports image 
         hand_cut_imgbtn = customtkinter.CTkButton(appetisers_frames_list[0][1], image=hand_cut, text="",                    # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+                                                  fg_color='transparent', hover_color="#333333")                            # Configuration to button background
         hand_cut_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Onion Rings Image
-        onion_rings = customtkinter.CTkImage(Image.open("Images/Appetisers/Onion_Rings.jpg"), size=(275, 200))               # Imports image 
+        onion_rings = customtkinter.CTkImage(Image.open("Images/Appetisers/Onion_Rings.jpg"), size=(275, 200))              # Imports image 
         onion_rings_imgbtn = customtkinter.CTkButton(appetisers_frames_list[0][2], image=onion_rings, text="",              # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+                                                     fg_color='transparent', hover_color="#333333")                         # Configuration to button background
         onion_rings_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Caeser Salad Image
-        caeser_salad = customtkinter.CTkImage(Image.open("Images/Appetisers/Caesar_Salad.jpg"), size=(275, 200))             # Imports image 
+        caeser_salad = customtkinter.CTkImage(Image.open("Images/Appetisers/Caesar_Salad.jpg"), size=(275, 200))            # Imports image 
         caeser_salad_imgbtn = customtkinter.CTkButton(appetisers_frames_list[1][0], image=caeser_salad, text="",            # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+                                                      fg_color='transparent', hover_color="#333333")                        # Configuration to button background
         caeser_salad_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Chicken Nibbles Image
-        chicken_nibbles = customtkinter.CTkImage(Image.open("Images/Appetisers/Chicken_Nibbles.jpg"), size=(275, 200))       # Imports image 
+        chicken_nibbles = customtkinter.CTkImage(Image.open("Images/Appetisers/Chicken_Nibbles.jpg"), size=(275, 200))      # Imports image 
         chicken_nibbles_imgbtn = customtkinter.CTkButton(appetisers_frames_list[1][1], image=chicken_nibbles, text="",      # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+                                                         fg_color='transparent', hover_color="#333333")                     # Configuration to button background
         chicken_nibbles_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Garlic Bread Image
-        garlic_bread = customtkinter.CTkImage(Image.open("Images/Appetisers/Garlic_Bread.jpg"), size=(275, 200))             # Imports image 
+        garlic_bread = customtkinter.CTkImage(Image.open("Images/Appetisers/Garlic_Bread.jpg"), size=(275, 200))            # Imports image 
         garlic_bread_imgbtn = customtkinter.CTkButton(appetisers_frames_list[1][2], image=garlic_bread, text="",            # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+                                                      fg_color='transparent', hover_color="#333333")                        # Configuration to button background
         garlic_bread_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
 
         # Seafood Chowder Image
-        seafood_chowder = customtkinter.CTkImage(Image.open("Images/Appetisers/Seafood_Chowder.jpg"), size=(275, 200))       # Imports image 
+        seafood_chowder = customtkinter.CTkImage(Image.open("Images/Appetisers/Seafood_Chowder.jpg"), size=(275, 200))      # Imports image 
         seafood_chowder_imgbtn = customtkinter.CTkButton(appetisers_frames_list[2][0], image=seafood_chowder, text="",      # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                              # Configuration to button background
+                                                         fg_color='transparent', hover_color="#333333")                     # Configuration to button background
         seafood_chowder_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
 
         # region | Placeholder Images
         placeholder1 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
         placeholder1_imgbtn = customtkinter.CTkButton(appetisers_frames_list[2][1], image=placeholder1, text = "",
-                                                     fg_color='transparent', hover_color="#333333")
+                                                      fg_color='transparent', hover_color="#333333")
         placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         
         placeholder2 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
         placeholder2_imgbtn = customtkinter.CTkButton(appetisers_frames_list[2][2], image=placeholder2, text = "",
-                                                     fg_color='transparent', hover_color="#333333")
+                                                      fg_color='transparent', hover_color="#333333")
         placeholder2_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Label for Shoe String Fries
         shoe_string_lbl = customtkinter.CTkButton(appetisers_frames_list[0][0], text="Shoe String Fries", 
-                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                  font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         shoe_string_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         shoe_string_price = customtkinter.CTkButton(appetisers_frames_list[0][0], text="Price: $5.00", 
@@ -637,190 +638,190 @@ class AppetiserSelection(customtkinter.CTkScrollableFrame):
         # Add to Order Button for Shoe String Fries
         shoe_string_atobtn = customtkinter.CTkButton(appetisers_frames_list[0][0], text = "+", 
                                                      width=40, command = lambda: add(shoe_string_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                     font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         shoe_string_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Shoe String Fries
         shoe_string_remove = customtkinter.CTkButton(appetisers_frames_list[0][0], text = "-", 
                                                      width=40, command = lambda: remove(shoe_string_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                     font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         shoe_string_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Hand Cut Fries
         hand_cut_lbl = customtkinter.CTkButton(appetisers_frames_list[0][1], text="Hand Cut Fries", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         hand_cut_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         hand_cut_price = customtkinter.CTkButton(appetisers_frames_list[0][1], text="Price: $4.50", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                 font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         hand_cut_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Hand Cut Fries
         hand_cut_atobtn = customtkinter.CTkButton(appetisers_frames_list[0][1], text = "+", 
                                                   width=40, command = lambda: add(hand_cut_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                  font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         hand_cut_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Hand Cut Fries
         hand_cut_remove = customtkinter.CTkButton(appetisers_frames_list[0][1], text = "-", 
-                                                     width=40, command = lambda: remove(hand_cut_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                  width=40, command = lambda: remove(hand_cut_lbl),
+                                                  font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         hand_cut_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Onion Rings
         onion_rings_lbl = customtkinter.CTkButton(appetisers_frames_list[0][2], text="Onion Rings", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                  font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         onion_rings_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
         
         onion_rings_price = customtkinter.CTkButton(appetisers_frames_list[0][2], text="Price: $6.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                    font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         onion_rings_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Onion Rings
         onion_rings_atobtn = customtkinter.CTkButton(appetisers_frames_list[0][2], text = "+", 
-                                                     width=40, command = lambda: add(onion_rings_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                    width=40, command = lambda: add(onion_rings_lbl),
+                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         onion_rings_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Onion Rings 
         onion_rings_remove = customtkinter.CTkButton(appetisers_frames_list[0][2], text = "-", 
-                                                     width=40, command = lambda: remove(onion_rings_lbl),
+                                                    width=40, command = lambda: remove(onion_rings_lbl),
                                                     font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         onion_rings_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Caesar Salad
         caeser_salad_lbl = customtkinter.CTkButton(appetisers_frames_list[1][0], text="Caesar Salad", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                   font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         caeser_salad_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         caeser_salad_price = customtkinter.CTkButton(appetisers_frames_list[1][0], text="Price: $5.50", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                     font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         caeser_salad_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Caesar Salad
         caeser_salad_atobtn = customtkinter.CTkButton(appetisers_frames_list[1][0], text = "+", 
                                                       width=40, command = lambda: add(caeser_salad_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                      font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         caeser_salad_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Caesar Salad
         caeser_salad_remove = customtkinter.CTkButton(appetisers_frames_list[1][0], text = "-", 
                                                      width=40, command = lambda: remove(caeser_salad_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                     font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         caeser_salad_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Chicken Nibbles
         chicken_nibbles_lbl = customtkinter.CTkButton(appetisers_frames_list[1][1], text="Chicken Nibbles", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                      font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         chicken_nibbles_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         chicken_nibbles_price = customtkinter.CTkButton(appetisers_frames_list[1][1], text="Price: $5.50", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                        font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         chicken_nibbles_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Chicken Nibbles
         chicken_nibbles_atobtn = customtkinter.CTkButton(appetisers_frames_list[1][1], text = "+", 
                                                          width=40, command = lambda: add(chicken_nibbles_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                         font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         chicken_nibbles_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Chicken Nibbles
         chicken_nibbles_remove = customtkinter.CTkButton(appetisers_frames_list[1][1], text = "-", 
-                                                     width=40, command = lambda: remove(chicken_nibbles_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                         width=40, command = lambda: remove(chicken_nibbles_lbl),
+                                                         font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         chicken_nibbles_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Garlic Bread
         garlic_bread_lbl = customtkinter.CTkButton(appetisers_frames_list[1][2], text="Garlic Bread", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                   font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         garlic_bread_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         garlic_bread_price = customtkinter.CTkButton(appetisers_frames_list[1][2], text="Price: $3.50", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                     font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         garlic_bread_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Garlic Bread
         garlic_bread_atobtn = customtkinter.CTkButton(appetisers_frames_list[1][2], text = "+", 
                                                       width=40, command = lambda: add(garlic_bread_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                      font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         garlic_bread_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Garlic Bread
         garlic_bread_remove = customtkinter.CTkButton(appetisers_frames_list[1][2], text = "-", 
-                                                     width=40, command = lambda: remove(garlic_bread_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                      width=40, command = lambda: remove(garlic_bread_lbl),
+                                                      font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         garlic_bread_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Seafood Chowder
         seafood_chowder_lbl = customtkinter.CTkButton(appetisers_frames_list[2][0], text="Seafood Chowder", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                      font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         seafood_chowder_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         seafood_chowder_price = customtkinter.CTkButton(appetisers_frames_list[2][0], text="Price: $6.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                        font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         seafood_chowder_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Seafood Chowder
         seafood_chowder_atobtn = customtkinter.CTkButton(appetisers_frames_list[2][0], text = "+", 
                                                          width=40, command = lambda: add(seafood_chowder_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                         font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         seafood_chowder_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Seafood Chowder
         seafood_chowder_remove = customtkinter.CTkButton(appetisers_frames_list[2][0], text = "-", 
-                                                     width=40, command = lambda: remove(seafood_chowder_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                         width=40, command = lambda: remove(seafood_chowder_lbl),
+                                                         font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         seafood_chowder_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Placeholder Button \ Label
         # Label for Placeholder 1
         appetisers_placeholder1_lbl = customtkinter.CTkButton(appetisers_frames_list[2][1], text="Appetiser Placeholder", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         appetisers_placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         appetisers_placeholder1_price = customtkinter.CTkButton(appetisers_frames_list[2][1], text="Price: $3.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         appetisers_placeholder1_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Placeholder 1
         appetisers_placeholder1_atobtn = customtkinter.CTkButton(appetisers_frames_list[2][1], text = "+", bg_color="white",
-                                                      width=40, command = lambda: add(appetisers_placeholder1_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                                 width=40, command = lambda: add(appetisers_placeholder1_lbl),
+                                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         appetisers_placeholder1_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Placeholder 1
         appetisers_placeholder1_remove = customtkinter.CTkButton(appetisers_frames_list[2][1], text = "-", bg_color="white",
-                                                     width=40, command = lambda: remove(appetisers_placeholder1_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                                 width=40, command = lambda: remove(appetisers_placeholder1_lbl),
+                                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         appetisers_placeholder1_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
 
 
         # Label for Placeholder 2
         appetisers_placeholder2_lbl = customtkinter.CTkButton(appetisers_frames_list[2][2], text="Appetiser Placeholder", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         appetisers_placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         appetisers_placeholder2_price = customtkinter.CTkButton(appetisers_frames_list[2][2], text="Price: $3.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         appetisers_placeholder2_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Placeholder 2
         appetisers_placeholder2_atobtn = customtkinter.CTkButton(appetisers_frames_list[2][2], text = "+", bg_color="white",
-                                                      width=40, command = lambda: add(appetisers_placeholder2_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                                 width=40, command = lambda: add(appetisers_placeholder2_lbl),
+                                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         appetisers_placeholder2_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Placeholder 2
         appetisers_placeholder2_remove = customtkinter.CTkButton(appetisers_frames_list[2][2], text = "-", bg_color="white",
-                                                     width=40, command = lambda: remove(appetisers_placeholder2_lbl),
-                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                                 width=40, command = lambda: remove(appetisers_placeholder2_lbl),
+                                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         appetisers_placeholder2_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
@@ -865,49 +866,47 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         # Apple Crumble Image
         apple_crumble = customtkinter.CTkImage(Image.open("Images/Desserts/Apple_Crumble.jpg"), size=(275, 200))    # Imports image 
         apple_crumble_imgbtn = customtkinter.CTkButton(desserts_frames_list[0][0], image=apple_crumble, text="",    # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                      # Configuration to button background
+                                                       fg_color='transparent', hover_color="#333333")               # Configuration to button background
         apple_crumble_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Brownie Image
         brownie = customtkinter.CTkImage(Image.open("Images/Desserts/Brownie.jpg"), size=(275, 200))                # Imports image 
         brownie_imgbtn = customtkinter.CTkButton(desserts_frames_list[0][1], image=brownie, text="",                # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                      # Configuration to button background
+                                                 fg_color='transparent', hover_color="#333333")                     # Configuration to button background
         brownie_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Cheesecake Image
         cheesecake = customtkinter.CTkImage(Image.open("Images/Desserts/Cheesecake.jpg"), size=(275, 200))          # Imports image 
         cheesecake_imgbtn = customtkinter.CTkButton(desserts_frames_list[0][2], image=cheesecake, text="",          # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                      # Configuration to button background
+                                                    fg_color='transparent', hover_color="#333333")                  # Configuration to button background
         cheesecake_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Ice Cream Image
         ice_cream = customtkinter.CTkImage(Image.open("Images/Desserts/Ice_Cream.jpg"), size=(275, 200))            # Imports image 
         ice_cream_imgbtn = customtkinter.CTkButton(desserts_frames_list[1][0], image=ice_cream, text="",            # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                      # Configuration to button background
+                                                   fg_color='transparent', hover_color="#333333")                   # Configuration to button background
         ice_cream_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Macaron Image
         macaron = customtkinter.CTkImage(Image.open("Images/Desserts/Macaron.jpg"), size=(275, 200))                # Imports image 
         macaron_imgbtn = customtkinter.CTkButton(desserts_frames_list[1][1], image=macaron, text="",                # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                      # Configuration to button background
+                                                 fg_color='transparent', hover_color="#333333")                     # Configuration to button background
         macaron_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
 
         # Panna Cotta Image
         panna_cotta = customtkinter.CTkImage(Image.open("Images/Desserts/Panna_Cotta.jpg"), size=(275, 200))        # Imports image 
         panna_cotta_imgbtn = customtkinter.CTkButton(desserts_frames_list[1][2], image=panna_cotta, text="",        # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")                      # Configuration to button background
+                                                     fg_color='transparent', hover_color="#333333")                 # Configuration to button background
         panna_cotta_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10) 
         # endregion
 
         # region | Placeholder Images
         placeholder1 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
-        placeholder1_imgbtn = customtkinter.CTkButton(desserts_frames_list[2][0], image=placeholder1, text = "",
-                                                     fg_color='transparent', hover_color="#333333")
+        placeholder1_imgbtn = customtkinter.CTkButton(desserts_frames_list[2][0], image=placeholder1, text = "",fg_color='transparent', hover_color="#333333")
         placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         
         placeholder2 = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
-        placeholder2_imgbtn = customtkinter.CTkButton(desserts_frames_list[2][1], image=placeholder2, text = "",
-                                                     fg_color='transparent', hover_color="#333333")
+        placeholder2_imgbtn = customtkinter.CTkButton(desserts_frames_list[2][1], image=placeholder2, text = "",fg_color='transparent', hover_color="#333333")
         placeholder2_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
@@ -915,67 +914,67 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Label for Apple Crumble
         apple_crumble_lbl = customtkinter.CTkButton(desserts_frames_list[0][0], text="Apple Crumble", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                    font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         apple_crumble_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         apple_crumble_price = customtkinter.CTkButton(desserts_frames_list[0][0], text="Price: $10.50", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                      font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         apple_crumble_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Apple Crumble
         apple_crumble_atobtn = customtkinter.CTkButton(desserts_frames_list[0][0], text = "+", 
                                                        width=40, command = lambda: add(apple_crumble_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                       font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         apple_crumble_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Apple Crumble
         apple_crumble_remove = customtkinter.CTkButton(desserts_frames_list[0][0], text = "-", 
                                                        width=40, command = lambda: remove(apple_crumble_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                       font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         apple_crumble_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Brownie
         brownie_lbl = customtkinter.CTkButton(desserts_frames_list[0][1], text="Brownie", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         brownie_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         brownie_price = customtkinter.CTkButton(desserts_frames_list[0][1], text="Price: $8.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         brownie_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Brownie
         brownie_atobtn = customtkinter.CTkButton(desserts_frames_list[0][1], text = "+", 
                                                  width=40, command = lambda: add(brownie_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         brownie_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Brownie
         brownie_remove = customtkinter.CTkButton(desserts_frames_list[0][1], text = "-", 
-                                                       width=40, command = lambda: remove(brownie_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                 width=40, command = lambda: remove(brownie_lbl),
+                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         brownie_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Cheesecake
         cheesecake_lbl = customtkinter.CTkButton(desserts_frames_list[0][2], text="Cheesecake", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                 font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         cheesecake_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         cheesecake_price = customtkinter.CTkButton(desserts_frames_list[0][2], text="Price: $6.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                   font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         cheesecake_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Cheesecake
         cheesecake_atobtn = customtkinter.CTkButton(desserts_frames_list[0][2], text = "+", 
                                                     width=40, command = lambda: add(cheesecake_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         cheesecake_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Cheescake
         cheesecake_remove = customtkinter.CTkButton(desserts_frames_list[0][2], text = "-", 
-                                                       width=40, command = lambda: remove(cheesecake_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                    width=40, command = lambda: remove(cheesecake_lbl),
+                                                    font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         cheesecake_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
@@ -1025,17 +1024,17 @@ class DessertSelection(customtkinter.CTkScrollableFrame):
 
         # region | Label for Panna Cotta
         panna_cotta_lbl = customtkinter.CTkButton(desserts_frames_list[1][2], text="Panna Cotta", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                  font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         panna_cotta_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         panna_cotta_price = customtkinter.CTkButton(desserts_frames_list[1][2], text="Price: $5.90", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                    font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         panna_cotta_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
         
         # Add to Order Button for Panna Cotta
         panna_cotta_atobtn = customtkinter.CTkButton(desserts_frames_list[1][2], text = "+", 
                                                      width=40, command = lambda: add(panna_cotta_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                     font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         panna_cotta_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Panna Cotta
@@ -1127,42 +1126,42 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # ---------------------------------- Images ---------------------------------- #
         # region | Coke Image
         coke = customtkinter.CTkImage(Image.open("Images/Drinks/Coke.jpg"), size=(275,200))
-        coke_imgbtn = customtkinter.CTkButton(drinks_frames_list[0][0], image=coke, text="",        
-                                                fg_color='transparent', hover_color="#333333")
+        coke_imgbtn = customtkinter.CTkButton(drinks_frames_list[0][0], image=coke, text="",
+                                              fg_color='transparent', hover_color="#333333")
         coke_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
         # region | Milkshake Image
         milkshake = customtkinter.CTkImage(Image.open("Images/Drinks/Milkshake.jpg"), size=(275,200))
         milkshake_imgbtn = customtkinter.CTkButton(drinks_frames_list[0][1], image=milkshake, text="",        
-                                                fg_color='transparent', hover_color="#333333")
+                                                   fg_color='transparent', hover_color="#333333")
         milkshake_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
         # region | Strawberry Juice Image
         strawberry_juice = customtkinter.CTkImage(Image.open("Images/Drinks/Strawberry_Juice.jpg"), size=(275,200))
         strawberry_juice_imgbtn = customtkinter.CTkButton(drinks_frames_list[0][2], image=strawberry_juice, text="",        
-                                                fg_color='transparent', hover_color="#333333")
+                                                          fg_color='transparent', hover_color="#333333")
         strawberry_juice_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
         # region | Bubble Tea Image
         bubble_tea = customtkinter.CTkImage(Image.open("Images/Drinks/Boba.jpg"), size=(275,200))
-        bubble_tea_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][0], image=bubble_tea, text="",        
-                                                fg_color='transparent', hover_color="#333333")
+        bubble_tea_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][0], image=bubble_tea, text="",
+                                                    fg_color='transparent', hover_color="#333333")
         bubble_tea_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
         # region | Hot Chocolate Image
         hot_chocolate = customtkinter.CTkImage(Image.open("Images/Drinks/Hot_Chocolate.jpg"), size=(275,200))
-        hot_chocolate_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][1], image=hot_chocolate, text="",        
-                                                fg_color='transparent', hover_color="#333333")
+        hot_chocolate_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][1], image=hot_chocolate, text="",
+                                                       fg_color='transparent', hover_color="#333333")
         hot_chocolate_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
         # region | Coffee Image
         coffee = customtkinter.CTkImage(Image.open("Images/Drinks/Coffee.png"), size=(275,200))
-        coffee_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][2], image=coffee, text="",        
+        coffee_imgbtn = customtkinter.CTkButton(drinks_frames_list[1][2], image=coffee, text="",
                                                 fg_color='transparent', hover_color="#333333")
         coffee_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
@@ -1170,7 +1169,7 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Label for Coke Drink
         coke_lbl = customtkinter.CTkButton(drinks_frames_list[0][0], text="Coca-Cola", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         coke_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         coke_price = customtkinter.CTkButton(drinks_frames_list[0][0], text="Price: $2.99", 
@@ -1180,63 +1179,63 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # Add to Order Button for Coke Drink
         coke_atobtn = customtkinter.CTkButton(drinks_frames_list[0][0], text = "+", 
                                               width=40, command = lambda: add(coke_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                              font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         coke_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Coke Drink
         coke_remove = customtkinter.CTkButton(drinks_frames_list[0][0], text = "-", 
                                               width=40, command = lambda: remove(coke_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                              font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         coke_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Chocolate Milkshake Drink
         milkshake_lbl = customtkinter.CTkButton(drinks_frames_list[0][1], text="Chocolate Milkshake", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         milkshake_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         milkshake_price = customtkinter.CTkButton(drinks_frames_list[0][1], text="Price: $7.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                  font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         milkshake_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Chocolate Milkshake Drink
         milkshake_atobtn = customtkinter.CTkButton(drinks_frames_list[0][1], text = "+", 
                                                    width=40, command = lambda: add(milkshake_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                   font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         milkshake_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Chocolate Milkshake Drink
         milkshake_remove = customtkinter.CTkButton(drinks_frames_list[0][1], text = "-", 
-                                              width=40, command = lambda: remove(milkshake_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                   width=40, command = lambda: remove(milkshake_lbl),
+                                                   font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         milkshake_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Strawberry Juice
         strawberry_juice_lbl = customtkinter.CTkButton(drinks_frames_list[0][2], text="Strawberry Juice", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                       font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         strawberry_juice_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         strawberry_juice_price = customtkinter.CTkButton(drinks_frames_list[0][2], text="Price: $4.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         strawberry_juice_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Strawberry Juice
         strawberry_juice_atobtn = customtkinter.CTkButton(drinks_frames_list[0][2], text = "+", 
                                                           width=40, command = lambda: add(strawberry_juice_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         strawberry_juice_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Strawberry Juice
         strawberry_juice_remove = customtkinter.CTkButton(drinks_frames_list[0][2], text = "-", 
-                                              width=40, command = lambda: remove(strawberry_juice_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                          width=40, command = lambda: remove(strawberry_juice_lbl),
+                                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         strawberry_juice_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Bubble Tea Drink
         boba_lbl = customtkinter.CTkButton(drinks_frames_list[1][0], text="Bubble Tea", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         boba_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         boba_price = customtkinter.CTkButton(drinks_frames_list[1][0], text="Price: $6.50", 
@@ -1246,35 +1245,35 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # Add to Order Button for Bubble Tea Drink
         boba_atobtn = customtkinter.CTkButton(drinks_frames_list[1][0], text = "+", 
                                               width=40, command = lambda: add(boba_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                              font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         boba_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Bubble Tea Drink
         boba_remove = customtkinter.CTkButton(drinks_frames_list[1][0], text = "-", 
                                               width=40, command = lambda: remove(boba_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                              font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         boba_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
         # region | Label for Hot Chocolate Drink
         hot_chocolate_lbl = customtkinter.CTkButton(drinks_frames_list[1][1], text="Hot Chocolate", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                    font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         hot_chocolate_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         hot_chocolate_price = customtkinter.CTkButton(drinks_frames_list[1][1], text="Price: $3.99", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                      font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         hot_chocolate_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Hot Chocolate Drink
         hot_chocolate_atobtn = customtkinter.CTkButton(drinks_frames_list[1][1], text = "+", 
                                                        width=40, command = lambda: add(hot_chocolate_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                       font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         hot_chocolate_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Hot Chocolate Drink
         hot_chocolate_remove = customtkinter.CTkButton(drinks_frames_list[1][1], text = "-", 
-                                              width=40, command = lambda: remove(hot_chocolate_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                       width=40, command = lambda: remove(hot_chocolate_lbl),
+                                                       font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         hot_chocolate_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
@@ -1284,19 +1283,19 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         coffee_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         coffee_price = customtkinter.CTkButton(drinks_frames_list[1][2], text="Price: $4.50", 
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         coffee_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Coffee Drink
         coffee_atobtn = customtkinter.CTkButton(drinks_frames_list[1][2], text = "+", 
                                                 width=40, command = lambda: add(coffee_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         coffee_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
         # Remove Button for Coffee Drink
         coffee_remove = customtkinter.CTkButton(drinks_frames_list[1][2], text = "-", 
-                                              width=40, command = lambda: remove(coffee_lbl),
-                                          font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+                                                width=40, command = lambda: remove(coffee_lbl),
+                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         coffee_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
 
