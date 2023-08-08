@@ -16,8 +16,6 @@ from tkinter import *
 from PIL import Image
 # endregion
 
-checkout_txt = 0
-checkout_list = []
 
 # Dictionary to store name and price of product
 # This is used for the order section
@@ -59,64 +57,82 @@ prices = {
     "Coffee"                : 4.50,
 }
 
+# List to store the customers order
+cart = []
+
+
+# Function to add the order to the cart
 def add(btn):
     # Globalling Variable
-    global checkout_txt, order_list_lbl
+    global cart
     
-    # Label which will be configured when the user presses the add to order button
-    order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", wraplength=300,
-                                            font = customtkinter.CTkFont(family = "Calibri", size=25))
-    
-    # Updating the Order
-    current_order = order_list_lbl.cget("text")                    # What is currently in the order
+    # Looks for the item selected
     prices_value = (prices[btn.cget("text")])                      # Gets the price of the product
     decimal = "{:.2f}".format(prices_value)                        # Makes the price show with 2 decimal places
-    added_item = btn.cget("text") + " | " + "$" + f'{decimal}'     # Looks at which product has been selected and it looks like "Name" | $XX
-    updated_order = current_order + added_item                     # Adds the current order and the new item
-    order_list_lbl.configure(text=updated_order)                   # Updates the lable to show the new order
+    item = btn.cget("text")                                        # Gets the item
 
-    checkout_list.append(updated_order)
+    # Updating the Order
+    # If statement which looks at whether there is an existing item in the cart
+    if len(cart) == 0:                              # If the item selected does not exist, this will run
+        cart.append([item, 1, float(decimal)])      # Appends the item to the list following the name, amount, and price
+    # Runs this section if the item selected already exists in the list
+    else:
+        itemexist = False           # Variable which will be used to check if the item exists
+        for i in range (len(cart)): # For loop which will look at the specifed item 
+            if cart[i][0] == item:  # Runs if the item matches with cart
+                itemexist = True    # Changes variable to true
+                cart[i][1] += 1     # Adds 1 to the total amount of that item
+                cart[i][2] = round(cart[i][2] + float(decimal),2)       # Updates the price to match the amount selected.
 
-    # Gridding for the order list
-    order_list_lbl.grid(row=checkout_txt, column=0, pady=5, padx=5, sticky="nw")
-    checkout_txt += 1
+        # Runs if the item does not exist in the list
+        if itemexist == False: 
+            cart.append([item, 1, float(decimal)])
+    printcart()
+
+
+# Function to remove the selected order
+def remove(btn):
+    global cart
+    prices_value = (prices[btn.cget("text")])   # Price of the selected item
+    decimal = "{:.2f}".format(prices_value)     # Converts the item to sho up to 2 decimal points
+    item = btn.cget("text")                     # Name of the item
+    
+    # For loop which will remove the item from the list
+    for i in range (len(cart)):
+        # Checks if the item matches with each other
+        if cart[i][0] == item: 
+            # Runs if the amount of that item is one
+            if cart[i][1] == 1: 
+                del(cart[i])    # Delets the list
+                break           # Breaks the code to prevent error
+            # Runs if there are more than one of that item
+            else:
+                cart[i][1] -= 1     # Subtracts one from the amount
+                # Updates the price to show cost after removing the one item
+                cart[i][2] = "{:.2f}".format(cart[i][2] - float(decimal))  
+    printcart()
+
+
+# Function to display and update the cart
+def printcart():
+    # Looks for widgets and destroys the frame which stores the order
+    for widget in order_list_frame.winfo_children():
+        widget.destroy()  
+ 
+    rownum = 0
+    for i in range(len(cart)):
+        order_lbl = customtkinter.CTkLabel(order_list_frame, text = (cart[i][0] + " | x" + str(cart[i][1]) + " | $" + str(cart[i][2])), 
+                               font = customtkinter.CTkFont(family = "Calibri", size=25))
+        order_lbl.grid(row=rownum, column=0, pady=5, padx=5, sticky="nw")
+        rownum += 1
+ 
+    def costcalc():
+        totalcost = 0
+        for i in range(len(cart)): totalcost += cart[i][2]
+        return(str("{:.2f}".format(totalcost)))
 
     # Updating the order total label
-    order_total = totalorder_lbl.cget("text").replace("Total Price: ", "")
-    order_total = order_total.replace("$", "")
-    updated_total = float(order_total) + float(prices[btn.cget("text")])
-    decimal2 = "{:.2f}".format(updated_total)
-    test = float(decimal2)
-    totalorder_lbl.configure(text=f"Total Price: ${test}")
-
-
-def remove(btn):
-    order_list_lbl = customtkinter.CTkLabel(order_list_frame, text = "", 
-                                            font = customtkinter.CTkFont(family = "Calibri", size=25))
-
-    prices_value = (prices[btn.cget("text")])
-    decimal = "{:.2f}".format(prices_value)
-    dish_to_remove = btn.cget("text") + " | " + "$" + f'{decimal}'
-    
-    
-    if dish_to_remove in checkout_list:
-        # update transaction label
-        checkout_list.remove(dish_to_remove)
-        updated_order = ""
-        for item in checkout_list:
-            updated_order += item + "$ "
-
-        order_list_lbl.configure(text = updated_order)
-
-        # update transaction total
-        order_total = totalorder_lbl.cget("text").replace("Total Price: ", "")
-        order_total = order_total.replace("$", "")
-
-        updated_total = float(order_total) - float(decimal)
-        decimal2 = "{:.2f}".format(updated_total)
-        updated_total = float(decimal2)
-        totalorder_lbl.configure(text=f"Total Price: ${updated_total}")
-
+    totalorder_lbl.configure(text="Total Price: $"+costcalc())
 
 
 class TopNavBar(customtkinter.CTkFrame):
@@ -331,7 +347,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         cutlet_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
 
-        # Remove Button for 
+        # Remove Button for Cutlet
         cutlet_remove = customtkinter.CTkButton(mains_frames_list[0][0], text = "-", width=40, command = lambda: remove(cutlet_lbl),
                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         cutlet_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
@@ -350,6 +366,11 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         lasagna_atobtn = customtkinter.CTkButton(mains_frames_list[0][1], text = "+", width=40, command = lambda: add(lasagna_lbl),
                                                  font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         lasagna_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+
+        # Remove Button for Cutlet
+        lasagna_remove = customtkinter.CTkButton(mains_frames_list[0][1], text = "-", width=40, command = lambda: remove(lasagna_lbl),
+                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
+        lasagna_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
         # endregion
 
         # region | Burger Button / Label
@@ -1169,7 +1190,7 @@ order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
 # endregion
 
 # region | Frame for Orders
-order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=500)
+order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=500, width=200)
 order_list_frame.grid(row=1, column=0, pady=(10,0), padx=20, sticky='news', ipady=10, ipadx=10)
 # endregion
 
