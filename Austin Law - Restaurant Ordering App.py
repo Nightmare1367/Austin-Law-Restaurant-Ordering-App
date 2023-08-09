@@ -59,6 +59,7 @@ prices = {
     "Coffee"                : 4.50,
 }
 
+
 # List to store the customers order
 cart = []
 
