@@ -72,24 +72,29 @@ cart = []
 
 # Function to create a description page
 def description_page(btn):
-    # Creating a window the for th
+    # Creating a window for the description page
     description_window = customtkinter.CTkToplevel(window)
 
-    w = 1000
-    h = 700
+    # Dimensions for the pop up window
+    w = 1000        # Width of window
+    h = 700         # height of window
     ws = description_window.winfo_screenwidth()
     hs = description_window.winfo_screenheight()
     x = (ws/2) - (w/2)
     y = (hs/2) - (h/2)
-
     description_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
+    # Makes the window stay at the top
     description_window.attributes('-topmost',True)
 
 
     description_list = list(about_page.description.keys())
     description_list2 = list(about_page.description.values())
     specific = description_list.index(btn.cget("text"))
+
+    item_name = customtkinter.CTkLabel(description_window, text=btn.cget("text"),
+                                       font=customtkinter.CTkFont(family='Calibri', size=30, weight= 'bold'))
+    item_name.grid(row=0, column=0)
 
     print(btn.cget("text"))
     print(f"About the Dish: {description_list2[specific][0]} | \nIngredients: {description_list2[specific][1]}")
