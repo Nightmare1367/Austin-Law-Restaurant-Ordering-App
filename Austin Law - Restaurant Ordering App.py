@@ -1408,6 +1408,12 @@ order_lbl = customtkinter.CTkLabel(order_frame, text = "Order:", text_color="#DE
 order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
 # endregion
 
+"""# region | Label for Order ID
+order_id = customtkinter.CTkLabel(order_frame, text = "Order ID: ", text_color="#DEE2E6",
+                                   font=customtkinter.CTkFont(family="Calibri", size=30, weight='bold', underline=True))
+order_id.grid(row=0, column=0, sticky='es', pady=10, padx=20)
+# endregion"""
+
 # region | Total Label
 totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "Total Price: $0", text_color="#DEE2E6", 
                                         font=customtkinter.CTkFont(family="Calibri", size=30))
