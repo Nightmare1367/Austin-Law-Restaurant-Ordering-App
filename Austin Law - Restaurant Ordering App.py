@@ -7,7 +7,7 @@ This can be done by typing "pip3 install customtkinter" in the command prompt wh
 
 You would also want to make sure that pillow is installed. 
 This is done by typing "pip install --upgrade pip" and "pip install --upgrade Pillow" 
-into the command prompt to install the 
+into the command prompt to install the Pillow module
 """
 
 # region | Importing the Modules
@@ -15,9 +15,15 @@ import customtkinter
 from tkinter import *
 from PIL import Image
 # endregion
-customtkinter.set_appearance_mode("dark")
-customtkinter.set_default_color_theme("green")
 
+# region | Importing files
+import about_page
+# endregion
+
+# region | Customisation of window
+customtkinter.set_appearance_mode("dark")       # Sets the window to dark mode
+customtkinter.set_default_color_theme("green")  # Makes the default colour for widgets with a changable background to green
+# endregion
 
 # Dictionary to store name and price of product
 # This is used for the order section
@@ -62,6 +68,21 @@ prices = {
 
 # List to store the customers order
 cart = []
+
+
+# Function to create a description page
+def description_page(btn):
+    # Creating a window the for th
+    description_window = customtkinter.CTkToplevel(window)
+    description_window.geometry("500x500")
+    description_window.attributes('-topmost',True)
+    description_list = list(about_page.description.keys())
+    description_list2 = list(about_page.description.values())
+    specific = description_list.index(btn.cget("text"))
+
+    print(btn.cget("text"))
+    print(f"About the Dish: {description_list2[specific][0]} | \nIngredients: {description_list2[specific][1]}")
+
 
 
 # Function to add the order to the cart
@@ -339,6 +360,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Cutlet Button / Label
         cutlet_lbl = customtkinter.CTkButton(mains_frames_list[0][0], text="Chicken Cutlet", 
+                                             command = lambda: description_page(cutlet_lbl),
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         cutlet_lbl.grid(row=1, column=0, sticky='news', pady=(5,0), padx=10)
 
@@ -405,6 +427,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # region | Butter Chicken Button / Label
         butter_chicken_lbl = customtkinter.CTkButton(mains_frames_list[1][0], text="Butter Chicken", 
+                                                     command = lambda: description_page(butter_chicken_lbl),
                                                      font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         butter_chicken_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
