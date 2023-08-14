@@ -74,8 +74,19 @@ cart = []
 def description_page(btn):
     # Creating a window the for th
     description_window = customtkinter.CTkToplevel(window)
-    description_window.geometry("500x500")
+
+    w = 1000
+    h = 700
+    ws = description_window.winfo_screenwidth()
+    hs = description_window.winfo_screenheight()
+    x = (ws/2) - (w/2)
+    y = (hs/2) - (h/2)
+
+    description_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
     description_window.attributes('-topmost',True)
+
+
     description_list = list(about_page.description.keys())
     description_list2 = list(about_page.description.values())
     specific = description_list.index(btn.cget("text"))
@@ -1329,7 +1340,8 @@ window=customtkinter.CTk()                          # Creates a window
 window.title("Austin's Restaurant Ordering App")    # Title of the window
 # Sets the size of the window to fill screen 
 # The values in the string wil find the screen width and height and tuck it into the top left corner of the screen
-window.geometry("1536x945-7+0")
+window.geometry("1536x800-7+0")
+# 1536x945-7+0
 
 
 # ---------------------------------- Frames ---------------------------------- #
@@ -1339,7 +1351,7 @@ TopNavBarFrame.grid(column=0, row=0, sticky='nwes', columnspan=2)
 TopNavBarFrame.configure(corner_radius=0, height=75, fg_color="#DEE2E6")
 
 # Main Frame to store different frames (Mains, Appetisers, Desserts and Drinks)
-main_windowframe = customtkinter.CTkFrame(window, height=800, corner_radius=0)
+main_windowframe = customtkinter.CTkFrame(window, height=700, corner_radius=0)
 main_windowframe.grid(column=0, row=1, sticky='news', columnspan=2)
 main_windowframe.columnconfigure(0, weight=1)
 
@@ -1354,26 +1366,26 @@ welcome_frame.configure(height=875, corner_radius=0)
 def mains_page():
     MainsSelectionFrame = MainsSelection(main_windowframe)          # Calls the Class as the frame
     MainsSelectionFrame.grid(column=0, row=0, sticky='news')        # Grids the frame 
-    MainsSelectionFrame.configure(height=875, corner_radius=0)      # Configurations to the frame 
+    MainsSelectionFrame.configure(height=700, corner_radius=0)      # Configurations to the frame 
 
 # Function to show the appetisers selection
 def appetisers_page():
     AppetiserFrame = AppetiserSelection(main_windowframe)           # Calls the Class as the frame 
     AppetiserFrame.grid(column=0, row=0, sticky='news')             # Grids the frame
-    AppetiserFrame.configure(height=875, corner_radius=0)           # Configurations to the frame
+    AppetiserFrame.configure(height=700, corner_radius=0)           # Configurations to the frame
 
 # Function to show the desserts selection
 def desserts_page():
     DessertFrame = DessertSelection(main_windowframe)             # Calls the Class as the frame
     DessertFrame.grid(column=0, row=0, sticky='news')             # Grids the frame
-    DessertFrame.configure(height=875, corner_radius=0)           # Configurations to the frame
+    DessertFrame.configure(height=700, corner_radius=0)           # Configurations to the frame
 
 # Function to show the drinks selection
 def drinks_page():
     global DrinksFrame
     DrinksFrame = DrinkSelection(main_windowframe)                # Calls the Class as the frame
     DrinksFrame.grid(column=0, row=0, sticky='news')              # Grids the frame
-    DrinksFrame.configure(height=875, corner_radius=0,            # Configurations to the frame
+    DrinksFrame.configure(height=700, corner_radius=0,            # Configurations to the frame
                           scrollbar_button_color='#333333')    
 # endregion
 
@@ -1398,7 +1410,7 @@ order_frame.grid_columnconfigure(0, weight = 1)
 #order_frame.grid_rowconfigure(1, weight = 1)
 
 # region | Frame for Orders
-order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=680, width=200)
+order_list_frame = customtkinter.CTkScrollableFrame(order_frame, corner_radius=10, height=550, width=200)
 order_list_frame.grid(row=1, column=0, pady=(10,0), padx=20, sticky='news', ipady=10, ipadx=10)
 # endregion
 
