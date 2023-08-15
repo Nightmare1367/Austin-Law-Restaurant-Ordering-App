@@ -71,7 +71,7 @@ cart = []
 
 
 # Function to create a description page
-def description_page(btn):
+def description_page(btn, img):
     # Creating a window for the description page
     description_window = customtkinter.CTkToplevel(window)
 
@@ -87,17 +87,26 @@ def description_page(btn):
     # Makes the window stay at the top
     description_window.attributes('-topmost',True)
 
+    # Grid Configurations
+    description_window.grid_rowconfigure((0,1), weight=1)
+    description_window.grid_columnconfigure((0,1), weight=1)
+
 
     description_list = list(about_page.description.keys())
     description_list2 = list(about_page.description.values())
     specific = description_list.index(btn.cget("text"))
 
+    
+    itemimg=customtkinter.CTkLabel(description_window, image = img, text="" )
+    itemimg.grid(column=0, row=0)
+
     item_name = customtkinter.CTkLabel(description_window, text=btn.cget("text"),
-                                       font=customtkinter.CTkFont(family='Calibri', size=30, weight= 'bold'))
-    item_name.grid(row=0, column=0)
+                                       font=customtkinter.CTkFont(family='Calibri',size=30, weight= 'bold'))
+    item_name.grid(row=0, column=1)
 
     print(btn.cget("text"))
     print(f"About the Dish: {description_list2[specific][0]} | \nIngredients: {description_list2[specific][1]}")
+    #img.configure(size=(275, 200))
 
 
 
@@ -376,7 +385,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Cutlet Button / Label
         cutlet_lbl = customtkinter.CTkButton(mains_frames_list[0][0], text="Chicken Cutlet", 
-                                             command = lambda: description_page(cutlet_lbl),
+                                             command = lambda: description_page(cutlet_lbl, cutlet),
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         cutlet_lbl.grid(row=1, column=0, sticky='news', pady=(5,0), padx=10)
 
