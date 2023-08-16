@@ -61,17 +61,22 @@ description = {
 
 
         # Drinks
-        "Coca-Cola"             : ["", ""],
+        "Coca-Cola"             : ["Carbonated Beverage", ""],
 
-        "Chocolate Milkshake"   : ["", ""],
+        "Chocolate Milkshake"   : ["A creamy milky drink mixed with chocolate and topped with whipped cream.", 
+                                   "Chocolate, Ice Cream, Milk, Whipped Cream"],
 
-        "Strawberry Juice"      : ["", ""],
+        "Strawberry Juice"      : ["Fresh strawberries blended into a juice.", 
+                                   "Strawberries"],
 
-        "Bubble Tea"            : ["", ""],
+        "Bubble Tea"            : ["A beverage made from tea, milk and tapioca pearls.", 
+                                   "Tea, Milk, Tapioca Pearls"],
 
-        "Hot Chocolate"         : ["", ""],
+        "Hot Chocolate"         : ["Hot drink made with a chocolate mix.", 
+                                   "Chocolate Powder, Milk, Whipped Cream"],
 
-        "Coffee"                : ["", ""],
+        "Coffee"                : ["A beverage brewed from roasted coffee beans, to select a style of coffee, refer to the counter.", 
+                                   "Roasted Coffee Beans, Others are dependant on style of coffee"],
 
 }
 
