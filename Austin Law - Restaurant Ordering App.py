@@ -16,14 +16,17 @@ from tkinter import *
 from PIL import Image
 # endregion
 
+
 # region | Importing files
 import about_page
 # endregion
+
 
 # region | Customisation of window
 customtkinter.set_appearance_mode("dark")       # Sets the window to dark mode
 customtkinter.set_default_color_theme("green")  # Makes the default colour for widgets with a changable background to green
 # endregion
+
 
 # Dictionary to store name and price of product
 # This is used for the order section
@@ -73,41 +76,54 @@ cart = []
 # Function to create a description page
 def description_page(btn, img):
     # Creating a window for the description page
-    description_window = customtkinter.CTkToplevel(window)
+    about_window = customtkinter.CTkToplevel(window)
 
     # Dimensions for the pop up window
-    w = 1000        # Width of window
-    h = 700         # height of window
-    ws = description_window.winfo_screenwidth()
-    hs = description_window.winfo_screenheight()
+    w = 700        # Width of window
+    h = 300         # height of window
+    ws = about_window.winfo_screenwidth()
+    hs = about_window.winfo_screenheight()
     x = (ws/2) - (w/2)
     y = (hs/2) - (h/2)
-    description_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+    about_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
     # Makes the window stay at the top
-    description_window.attributes('-topmost',True)
+    about_window.attributes('-topmost',True)
 
     # Grid Configurations
-    description_window.grid_rowconfigure((0,1), weight=1)
-    description_window.grid_columnconfigure((0,1), weight=1)
+    about_window.grid_rowconfigure((2), weight=1)
+    about_window.grid_columnconfigure(1, weight=1)
+
+    item_list = list(about_page.description.keys())
+    item_list2 = list(about_page.description.values())
+    specific = item_list.index(btn.cget("text"))
+
+    description_frame = customtkinter.CTkFrame(about_window, corner_radius=10)
+    description_frame.grid(row=2, column=1, pady=(5,20), sticky="news", padx= 20)
 
 
-    description_list = list(about_page.description.keys())
-    description_list2 = list(about_page.description.values())
-    specific = description_list.index(btn.cget("text"))
+    item_image=customtkinter.CTkLabel(about_window, image = img, text="")
+    item_image.grid(column=0, row=0, pady=20, padx=(20,0), rowspan=3)
+
+    back_btn = customtkinter.CTkButton(about_window, fg_color="transparent", text = "< Back", width=20, 
+                                       font=customtkinter.CTkFont(family='Calibri',size=15))
+    back_btn.grid(row=0, column=1, sticky='nw', pady=(10, 5), padx=20)
+
+    item_name = customtkinter.CTkLabel(about_window, text=btn.cget("text"),
+                                       font=customtkinter.CTkFont(family='Calibri',size=30, weight= 'bold', underline=True))
+    item_name.grid(row=1, column=1, pady=(0, 15), padx=20, sticky="swn")
+
+    item_description = customtkinter.CTkLabel(description_frame, text=f"About the Dish: \n{item_list2[specific][0]}", wraplength=350, 
+                                              font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
+    item_description.grid(row=0, column=0, pady=10, padx=10)
+
+    item_ingredient = customtkinter.CTkLabel(description_frame, text=f"Ingredients: \n{item_list2[specific][1]}", wraplength=350, 
+                                             font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
+    item_ingredient.grid(row=1, column=0, pady=10, padx=10,sticky="w")
 
     
-    itemimg=customtkinter.CTkLabel(description_window, image = img, text="" )
-    itemimg.grid(column=0, row=0)
-
-    item_name = customtkinter.CTkLabel(description_window, text=btn.cget("text"),
-                                       font=customtkinter.CTkFont(family='Calibri',size=30, weight= 'bold'))
-    item_name.grid(row=0, column=1)
-
-    print(btn.cget("text"))
-    print(f"About the Dish: {description_list2[specific][0]} | \nIngredients: {description_list2[specific][1]}")
-    #img.configure(size=(275, 200))
-
+    """print(btn.cget("text"))
+    print(f"About the Dish: {item_list2[specific][0]} | \nIngredients: {item_list2[specific][1]}")"""
 
 
 # Function to add the order to the cart
