@@ -9,13 +9,16 @@ description = {
                                    " and cheese on the top", 
                                    "Tomato Sauce, Cheese, Pasta, Meat, Onion, Garlic, Egg, Spices"],
 
-        "Beef Burger"           : ["", ""],
+        "Beef Burger"           : ["Burger bun with a beef patty, tomatoes, lettuce, and special sauce in between the buns", 
+                                   "Burger Buns, Beef, Tomatoes, Lettuce, Special Sauce"],
 
-        "Butter Chicken"        : ["", ""],
+        "Butter Chicken"        : ["A curry made from chicken with tomato and butter sauce, which is served with naan and rice on the side.",
+                                   "Butter, Tomato, Garlic, Chicken, Rice, Naan, Spices"],
 
-        "Pasta"                 : ["", ""],
+        "Pasta"                 : ["Long thin pasta served with a delicious savoury tomato sauce cooked with meatballs.", 
+                                   "Spaghetti Noodles, Tomato Puree, Onions, Meatballs, Spices"],
 
-        "Pizza"                 : ["", ""],
+        "Pizza"                 : ["A oven-baked piece of dough with a tomato base and cheese on the top. Topped with ", ""],
 
         "Mains Placeholder"     : ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
                                    "eiusmod tempor incididunt ut labore et dolore magna aliqua. ",

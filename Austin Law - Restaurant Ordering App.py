@@ -98,20 +98,26 @@ def description_page(btn, img):
     item_list2 = list(about_page.description.values())
     specific = item_list.index(btn.cget("text"))
 
-    description_frame = customtkinter.CTkFrame(about_window, corner_radius=10)
-    description_frame.grid(row=2, column=1, pady=(5,20), sticky="news", padx= 20)
-
-
-    item_image=customtkinter.CTkLabel(about_window, image = img, text="")
-    item_image.grid(column=0, row=0, pady=20, padx=(20,0), rowspan=3)
-
-    back_btn = customtkinter.CTkButton(about_window, fg_color="transparent", text = "< Back", width=20, 
+    def delete_window():
+        about_window.destroy()
+    
+    # Back Button
+    back_btn = customtkinter.CTkButton(about_window, fg_color="transparent", text = "< Back", 
+                                       width=20, command=delete_window,
                                        font=customtkinter.CTkFont(family='Calibri',size=15))
     back_btn.grid(row=0, column=1, sticky='nw', pady=(10, 5), padx=20)
 
-    item_name = customtkinter.CTkLabel(about_window, text=btn.cget("text"),
-                                       font=customtkinter.CTkFont(family='Calibri',size=30, weight= 'bold', underline=True))
+    # Image of item
+    item_image=customtkinter.CTkLabel(about_window, image = img, text="")
+    item_image.grid(column=0, row=0, pady=20, padx=(20,0), rowspan=3)
+
+    # Name of the item
+    item_name = customtkinter.CTkLabel(about_window, text=btn.cget("text"), font=customtkinter.CTkFont(family='Calibri',size=30, weight= 'bold', underline=True))
     item_name.grid(row=1, column=1, pady=(0, 15), padx=20, sticky="swn")
+
+    # Widgets for description
+    description_frame = customtkinter.CTkFrame(about_window, corner_radius=10)
+    description_frame.grid(row=2, column=1, pady=(5,20), sticky="news", padx= 20)
 
     item_description = customtkinter.CTkLabel(description_frame, text=f"About the Dish: \n{item_list2[specific][0]}", wraplength=350, 
                                               font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
@@ -121,7 +127,6 @@ def description_page(btn, img):
                                              font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
     item_ingredient.grid(row=1, column=0, pady=10, padx=10,sticky="w")
 
-    
     """print(btn.cget("text"))
     print(f"About the Dish: {item_list2[specific][0]} | \nIngredients: {item_list2[specific][1]}")"""
 
@@ -350,51 +355,60 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # Cutlet Image
         cutlet = customtkinter.CTkImage(Image.open("Images/Mains/Cutlet.jpg"), size=(275, 200))         # Imports image 
         cutlet_imgbtn = customtkinter.CTkButton(mains_frames_list[0][0], image=cutlet, text="",         # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")          # Configuration to button background
+                                                fg_color='transparent', hover_color="#333333",          # Configuration to button background
+                                                command = lambda: description_page(cutlet_lbl, cutlet))          
         cutlet_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding for the image button
 
         # Lasagna Image
-        lasagna = customtkinter.CTkImage(Image.open("Images/Mains/Lasagna.jpg"), size=(275, 200))       # Imports image 
-        lasagna_imgbtn = customtkinter.CTkButton(mains_frames_list[0][1], image=lasagna, text="",       # Puts the image in a button
-                                                 fg_color='transparent', hover_color="#333333")         # Configuration to button background
-        lasagna_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                      # Gridding the image button
+        lasagna = customtkinter.CTkImage(Image.open("Images/Mains/Lasagna.jpg"), size=(275, 200))        
+        lasagna_imgbtn = customtkinter.CTkButton(mains_frames_list[0][1], image=lasagna, text="",       
+                                                 fg_color='transparent', hover_color="#333333",         
+                                                 command = lambda: description_page(lasagna_lbl, lasagna))         
+        lasagna_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                      
 
         # Burger Image
-        burger = customtkinter.CTkImage(Image.open("Images/Mains/Burger.jpg"), size=(275, 200))         # Imports image 
-        burger_imgbtn = customtkinter.CTkButton(mains_frames_list[0][2], image=burger, text="",         # Puts the image in a button
-                                                fg_color='transparent', hover_color="#333333")          # Configuration to button background
-        burger_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding the image button
+        burger = customtkinter.CTkImage(Image.open("Images/Mains/Burger.jpg"), size=(275, 200))          
+        burger_imgbtn = customtkinter.CTkButton(mains_frames_list[0][2], image=burger, text="",         
+                                                fg_color='transparent', hover_color="#333333",          
+                                                command = lambda: description_page(burger_lbl, burger))          
+        burger_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       
 
         # Butter Chicken Image
-        butter_chicken = customtkinter.CTkImage(Image.open("Images/Mains/Butter_Chicken.jpg"), size=(275, 200))   # Imports image 
-        butter_chicken_imgbtn = customtkinter.CTkButton(mains_frames_list[1][0], image=butter_chicken, text="",   # Puts the image in a button
-                                                        fg_color='transparent', hover_color="#333333")            # Configuration to button background
-        butter_chicken_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                         # Gridding the image button
+        butter_chicken = customtkinter.CTkImage(Image.open("Images/Mains/Butter_Chicken.jpg"), size=(275, 200))    
+        butter_chicken_imgbtn = customtkinter.CTkButton(mains_frames_list[1][0], image=butter_chicken, text="",   
+                                                        fg_color='transparent', hover_color="#333333",            
+                                                        command = lambda: description_page(butter_chicken_lbl,butter_chicken))            
+        butter_chicken_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                         
 
         # Pasta Image
-        pasta = customtkinter.CTkImage(Image.open("Images/Mains/Pasta.jpg"), size=(275, 200))           # Imports image 
-        pasta_imgbtn = customtkinter.CTkButton(mains_frames_list[1][1], image=pasta, text="",           # Puts the image in a button
-                                               fg_color='transparent', hover_color="#333333")           # Configuration to button background
-        pasta_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding the image button
+        pasta = customtkinter.CTkImage(Image.open("Images/Mains/Pasta.jpg"), size=(275, 200))            
+        pasta_imgbtn = customtkinter.CTkButton(mains_frames_list[1][1], image=pasta, text="",           
+                                               fg_color='transparent', hover_color="#333333",
+                                               command = lambda: description_page(pasta_lbl, pasta))           
+        pasta_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        
 
         # Pizza Image
-        pizza = customtkinter.CTkImage(Image.open("Images/Mains/Pizza.jpg"), size=(275, 200))           # Imports image 
-        pizza_imgbtn = customtkinter.CTkButton(mains_frames_list[1][2], image=pizza, text="",           # Puts the image in a button
-                                               fg_color='transparent', hover_color="#333333")           # Configuration to button background
-        pizza_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding the image button
+        pizza = customtkinter.CTkImage(Image.open("Images/Mains/Pizza.jpg"), size=(275, 200))            
+        pizza_imgbtn = customtkinter.CTkButton(mains_frames_list[1][2], image=pizza, text="",           
+                                               fg_color='transparent', hover_color="#333333",
+                                               command = lambda: description_page(pizza_lbl, pizza),)           
+        pizza_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        
 
         # region | Placeholder Images
         placeholder = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
         placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][0], image=placeholder, text = "",
-                                                      fg_color='transparent', hover_color="#333333")
+                                                      fg_color='transparent', hover_color="#333333",
+                                                      command = lambda: description_page(mains_placeholder1_lbl, placeholder),)
         placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         
         placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][1], image=placeholder, text = "",
-                                                      fg_color='transparent', hover_color="#333333")
+                                                      fg_color='transparent', hover_color="#333333",
+                                                      command = lambda: description_page(mains_placeholder2_lbl, placeholder),)
         placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
 
         placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][2], image=placeholder, text = "",
-                                                      fg_color='transparent', hover_color="#333333")
+                                                      fg_color='transparent', hover_color="#333333",
+                                                      command = lambda: description_page(mains_placeholder2_lbl, placeholder),)
         placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
         # endregion
 
@@ -406,6 +420,7 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         cutlet_lbl.grid(row=1, column=0, sticky='news', pady=(5,0), padx=10)
 
         cutlet_price = customtkinter.CTkButton(mains_frames_list[0][0], text="Price: $21.99", 
+                                               command = lambda: description_page(cutlet_lbl, cutlet),
                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         cutlet_price.grid(row=2, column=0, sticky='news', pady=(0, 10), padx=10)
 
@@ -424,11 +439,13 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # region | Lasagna Button / Label
         lasagna_lbl = customtkinter.CTkButton(mains_frames_list[0][1], text="Lasagna", 
+                                              command = lambda: description_page(lasagna_lbl, lasagna),
                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         lasagna_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         lasagna_price = customtkinter.CTkButton(mains_frames_list[0][1], text="Price: $15.00", 
-        font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                command = lambda: description_page(lasagna_lbl, lasagna),
+                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         lasagna_price.grid(row=2, column=0, sticky='news', pady=(0, 10), padx=10)
 
         # Add to Order Button for Lasagna
@@ -446,10 +463,12 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # region | Burger Button / Label
         burger_lbl = customtkinter.CTkButton(mains_frames_list[0][2], text="Beef Burger", 
+                                             command = lambda: description_page(burger_lbl, burger),
                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         burger_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         burger_price = customtkinter.CTkButton(mains_frames_list[0][2], text="Price: $13.00", 
+                                               command = lambda: description_page(burger_lbl, burger),
                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         burger_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -468,11 +487,12 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # region | Butter Chicken Button / Label
         butter_chicken_lbl = customtkinter.CTkButton(mains_frames_list[1][0], text="Butter Chicken", 
-                                                     command = lambda: description_page(butter_chicken_lbl),
+                                                     command = lambda: description_page(butter_chicken_lbl, butter_chicken),
                                                      font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         butter_chicken_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         butter_chicken_price = customtkinter.CTkButton(mains_frames_list[1][0], text="Price: $15.99", 
+                                                       command = lambda: description_page(butter_chicken_lbl, butter_chicken),
                                                        font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         butter_chicken_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -491,10 +511,12 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # region | Pasta Button / Label
         pasta_lbl = customtkinter.CTkButton(mains_frames_list[1][1], text="Pasta", 
+                                            command = lambda: description_page(pasta_lbl, pasta),
                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         pasta_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         pasta_price = customtkinter.CTkButton(mains_frames_list[1][1], text="Price: $20.00", 
+                                              command = lambda: description_page(pasta_lbl, pasta),
                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         pasta_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -513,10 +535,12 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # region | Pizza Button / Label
         pizza_lbl = customtkinter.CTkButton(mains_frames_list[1][2], text="Pizza", 
+                                            command = lambda: description_page(pizza_lbl, pizza),
                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         pizza_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         pizza_price = customtkinter.CTkButton(mains_frames_list[1][2], text="Price: $13.99", 
+                                              command = lambda: description_page(pizza_lbl, pizza),
                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         pizza_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -536,11 +560,13 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # region | Placeholder Button \ Label
         # Label for Placeholder 1
         mains_placeholder1_lbl = customtkinter.CTkButton(mains_frames_list[2][0], text="Mains Placeholder", 
-                                                   font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                         command = lambda: description_page(mains_placeholder1_lbl, placeholder),
+                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         mains_placeholder1_price = customtkinter.CTkButton(mains_frames_list[2][0], text="Price: $25.00", 
-                                                     font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                           command = lambda: description_page(mains_placeholder1_lbl, placeholder),
+                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder1_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
         # Add to Order Button for Placeholder 1
@@ -558,10 +584,12 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # Label for Placeholder 2
         mains_placeholder2_lbl = customtkinter.CTkButton(mains_frames_list[2][1], text="Mains Placeholder", 
+                                                         command = lambda: description_page(mains_placeholder2_lbl, placeholder),
                                                          font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         mains_placeholder2_price = customtkinter.CTkButton(mains_frames_list[2][1], text="Price: $25.00",
+                                                           command = lambda: description_page(mains_placeholder2_lbl, placeholder),
                                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder2_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
@@ -580,10 +608,12 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
 
         # Label for Placeholder 3
         mains_placeholder3_lbl = customtkinter.CTkButton(mains_frames_list[2][2], text="Mains Placeholder", 
+                                                         command = lambda: description_page(mains_placeholder3_lbl, placeholder),
                                                          font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder3_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         mains_placeholder3_price = customtkinter.CTkButton(mains_frames_list[2][2], text="Price: $25.00", 
+                                                           command = lambda: description_page(mains_placeholder3_lbl, placeholder),
                                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
         mains_placeholder3_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
 
