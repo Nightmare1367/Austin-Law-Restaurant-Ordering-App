@@ -18,7 +18,8 @@ description = {
         "Pasta"                 : ["Long thin pasta served with a delicious savoury tomato sauce cooked with meatballs.", 
                                    "Spaghetti Noodles, Tomato Puree, Onions, Meatballs, Spices"],
 
-        "Pizza"                 : ["A oven-baked piece of dough with a tomato base and cheese on the top. Topped with ", ""],
+        "Pizza"                 : ["A oven-baked piece of dough with a tomato base and cheese on the top and some herbs as a finishing touch.", 
+                                   "Dough, Tomato Base, Mozeralla, Herbs"],
 
         "Mains Placeholder"     : ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
                                    "eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
@@ -26,19 +27,19 @@ description = {
 
 
         # Appetiser
-        "Shoe String Fries"     : ["", ""],
+        "Shoe String Fries"     : ["Beer Battered Fries.", "Beer Batter, Fries"],
 
-        "Hand Cut Fries"        : ["", ""],
+        "Hand Cut Fries"        : ["Fries that are hand cut by the kitchen.", "Fries"],
 
-        "Onion Rings"           : ["", ""],
+        "Onion Rings"           : ["Beer Battered Onion Rings.", "Special Batter, Onion Rings"],
 
-        "Caesar Salad"          : ["", ""],
+        "Caesar Salad"          : ["An assortment of salad with dressing.", "Salad, Breadcrumbs, Spices."],
 
-        "Chicken Nibbles"       : ["", ""],
+        "Chicken Nibbles"       : ["Small chicken drumsticks covered with chilli sauce", "Chicken, Chilli Sauce"],
 
-        "Garlic Bread"          : ["", ""],
+        "Garlic Bread"          : ["Oven baked bread slices topped with a garlic filling", "Bread Slices, Garlic Filling"],
 
-        "Seafood Chowder"       : ["", ""],
+        "Seafood Chowder"       : ["Soup made from a variety of seafood items", "Seafood"],
 
         "Appetiser Placeholder" : ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
                                    "eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
