@@ -14,6 +14,7 @@ into the command prompt to install the Pillow module
 import customtkinter
 from tkinter import *
 from PIL import Image
+import random
 # endregion
 
 
@@ -71,6 +72,25 @@ prices = {
 
 # List to store the customers order
 cart = []
+
+# -------------------------------- Functions --------------------------------- #
+# Fucntion for Order ID
+def order_id():
+    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
+               'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 
+               'Q', 'R', 'S', 'T', 'U','V', 'W', 'X', 'Y', 'Z']
+    
+    order_name = ""
+    random_letters = ""
+    random_digits = ""
+    for i in range(0,3):
+        random_letters += random.choice(letters)
+        random_digits += str(random.choice(numbers))
+
+    order_name += random_letters + random_digits
+    return order_name
+
 
 
 # Function to create a description page
@@ -205,6 +225,7 @@ def printcart():
     totalorder_lbl.configure(text="Total Price: $"+costcalc())
 
 
+# --------------------------------- Classes ---------------------------------- #
 class TopNavBar(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
@@ -314,6 +335,7 @@ class WelcomePage(customtkinter.CTkFrame):
         # endregion
 
 
+# region | Pages
 class MainsSelection(customtkinter.CTkScrollableFrame):
     def __init__(self, master):
         super().__init__(master)
@@ -1444,7 +1466,7 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
         coffee_remove.grid(row=0, column=0, sticky='ne', pady=25, padx=75)
         # endregion
-
+# endregion
 
 # ------------------------ Main Window Configurations ------------------------ #
 window=customtkinter.CTk()                          # Creates a window 
@@ -1531,11 +1553,11 @@ order_lbl = customtkinter.CTkLabel(order_frame, text = "Order:", text_color="#DE
 order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
 # endregion
 
-"""# region | Label for Order ID
-order_id = customtkinter.CTkLabel(order_frame, text = "Order ID: ", text_color="#DEE2E6",
-                                   font=customtkinter.CTkFont(family="Calibri", size=30, weight='bold', underline=True))
+# region | Label for Order ID
+order_id = customtkinter.CTkLabel(order_frame, text = "Order ID: " + order_id(), text_color="#DEE2E6",
+                                   font=customtkinter.CTkFont(family="Calibri", size=25, weight='bold', underline=True))
 order_id.grid(row=0, column=0, sticky='es', pady=10, padx=20)
-# endregion"""
+# endregion
 
 # region | Total Label
 totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "Total Price: $0", text_color="#DEE2E6", 
