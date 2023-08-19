@@ -47,17 +47,17 @@ description = {
 
 
         # Desserts
-        "Apple Crumble"         : ["", ""],
+        "Apple Crumble"         : ["A dessert which is made from apples which is served like a pie which has a sweet cinnamon flavour.", "Apples, Sugar, Butter, Flour"],
 
-        "Brownie"               : ["", ""],
+        "Brownie"               : ["A chocolate confectionary that is served hot with a scoop of ice cream.", "Butter, Sugar, Eggs, Vanilla Extract, Flour, "],
 
-        "Cheesecake"            : ["", ""],
+        "Cheesecake"            : ["A sweet dessert which has a hard base topped with a soft top.", "Cream Cheese, Sugar, Eggs, Sour Cream, Graham Crackers"],
 
-        "Ice Cream"             : ["", ""],
+        "Ice Cream"             : ["A frozen dessert that is made with milk and cream", "Milk, Cream, Flavouring"],
 
-        "Macaron"               : ["", ""],
+        "Macaron"               : ["A sweet meringue-based confection made with egg white, icing sugar, granulated sugar", "Sugar, Flour, Eggs, Vanilla Extract, Buttercream, Butter, Cream"],
 
-        "Panna Cotta"           : ["", ""],
+        "Panna Cotta"           : ["An Italian dessert that is made from sweetened cream which is thickened with gelatin.", "Cream, Sugar, Vanilla, Gelatin"],
 
         "Dessert Placeholder"   : ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
                                    "eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
@@ -65,7 +65,7 @@ description = {
 
 
         # Drinks
-        "Coca-Cola"             : ["Carbonated Beverage", ""],
+        "Coca-Cola"             : ["Carbonated Beverage", "Carbonated Cola Flavoured Drink"],
 
         "Chocolate Milkshake"   : ["A creamy milky drink mixed with chocolate and topped with whipped cream.", 
                                    "Chocolate, Ice Cream, Milk, Whipped Cream"],
