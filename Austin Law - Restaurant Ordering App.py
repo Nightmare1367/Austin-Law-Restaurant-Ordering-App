@@ -98,6 +98,7 @@ def order_id():
 def description_page(btn, img):
     # Creating a window for the description page
     about_window = customtkinter.CTkToplevel(window)
+    about_window.title(btn.cget("text"))
 
     # Dimensions for the pop up window
     w = 700        # Width of window
