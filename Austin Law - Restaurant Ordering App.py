@@ -15,6 +15,8 @@ import customtkinter
 from tkinter import *
 from PIL import Image
 import random
+from datetime import date
+from datetime import datetime
 # endregion
 
 
@@ -147,8 +149,38 @@ def description_page(btn, img):
                                              font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
     item_ingredient.grid(row=1, column=0, pady=10, padx=10,sticky="w")
 
-    """print(btn.cget("text"))
-    print(f"About the Dish: {item_list2[specific][0]} | \nIngredients: {item_list2[specific][1]}")"""
+
+def place_order():
+    receipt = order_id_lbl.cget("text")
+    receipt = receipt.replace("Order ID: ", "")
+
+    order_day = date.today()
+    order_time = datetime.now()
+
+
+    with open(f"Order/{receipt}", 'w') as file:
+        file.write("Austin's Restaurant Ordering App")
+        file.write("\n")
+        file.write("________________________________________________________")
+        file.write("\n")
+        file.write(order_day.strftime("%x"))
+        file.write("\n")
+        file.write(order_time.strftime("%X"))
+        file.write(f"\n\nOrder ID:{order_id()}\n")
+        file.write(f"Order: \n")
+        for item in cart:
+            file.write(f"{item[0]} | Amount: {item[1]}\n      Price: ${item[2]}\n\n")
+        file.write("________________________________________________________")
+        file.write("\n")
+        file.write(totalorder_lbl.cget("text"))
+
+    totalorder_lbl.configure(text = "Total: $0")
+    order_id_lbl.configure(text = "Order ID: " + order_id())
+    for widget in order_list_frame.winfo_children():
+        widget.destroy()  
+    cart.clear()
+
+
 
 
 # Function to add the order to the cart
@@ -211,9 +243,9 @@ def printcart():
  
     rownum = 0
     for i in range(len(cart)):
-        order_lbl = customtkinter.CTkLabel(order_list_frame, text = (cart[i][0] + " | x" + str(cart[i][1]) + " | $" + str(cart[i][2])), 
+        order_listlbl = customtkinter.CTkLabel(order_list_frame, text = (cart[i][0] + " | x" + str(cart[i][1]) + " | $" + str(cart[i][2])), 
                                            font = customtkinter.CTkFont(family = "Calibri", size=25))
-        order_lbl.grid(row=rownum, column=0, pady=5, padx=5, sticky="nw")
+        order_listlbl.grid(row=rownum, column=0, pady=5, padx=5, sticky="nw")
         rownum += 1
  
     def costcalc():
@@ -1554,9 +1586,9 @@ order_lbl.grid(row=0, column=0, sticky='nws', pady=5, padx=20)
 # endregion
 
 # region | Label for Order ID
-order_id = customtkinter.CTkLabel(order_frame, text = "Order ID: " + order_id(), text_color="#DEE2E6",
+order_id_lbl = customtkinter.CTkLabel(order_frame, text = "Order ID: " + order_id(), text_color="#DEE2E6",
                                    font=customtkinter.CTkFont(family="Calibri", size=25, weight='bold', underline=True))
-order_id.grid(row=0, column=0, sticky='es', pady=10, padx=20)
+order_id_lbl.grid(row=0, column=0, sticky='es', pady=10, padx=20)
 # endregion
 
 # region | Total Label
@@ -1568,6 +1600,7 @@ totalorder_lbl.grid(row=2, column=0, sticky='nw', pady=5, padx=(20,0))
 
 # region | Button to place order
 place_order_btn = customtkinter.CTkButton(order_frame, text="Place Order", text_color="#DEE2E6", fg_color="#333333",
+                                          command = place_order,
                                           font=customtkinter.CTkFont(family="Calibri", size=50))
 place_order_btn.grid(row=3, column=0, sticky="news", pady=5, padx=20)
 # endregion
