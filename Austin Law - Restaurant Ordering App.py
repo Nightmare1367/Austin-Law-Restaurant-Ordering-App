@@ -160,9 +160,7 @@ def place_order():
 
     with open(f"Order/{receipt}", 'w') as file:
         file.write("Austin's Restaurant Ordering App")
-        file.write("\n")
-        file.write("________________________________________________________")
-        file.write("\n")
+        file.write("\n________________________________________________________\n")
         file.write(order_day.strftime("%x"))
         file.write("\n")
         file.write(order_time.strftime("%X"))
