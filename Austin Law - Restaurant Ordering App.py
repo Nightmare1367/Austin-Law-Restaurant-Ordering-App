@@ -150,6 +150,7 @@ def description_page(btn, img):
     item_ingredient.grid(row=1, column=0, pady=10, padx=10,sticky="w")
 
 
+# Function to create receipt
 def place_order():
     receipt = order_id_lbl.cget("text")
     receipt = receipt.replace("Order ID: ", "")
@@ -177,8 +178,6 @@ def place_order():
     for widget in order_list_frame.winfo_children():
         widget.destroy()  
     cart.clear()
-
-
 
 
 # Function to add the order to the cart
