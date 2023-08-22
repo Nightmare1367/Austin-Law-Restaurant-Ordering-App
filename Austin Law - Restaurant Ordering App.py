@@ -99,6 +99,7 @@ def description_page(btn, img):
     # Creating a window for the description page
     about_window = customtkinter.CTkToplevel(window)
     about_window.title(btn.cget("text"))
+    about_window.resizable(False, False)
 
     # Dimensions for the pop up window
     w = 700        # Width of window
@@ -143,7 +144,7 @@ def description_page(btn, img):
 
     item_description = customtkinter.CTkLabel(description_frame, text=f"About the Dish: \n{item_list2[specific][0]}", wraplength=350, 
                                               font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
-    item_description.grid(row=0, column=0, pady=10, padx=10)
+    item_description.grid(row=0, column=0, pady=10, padx=10, sticky="w")
 
     item_ingredient = customtkinter.CTkLabel(description_frame, text=f"Ingredients: \n{item_list2[specific][1]}", wraplength=350, 
                                              font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
@@ -1617,6 +1618,7 @@ window.title("Austin's Restaurant Ordering App")    # Title of the window
 # Sets the size of the window to fill screen 
 # The values in the string wil find the screen width and height and tuck it into the top left corner of the screen
 window.geometry("1536x800-7+0")
+window.resizable(False, False)
 # 1536x945-7+0  (Old Dimensions)
 
 
