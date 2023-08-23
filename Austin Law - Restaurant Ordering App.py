@@ -160,25 +160,51 @@ def place_order():
     order_time = datetime.now()
 
 
-    with open(f"Order/{receipt}", 'w') as file:
-        file.write("Austin's Restaurant Ordering App")
-        file.write("\n________________________________________________________\n")
-        file.write(order_day.strftime("%x"))
-        file.write("\n")
-        file.write(order_time.strftime("%X"))
-        file.write(f"\n\nOrder ID:{order_id()}\n")
-        file.write(f"Order: \n")
-        for item in cart:
-            file.write(f"{item[0]} | Amount: {item[1]}\n      Price: ${item[2]}\n\n")
-        file.write("________________________________________________________")
-        file.write("\n")
-        file.write(totalorder_lbl.cget("text"))
+    if len(cart) == 0:
+        print("There is nothing in the order")
+        noitems_window = customtkinter.CTkToplevel(window)
+        noitems_window.title("No Items in Order")
+        noitems_window.resizable(False, False)
 
-    totalorder_lbl.configure(text = "Total: $0")
-    order_id_lbl.configure(text = "Order ID: " + order_id())
-    for widget in order_list_frame.winfo_children():
-        widget.destroy()  
-    cart.clear()
+        # Dimensions for the pop up window
+        w = 350        # Width of window
+        h = 100         # height of window
+        ws = noitems_window.winfo_screenwidth()
+        hs = noitems_window.winfo_screenheight()
+        x = (ws/2) - (w/2)
+        y = (hs/2) - (h/2)
+        noitems_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
+        # Makes the window stay at the top
+        noitems_window.attributes('-topmost',True)
+        noitems_title = customtkinter.CTkLabel(noitems_window, text="Note: There are no items in the order", text_color="white", 
+                                               font=customtkinter.CTkFont(family="Calibri", size=20, weight="bold"))
+        noitems_title.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news")
+
+        noitems_lbl = customtkinter.CTkLabel(noitems_window, text="Please add a dish before placing order", text_color="white", 
+                                             font=customtkinter.CTkFont(family="Calibri", size=17, weight="bold"))
+        noitems_lbl.grid(row=1, column=0, pady=(5, 0), padx=(20,0), sticky="news")
+    
+    else:
+        with open(f"Order/{receipt}", 'w') as file:
+            file.write("Austin's Restaurant Ordering App")
+            file.write("\n________________________________________________________\n")
+            file.write(order_day.strftime("%x"))
+            file.write("\n")
+            file.write(order_time.strftime("%X"))
+            file.write(f"\n\nOrder ID:{order_id()}\n")
+            file.write(f"Order: \n")
+            for item in cart:
+                file.write(f"{item[0]} | Amount: {item[1]}\n      Price: ${item[2]}\n\n")
+            file.write("________________________________________________________")
+            file.write("\n")
+            file.write(totalorder_lbl.cget("text"))
+
+        totalorder_lbl.configure(text = "Total: $0")
+        order_id_lbl.configure(text = "Order ID: " + order_id())
+        for widget in order_list_frame.winfo_children():
+            widget.destroy()  
+        cart.clear()
 
 
 # Function to add the order to the cart
