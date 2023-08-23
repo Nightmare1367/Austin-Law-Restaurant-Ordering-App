@@ -33,7 +33,7 @@ customtkinter.set_default_color_theme("green")  # Makes the default colour for w
 
 # Dictionary to store name and price of product
 # This is used for the order section
-prices = {
+PRICES = {
     # Mains
     "Chicken Cutlet"        : 21.99,
     "Lasagna"               : 15.00,
@@ -155,8 +155,8 @@ def description_page(btn, img):
 
     # Makes the keys and values from the description dictionary
     # into a list 
-    item_list = list(about_page.description.keys())     # List for keys
-    item_list2 = list(about_page.description.values())  # List for values
+    item_list = list(about_page.DESCRIPTION.keys())     # List for keys
+    item_list2 = list(about_page.DESCRIPTION.values())  # List for values
     # Finds the dish name and finds it in the keys from the description dictionary
     specific = item_list.index(btn.cget("text"))
 
@@ -330,7 +330,7 @@ def add(btn):
     global order
     
     # Looks for the item selected
-    prices_value = (prices[btn.cget("text")])         # Gets the price of the product
+    prices_value = (PRICES[btn.cget("text")])         # Gets the price of the product
     decimal = "{:.2f}".format(prices_value)           # Makes the price show with 2 decimal places
     item = btn.cget("text")                           # Gets the name of the item
 
@@ -356,7 +356,7 @@ def add(btn):
 # Function to remove the selected order
 def remove(btn):
     global order
-    prices_value = (prices[btn.cget("text")])   # Gets the price of the selected item
+    prices_value = (PRICES[btn.cget("text")])   # Gets the price of the selected item
     decimal = "{:.2f}".format(prices_value)     # Converts the item to sho up to 2 decimal points
     item = btn.cget("text")                     # Gets the name of the item
     

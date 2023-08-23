@@ -1,4 +1,4 @@
-description = {
+DESCRIPTION = {
         # Mains
         "Chicken Cutlet"        : ["A japanese dish which contains fried chicken made with panko crumbs, "
                                    "topped with an egg and a salad and rice on the side", 
