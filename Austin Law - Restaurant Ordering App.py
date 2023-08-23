@@ -79,6 +79,7 @@ order = []
 # -------------------------------- Functions --------------------------------- #
 # Fucntion for Order ID
 def order_id():
+    global order_name
     # A list for the program to get the numbers and letters
     number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
@@ -210,7 +211,7 @@ def place_order():
             file.write(order_day.strftime("%x"))        # Date of time order was made
             file.write("\n")
             file.write(order_time.strftime("%X"))       # Time of order
-            file.write(f"\n\nOrder ID:{order_id()}\n")  # Order ID
+            file.write(f"\n\nOrder ID: {order_name}\n")  # Order ID
             file.write(f"Order: \n")
             for item in order:      # For loop to keep running for however many items were in the order 
                 # Follows the format of "Name", "Amount", and "Price" in a new line
