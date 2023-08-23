@@ -232,7 +232,7 @@ def place_order():
         noitems_lbl.grid(row=1, column=0, pady=(5, 0), padx=(20,0), sticky="news")
 
     # Runs if there the total cost is between $0 and $5000
-    if totalcost > 0 and totalcost < 5000:
+    elif 0 <= totalcost <= 5000:
         # Creates a .txt file in an Orders folder with the receipt ID as the file name
         def createreceipt():
             po_window.destroy()
@@ -294,7 +294,7 @@ def place_order():
 
 
     # Runs if the total price is over $5,000
-    if totalcost > 5000:
+    elif totalcost > 5000:
         # Creating pop up window
         unablewindow = customtkinter.CTkToplevel(window)
         unablewindow.title("Not enough ingredients")       # Title of the window
