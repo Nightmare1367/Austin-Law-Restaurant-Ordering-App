@@ -358,7 +358,7 @@ class WelcomePage(customtkinter.CTkFrame):
         # region | Title of the page
         title_top = customtkinter.CTkLabel(self, text="Welcome", text_color="#DEE2E6",
                                            font=customtkinter.CTkFont(family="Calibri", size=70, weight="bold"))
-        title_top.grid(column=0, row=0, pady=(200,0))
+        title_top.grid(column=0, row=0, pady=(170,0))
 
         title_bottom = customtkinter.CTkLabel(self, text = "to Austin's Restaurant",  text_color="#DEE2E6",
                                              font = customtkinter.CTkFont(family="Calibri", size=40))
@@ -375,7 +375,9 @@ class WelcomePage(customtkinter.CTkFrame):
         description = ("Austin's Restaurant offers a variety of dishes.\n"
                        "Start by either selecting one of the categories\n"
                        "on the top navigation bar or by clicking the \n"
-                       "'Get Started' button below.")
+                       "'Get Started' button below. Once you have finished\n"
+                       "your order, click the 'Place Order' button to\n"
+                       "complete your order.")
         
         description_lbl = customtkinter.CTkLabel(self, text=description, justify=CENTER, text_color="#DEE2E6",
                                                  font=customtkinter.CTkFont(family="Calibri", size=25))
@@ -432,8 +434,8 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # ---------------------------------- Images ---------------------------------- #
         # Cutlet Image
         cutlet = customtkinter.CTkImage(Image.open("Images/Mains/Cutlet.jpg"), size=(275, 200))         # Imports image 
-        cutlet_imgbtn = customtkinter.CTkButton(mains_frames_list[0][0], image=cutlet, text="",         
-                                                fg_color='transparent', hover_color="#333333",          # Configuration to button background
+        cutlet_imgbtn = customtkinter.CTkButton(mains_frames_list[0][0], image=cutlet, text="",         # Configuration to button background
+                                                fg_color='transparent', hover_color="#333333",          
                                                 command = lambda: description_page(cutlet_lbl, cutlet))          
         cutlet_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding for the image button
 
