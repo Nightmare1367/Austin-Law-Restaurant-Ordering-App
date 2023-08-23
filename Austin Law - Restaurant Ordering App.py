@@ -14,9 +14,9 @@ into the command prompt to install the Pillow module
 import customtkinter
 from tkinter import *
 from PIL import Image
-import random
 from datetime import date
 from datetime import datetime
+import random
 # endregion
 
 
@@ -75,6 +75,7 @@ prices = {
 # List to store the customers order
 order = []
 
+
 # -------------------------------- Functions --------------------------------- #
 # Fucntion for Order ID
 def order_id():
@@ -93,6 +94,7 @@ def order_id():
         random_letter += random.choice(letter)    # Selects 3 random letters and stores it in the random_letters variable
         random_number += str(random.choice(number))    # Selects 3 random numbers and stores it in the random_numbers variable
 
+    # Combines the randomly selected letters and numbers together
     order_name += random_letter + random_number
     return order_name
 
@@ -461,307 +463,307 @@ class MainsSelection(customtkinter.CTkScrollableFrame):
         # ---------------------------------- Images ---------------------------------- #
         # Cutlet Image
         cutlet = customtkinter.CTkImage(Image.open("Images/Mains/Cutlet.jpg"), size=(275, 200))         # Imports image 
-        cutlet_imgbtn = customtkinter.CTkButton(mains_frames_list[0][0], image=cutlet, text="",         # Configuration to button background
+        cutlet_imgbtn = customtkinter.CTkButton(mains_frames_list[0][0], image=cutlet, text="",         # Configuration to buttons appearance
                                                 fg_color='transparent', hover_color="#333333",          
-                                                command = lambda: description_page(cutlet_lbl, cutlet))          
+                                                command = lambda: description_page(cutlet_lbl, cutlet)) # Opens description page for dish
         cutlet_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding for the image button
 
         # Lasagna Image
-        lasagna = customtkinter.CTkImage(Image.open("Images/Mains/Lasagna.jpg"), size=(275, 200))        
-        lasagna_imgbtn = customtkinter.CTkButton(mains_frames_list[0][1], image=lasagna, text="",       
+        lasagna = customtkinter.CTkImage(Image.open("Images/Mains/Lasagna.jpg"), size=(275, 200))       # Imports image 
+        lasagna_imgbtn = customtkinter.CTkButton(mains_frames_list[0][1], image=lasagna, text="",       # Configuration to buttons appearance
                                                  fg_color='transparent', hover_color="#333333",         
-                                                 command = lambda: description_page(lasagna_lbl, lasagna))         
-        lasagna_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                      
+                                                 command = lambda: description_page(lasagna_lbl, lasagna))      # Opens description page for dish  
+        lasagna_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                      # Gridding for the image button
 
         # Burger Image
-        burger = customtkinter.CTkImage(Image.open("Images/Mains/Burger.jpg"), size=(275, 200))          
-        burger_imgbtn = customtkinter.CTkButton(mains_frames_list[0][2], image=burger, text="",         
+        burger = customtkinter.CTkImage(Image.open("Images/Mains/Burger.jpg"), size=(275, 200))         # Imports image 
+        burger_imgbtn = customtkinter.CTkButton(mains_frames_list[0][2], image=burger, text="",         # Configuration to buttons appearance
                                                 fg_color='transparent', hover_color="#333333",          
-                                                command = lambda: description_page(burger_lbl, burger))          
-        burger_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       
+                                                command = lambda: description_page(burger_lbl, burger))         # Opens description page for dish 
+        burger_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                       # Gridding for the image button
 
         # Butter Chicken Image
-        butter_chicken = customtkinter.CTkImage(Image.open("Images/Mains/Butter_Chicken.jpg"), size=(275, 200))    
-        butter_chicken_imgbtn = customtkinter.CTkButton(mains_frames_list[1][0], image=butter_chicken, text="",   
+        butter_chicken = customtkinter.CTkImage(Image.open("Images/Mains/Butter_Chicken.jpg"), size=(275, 200)) # Imports image 
+        butter_chicken_imgbtn = customtkinter.CTkButton(mains_frames_list[1][0], image=butter_chicken, text="", # Configuration to buttons appearance
                                                         fg_color='transparent', hover_color="#333333",            
-                                                        command = lambda: description_page(butter_chicken_lbl,butter_chicken))            
+                                                        command = lambda: description_page(butter_chicken_lbl,butter_chicken))        # Opens description page for dish    
         butter_chicken_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                         
 
         # Pasta Image
-        pasta = customtkinter.CTkImage(Image.open("Images/Mains/Pasta.jpg"), size=(275, 200))            
-        pasta_imgbtn = customtkinter.CTkButton(mains_frames_list[1][1], image=pasta, text="",           
+        pasta = customtkinter.CTkImage(Image.open("Images/Mains/Pasta.jpg"), size=(275, 200))           # Imports image 
+        pasta_imgbtn = customtkinter.CTkButton(mains_frames_list[1][1], image=pasta, text="",           # Configuration to buttons appearance
                                                fg_color='transparent', hover_color="#333333",
-                                               command = lambda: description_page(pasta_lbl, pasta))           
-        pasta_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        
+                                               command = lambda: description_page(pasta_lbl, pasta))    # Opens description page for dish
+        pasta_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding for the image button
 
         # Pizza Image
-        pizza = customtkinter.CTkImage(Image.open("Images/Mains/Pizza.jpg"), size=(275, 200))            
-        pizza_imgbtn = customtkinter.CTkButton(mains_frames_list[1][2], image=pizza, text="",           
+        pizza = customtkinter.CTkImage(Image.open("Images/Mains/Pizza.jpg"), size=(275, 200))           # Imports image   
+        pizza_imgbtn = customtkinter.CTkButton(mains_frames_list[1][2], image=pizza, text="",           # Configuration to buttons appearance
                                                fg_color='transparent', hover_color="#333333",
-                                               command = lambda: description_page(pizza_lbl, pizza),)           
-        pizza_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        
+                                               command = lambda: description_page(pizza_lbl, pizza),)   # Opens description page for dish
+        pizza_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                        # Gridding for the image button
 
         # region | Placeholder Images
-        placeholder = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))
-        placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][0], image=placeholder, text = "",
+        placeholder = customtkinter.CTkImage(Image.open("Images/Placeholder.jpg"), size=(275,200))      # Imports image 
+        placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][0], image=placeholder, text = "",    # Configuration to buttons appearance
                                                       fg_color='transparent', hover_color="#333333",
-                                                      command = lambda: description_page(mains_placeholder1_lbl, placeholder),)
-        placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+                                                      command = lambda: description_page(mains_placeholder1_lbl, placeholder),) # Opens description page for dish
+        placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                 # Gridding for the image button
         
-        placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][1], image=placeholder, text = "",
+        placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][1], image=placeholder, text = "",    # Configuration to buttons appearance
                                                       fg_color='transparent', hover_color="#333333",
-                                                      command = lambda: description_page(mains_placeholder2_lbl, placeholder),)
-        placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+                                                      command = lambda: description_page(mains_placeholder2_lbl, placeholder),) # Opens description page for dish
+        placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                 # Gridding for the image button
 
-        placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][2], image=placeholder, text = "",
+        placeholder1_imgbtn = customtkinter.CTkButton(mains_frames_list[2][2], image=placeholder, text = "",    # Configuration to buttons appearance
                                                       fg_color='transparent', hover_color="#333333",
-                                                      command = lambda: description_page(mains_placeholder2_lbl, placeholder),)
-        placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)
+                                                      command = lambda: description_page(mains_placeholder2_lbl, placeholder),) # Opens description page for dish
+        placeholder1_imgbtn.grid(row=0, column=0, sticky="news", pady=(15,10), padx=10)                 # Gridding for the image button
         # endregion
 
         # ----------------------------- Buttons / Labels ----------------------------- #
         # region | Cutlet Button / Label
         cutlet_lbl = customtkinter.CTkButton(mains_frames_list[0][0], text="Chicken Cutlet", 
-                                             command = lambda: description_page(cutlet_lbl, cutlet),
-                                             fg_color='transparent', hover_color="#333333",
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        cutlet_lbl.grid(row=1, column=0, sticky='news', pady=(5,0), padx=10)
+                                             command = lambda: description_page(cutlet_lbl, cutlet),    # Opens description page for dish
+                                             fg_color='transparent', hover_color="#333333",             # Changes to labels appearance
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))  # Font customisation
+        cutlet_lbl.grid(row=1, column=0, sticky='news', pady=(5,0), padx=10)                # Griding for the widget
 
         cutlet_price = customtkinter.CTkButton(mains_frames_list[0][0], text="Price: $21.99", 
-                                               command = lambda: description_page(cutlet_lbl, cutlet),
-                                               fg_color='transparent', hover_color="#333333",
-                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        cutlet_price.grid(row=2, column=0, sticky='news', pady=(0, 10), padx=10)
+                                               command = lambda: description_page(cutlet_lbl, cutlet),  # Opens description page for dish
+                                               fg_color='transparent', hover_color="#333333",               # Changes to labels appearance
+                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))    # Font customisation
+        cutlet_price.grid(row=2, column=0, sticky='news', pady=(0, 10), padx=10)                # Griding for the widget
 
         # Add to Order Button for Cutlet
-        cutlet_atobtn = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40, 
-                                                command = lambda: add(cutlet_lbl),
+        cutlet_atobtn = customtkinter.CTkButton(mains_frames_list[0][0], text = "+", width=40,  # Configurations to buttons appearance
+                                                command = lambda: add(cutlet_lbl),              # Adds the dish to order
                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        cutlet_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        cutlet_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)              # Griding for the widget
 
         # Remove Button for Cutlet
-        cutlet_remove = customtkinter.CTkButton(mains_frames_list[0][0], text = "-", width=40, 
-                                                fg_color='#e5383b', hover_color="#a4161a",
-                                                command = lambda: remove(cutlet_lbl),
+        cutlet_remove = customtkinter.CTkButton(mains_frames_list[0][0], text = "-", width=40,  # Configuration to buttons appearance
+                                                fg_color='#e5383b', hover_color="#a4161a",          
+                                                command = lambda: remove(cutlet_lbl),       # Removes dish from order
                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        cutlet_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        cutlet_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)              # Griding for the widget
         # endregion
 
         # region | Lasagna Button / Label
         lasagna_lbl = customtkinter.CTkButton(mains_frames_list[0][1], text="Lasagna", 
-                                              command = lambda: description_page(lasagna_lbl, lasagna),
-                                              fg_color='transparent', hover_color="#333333",
-                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        lasagna_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+                                              command = lambda: description_page(lasagna_lbl, lasagna), # Opens description page for dish
+                                              fg_color='transparent', hover_color="#333333",                # Configuration to labels appearance
+                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25)) # Font customisation
+        lasagna_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)                # Griding for the widget
 
         lasagna_price = customtkinter.CTkButton(mains_frames_list[0][1], text="Price: $15.00", 
-                                                command = lambda: description_page(lasagna_lbl, lasagna),
-                                                fg_color='transparent', hover_color="#333333",
-                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        lasagna_price.grid(row=2, column=0, sticky='news', pady=(0, 10), padx=10)
+                                                command = lambda: description_page(lasagna_lbl, lasagna),   # Opens description page for dish
+                                                fg_color='transparent', hover_color="#333333",              # Configuration to labels appearance
+                                                font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))   # Font customisation
+        lasagna_price.grid(row=2, column=0, sticky='news', pady=(0, 10), padx=10)               # Griding for the widget
 
         # Add to Order Button for Lasagna
-        lasagna_atobtn = customtkinter.CTkButton(mains_frames_list[0][1], text = "+", width=40, bg_color="#7f7768",
-                                                 command = lambda: add(lasagna_lbl),
+        lasagna_atobtn = customtkinter.CTkButton(mains_frames_list[0][1], text = "+", width=40, bg_color="#7f7768", # Configurations to buttons appearance
+                                                 command = lambda: add(lasagna_lbl),                # Adds the dish to order
                                                  font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        lasagna_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        lasagna_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)             # Griding for the widget
 
         # Remove Button for Lasagna
-        lasagna_remove = customtkinter.CTkButton(mains_frames_list[0][1], text = "-", width=40, bg_color="#6c5e4d",
-                                                 fg_color='#e5383b', hover_color="#a4161a",
-                                                 command = lambda: remove(lasagna_lbl),
+        lasagna_remove = customtkinter.CTkButton(mains_frames_list[0][1], text = "-", width=40, bg_color="#6c5e4d", # Configuration to buttons appearance
+                                                 fg_color='#e5383b', hover_color="#a4161a",         
+                                                 command = lambda: remove(lasagna_lbl),     # Removes dish from order
                                                  font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        lasagna_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        lasagna_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)             # Griding for the widget
         # endregion
 
         # region | Burger Button / Label
         burger_lbl = customtkinter.CTkButton(mains_frames_list[0][2], text="Beef Burger", 
-                                             command = lambda: description_page(burger_lbl, burger),
-                                             fg_color='transparent', hover_color="#333333",
-                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        burger_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+                                             command = lambda: description_page(burger_lbl, burger),    # Opens description page for dish
+                                             fg_color='transparent', hover_color="#333333",             # Configuration to labels appearance
+                                             font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))  # Font customisation
+        burger_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)             # Griding for the widget
 
         burger_price = customtkinter.CTkButton(mains_frames_list[0][2], text="Price: $13.00", 
-                                               command = lambda: description_page(burger_lbl, burger),
-                                               fg_color='transparent', hover_color="#333333",
-                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        burger_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
+                                               command = lambda: description_page(burger_lbl, burger),  # Opens description page for dish
+                                               fg_color='transparent', hover_color="#333333",               # Configuration to labels appearance
+                                               font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))    # Font customisation
+        burger_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)              # Griding for the widget
 
         # Add to Order Button for Burger
-        burger_atobtn = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40, bg_color="#a39c81",
-                                                command = lambda: add(burger_lbl),
+        burger_atobtn = customtkinter.CTkButton(mains_frames_list[0][2], text = "+", width=40, bg_color="#a39c81",  # Configurations to buttons appearance
+                                                command = lambda: add(burger_lbl),              # Adds the dish to order
                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        burger_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        burger_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)              # Griding for the widget
 
         # Remove Button for Burger
-        burger_remove = customtkinter.CTkButton(mains_frames_list[0][2], text = "-", width=40, bg_color="#a39c81",
-                                                fg_color='#e5383b', hover_color="#a4161a",
-                                                command = lambda: remove(burger_lbl),
+        burger_remove = customtkinter.CTkButton(mains_frames_list[0][2], text = "-", width=40, bg_color="#a39c81",  # Configuration to buttons appearance
+                                                fg_color='#e5383b', hover_color="#a4161a",          
+                                                command = lambda: remove(burger_lbl),       # Removes dish from order
                                                 font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        burger_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        burger_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)              # Griding for the widget
         # endregion
 
         # region | Butter Chicken Button / Label
         butter_chicken_lbl = customtkinter.CTkButton(mains_frames_list[1][0], text="Butter Chicken", 
-                                                     command = lambda: description_page(butter_chicken_lbl, butter_chicken),
-                                                     fg_color='transparent', hover_color="#333333",
-                                                     font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
+                                                     command = lambda: description_page(butter_chicken_lbl, butter_chicken),    # Opens description page for dish
+                                                     fg_color='transparent', hover_color="#333333",             # Configuration to labels appearance
+                                                     font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))  # Font customisation
         butter_chicken_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
 
         butter_chicken_price = customtkinter.CTkButton(mains_frames_list[1][0], text="Price: $15.99", 
-                                                       command = lambda: description_page(butter_chicken_lbl, butter_chicken),
-                                                       fg_color='transparent', hover_color="#333333",
-                                                       font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        butter_chicken_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
+                                                       command = lambda: description_page(butter_chicken_lbl, butter_chicken),  # Opens description page for dish
+                                                       fg_color='transparent', hover_color="#333333",               # Configuration to labels appearance
+                                                       font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))    # Font customisation
+        butter_chicken_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)              # Griding for the widget
 
         # Add to Order Button for Butter Chicken
-        butter_chicken_atobtn = customtkinter.CTkButton(mains_frames_list[1][0], text = "+", width=40, bg_color="#e2e2d6",
-                                                        command = lambda: add(butter_chicken_lbl),
+        butter_chicken_atobtn = customtkinter.CTkButton(mains_frames_list[1][0], text = "+", width=40, bg_color="#e2e2d6",  # Configurations to buttons appearance
+                                                        command = lambda: add(butter_chicken_lbl),              # Adds the dish to order
                                                         font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        butter_chicken_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        butter_chicken_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)              # Griding for the widget
 
         # Remove Button for Butter Chicken
-        butter_chicken_remove = customtkinter.CTkButton(mains_frames_list[1][0], text = "-", width=40, bg_color="#78021f",
-                                                        fg_color='#e5383b', hover_color="#a4161a",
-                                                        command = lambda: remove(butter_chicken_lbl),
+        butter_chicken_remove = customtkinter.CTkButton(mains_frames_list[1][0], text = "-", width=40, bg_color="#78021f",  # Configuration to buttons appearance
+                                                        fg_color='#e5383b', hover_color="#a4161a",          
+                                                        command = lambda: remove(butter_chicken_lbl),       # Removes dish from order
                                                         font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        butter_chicken_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        butter_chicken_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)              # Griding for the widget
         # endregion
 
         # region | Pasta Button / Label
         pasta_lbl = customtkinter.CTkButton(mains_frames_list[1][1], text="Pasta", 
-                                            command = lambda: description_page(pasta_lbl, pasta),
-                                            fg_color='transparent', hover_color="#333333",
-                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        pasta_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+                                            command = lambda: description_page(pasta_lbl, pasta),   # Opens description page for dish
+                                            fg_color='transparent', hover_color="#333333",              # Configuration to labels appearance
+                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))   # Font customisation
+        pasta_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)              # Griding for the widget
 
         pasta_price = customtkinter.CTkButton(mains_frames_list[1][1], text="Price: $20.00", 
-                                              command = lambda: description_page(pasta_lbl, pasta),
-                                              fg_color='transparent', hover_color="#333333",
-                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        pasta_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
+                                              command = lambda: description_page(pasta_lbl, pasta), # Opens description page for dish
+                                              fg_color='transparent', hover_color="#333333",                # Configuration to labels appearance
+                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25)) # Font customisation
+        pasta_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)               # Griding for the widget
 
         # Add to Order Button for Pasta
-        pasta_atobtn = customtkinter.CTkButton(mains_frames_list[1][1], text = "+", width=40, bg_color="#887a71",
-                                               command = lambda: add(pasta_lbl),
+        pasta_atobtn = customtkinter.CTkButton(mains_frames_list[1][1], text = "+", width=40, bg_color="#887a71",   # Configurations to buttons appearance
+                                               command = lambda: add(pasta_lbl),                # Adds the dish to order
                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        pasta_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        pasta_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)               # Griding for the widget
 
         # Remove Button for Pasta
-        pasta_remove = customtkinter.CTkButton(mains_frames_list[1][1], text = "-", width=40, bg_color="#887a71",
-                                               fg_color='#e5383b', hover_color="#a4161a",
-                                               command = lambda: remove(pasta_lbl),
+        pasta_remove = customtkinter.CTkButton(mains_frames_list[1][1], text = "-", width=40, bg_color="#887a71",   # Configuration to buttons appearance
+                                               fg_color='#e5383b', hover_color="#a4161a",           
+                                               command = lambda: remove(pasta_lbl),     # Removes dish from order
                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        pasta_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        pasta_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)               # Griding for the widget
         # endregion
 
         # region | Pizza Button / Label
         pizza_lbl = customtkinter.CTkButton(mains_frames_list[1][2], text="Pizza", 
-                                            command = lambda: description_page(pizza_lbl, pizza),
-                                            fg_color='transparent', hover_color="#333333",
-                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        pizza_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+                                            command = lambda: description_page(pizza_lbl, pizza),   # Opens description page for dish
+                                            fg_color='transparent', hover_color="#333333",              # Configuration to labels appearance
+                                            font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))   # Font customisation
+        pizza_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)              # Griding for the widget
 
         pizza_price = customtkinter.CTkButton(mains_frames_list[1][2], text="Price: $13.99", 
-                                              command = lambda: description_page(pizza_lbl, pizza),
-                                              fg_color='transparent', hover_color="#333333",
-                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        pizza_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
+                                              command = lambda: description_page(pizza_lbl, pizza), # Opens description page for dish
+                                              fg_color='transparent', hover_color="#333333",                # Configuration to labels appearance
+                                              font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25)) # Font customisation
+        pizza_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)               # Griding for the widget
 
         # Add to Order Button for Pizza
-        pizza_atobtn = customtkinter.CTkButton(mains_frames_list[1][2], text = "+", width=40, bg_color="#a67d69",
-                                               command = lambda: add(pizza_lbl),
+        pizza_atobtn = customtkinter.CTkButton(mains_frames_list[1][2], text = "+", width=40, bg_color="#a67d69",   # Configurations to buttons appearance
+                                               command = lambda: add(pizza_lbl),                # Adds the dish to order
                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        pizza_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        pizza_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)               # Griding for the widget
 
         # Remove Button for Pizza
-        pizza_remove = customtkinter.CTkButton(mains_frames_list[1][2], text = "-", width=40, bg_color="#953b21",
-                                               fg_color='#e5383b', hover_color="#a4161a",
-                                               command = lambda: remove(pizza_lbl),
+        pizza_remove = customtkinter.CTkButton(mains_frames_list[1][2], text = "-", width=40, bg_color="#953b21",   # Configuration to buttons appearance
+                                               fg_color='#e5383b', hover_color="#a4161a",           
+                                               command = lambda: remove(pizza_lbl),     # Removes dish from order
                                                font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        pizza_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        pizza_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)               # Griding for the widget
         # endregion
 
         # region | Placeholder Button \ Label
         # Label for Placeholder 1
         mains_placeholder1_lbl = customtkinter.CTkButton(mains_frames_list[2][0], text="Mains Placeholder", 
-                                                         command = lambda: description_page(mains_placeholder1_lbl, placeholder),
-                                                         fg_color='transparent', hover_color="#333333",
-                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        mains_placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+                                                         command = lambda: description_page(mains_placeholder1_lbl, placeholder),   # Opens description page for dish
+                                                         fg_color='transparent', hover_color="#333333",             # Configuration to labels appearance
+                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))  # Font customisation
+        mains_placeholder1_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)             # Griding for the widget
 
         mains_placeholder1_price = customtkinter.CTkButton(mains_frames_list[2][0], text="Price: $25.00", 
-                                                           command = lambda: description_page(mains_placeholder1_lbl, placeholder),
-                                                           fg_color='transparent', hover_color="#333333",
-                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        mains_placeholder1_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
+                                                           command = lambda: description_page(mains_placeholder1_lbl, placeholder), # Opens description page for dish
+                                                           fg_color='transparent', hover_color="#333333",               # Configuration to labels appearance
+                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))    # Font customisation
+        mains_placeholder1_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)              # Griding for the widget
 
         # Add to Order Button for Placeholder 1
-        mains_placeholder1_atobtn = customtkinter.CTkButton(mains_frames_list[2][0], text = "+", bg_color="white",
-                                                            width=40, command = lambda: add(mains_placeholder1_lbl),
+        mains_placeholder1_atobtn = customtkinter.CTkButton(mains_frames_list[2][0], text = "+", bg_color="white",  # Configurations to buttons appearance
+                                                            width=40, command = lambda: add(mains_placeholder1_lbl),                # Adds the dish to order
                                                             font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        mains_placeholder1_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        mains_placeholder1_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)              # Griding for the widget
 
         # Remove Button for Placeholder 1
-        mains_placeholder1_remove = customtkinter.CTkButton(mains_frames_list[2][0], text = "-", width=40, bg_color="white",
-                                                            fg_color='#e5383b', hover_color="#a4161a",
-                                                            command = lambda: remove(mains_placeholder1_lbl),
+        mains_placeholder1_remove = customtkinter.CTkButton(mains_frames_list[2][0], text = "-", width=40, bg_color="white",    # Configuration to buttons appearance
+                                                            fg_color='#e5383b', hover_color="#a4161a",          
+                                                            command = lambda: remove(mains_placeholder1_lbl),       # Removes dish from order
                                                             font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        mains_placeholder1_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        mains_placeholder1_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)              # Griding for the widget
 
 
         # Label for Placeholder 2
         mains_placeholder2_lbl = customtkinter.CTkButton(mains_frames_list[2][1], text="Mains Placeholder", 
-                                                         command = lambda: description_page(mains_placeholder2_lbl, placeholder),
-                                                         fg_color='transparent', hover_color="#333333",
-                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        mains_placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+                                                         command = lambda: description_page(mains_placeholder2_lbl, placeholder),   # Opens description page for dish
+                                                         fg_color='transparent', hover_color="#333333",             # Configuration to labels appearance
+                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))  # Font customisation
+        mains_placeholder2_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)             # Griding for the widget
 
         mains_placeholder2_price = customtkinter.CTkButton(mains_frames_list[2][1], text="Price: $25.00",
-                                                           command = lambda: description_page(mains_placeholder2_lbl, placeholder),
-                                                           fg_color='transparent', hover_color="#333333",
-                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        mains_placeholder2_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
+                                                           command = lambda: description_page(mains_placeholder2_lbl, placeholder), # Opens description page for dish
+                                                           fg_color='transparent', hover_color="#333333",               # Configuration to labels appearance
+                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))    # Font customisation
+        mains_placeholder2_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)              # Griding for the widget
 
         # Add to Order Button for Placeholder 2
-        mains_placeholder2_atobtn = customtkinter.CTkButton(mains_frames_list[2][1], text = "+", bg_color="white",
-                                                            width=40, command = lambda: add(mains_placeholder2_lbl),
+        mains_placeholder2_atobtn = customtkinter.CTkButton(mains_frames_list[2][1], text = "+", bg_color="white",  # Configurations to buttons appearance
+                                                            width=40, command = lambda: add(mains_placeholder2_lbl),                # Adds the dish to order
                                                             font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        mains_placeholder2_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        mains_placeholder2_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)              # Griding for the widget
 
         # Remove Button for Placeholder 2 
-        mains_placeholder2_remove = customtkinter.CTkButton(mains_frames_list[2][1], text = "-", width=40, bg_color="white",
-                                                            fg_color='#e5383b', hover_color="#a4161a",
-                                                            command = lambda: remove(mains_placeholder2_lbl),
+        mains_placeholder2_remove = customtkinter.CTkButton(mains_frames_list[2][1], text = "-", width=40, bg_color="white",    # Configuration to buttons appearance
+                                                            fg_color='#e5383b', hover_color="#a4161a",          
+                                                            command = lambda: remove(mains_placeholder2_lbl),       # Removes dish from order
                                                             font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        mains_placeholder2_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        mains_placeholder2_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)              # Griding for the widget
 
 
         # Label for Placeholder 3
         mains_placeholder3_lbl = customtkinter.CTkButton(mains_frames_list[2][2], text="Mains Placeholder", 
-                                                         command = lambda: description_page(mains_placeholder3_lbl, placeholder),
-                                                         fg_color='transparent', hover_color="#333333",
-                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        mains_placeholder3_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)
+                                                         command = lambda: description_page(mains_placeholder3_lbl, placeholder),   # Opens description page for dish
+                                                         fg_color='transparent', hover_color="#333333",             # Configuration to labels appearance
+                                                         font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))  # Font customisation
+        mains_placeholder3_lbl.grid(row=1, column=0, sticky='new', pady=(5,0), padx=10)             # Griding for the widget
 
         mains_placeholder3_price = customtkinter.CTkButton(mains_frames_list[2][2], text="Price: $25.00", 
-                                                           command = lambda: description_page(mains_placeholder3_lbl, placeholder),
-                                                           fg_color='transparent', hover_color="#333333",
-                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))
-        mains_placeholder3_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)
+                                                           command = lambda: description_page(mains_placeholder3_lbl, placeholder), # Opens description page for dish
+                                                           fg_color='transparent', hover_color="#333333",               # Configuration to labels appearance
+                                                           font=customtkinter.CTkFont(family='Calibri', weight='bold', size=25))    # Font customisation
+        mains_placeholder3_price.grid(row=2, column=0, sticky='new', pady=(0,10), padx=10)              # Griding for the widget
 
         # Add to Order Button for Placeholder 3
-        mains_placeholder3_atobtn = customtkinter.CTkButton(mains_frames_list[2][2], text = "+", bg_color="white",
-                                                            width=40, command = lambda: add(mains_placeholder3_lbl),
+        mains_placeholder3_atobtn = customtkinter.CTkButton(mains_frames_list[2][2], text = "+", bg_color="white",      # Configuration to buttons appearance
+                                                            width=40, command = lambda: add(mains_placeholder3_lbl),    # Adds dish to order
                                                             font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        mains_placeholder3_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)
+        mains_placeholder3_atobtn.grid(row=0, column=0, sticky='ne', pady=25, padx=25)              # Griding for the widget
 
         # Remove Button for Placeholder3
         mains_placeholder3_remove = customtkinter.CTkButton(mains_frames_list[2][2], text = "-", width=40, bg_color="white",
                                                             fg_color='#e5383b', hover_color="#a4161a",
-                                                            command = lambda: remove(mains_placeholder3_lbl),
+                                                            command = lambda: remove(mains_placeholder3_lbl),       # Removes dish from order
                                                             font=customtkinter.CTkFont(family='Calibri', size=20, weight='bold'))
-        mains_placeholder3_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)
+        mains_placeholder3_remove.grid(row=0, column=0, sticky="ne", pady=25, padx=75)              # Griding for the widget
         # endregion
 
 
