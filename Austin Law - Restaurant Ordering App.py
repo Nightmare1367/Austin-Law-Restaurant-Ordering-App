@@ -100,6 +100,36 @@ def order_id():
     return order_name
 
 
+# Function to display and update the cart
+def printcart():
+    # Looks for widgets and destroys the frame which stores the order
+    for widget in order_list_frame.winfo_children():
+        widget.destroy()  
+
+    rownum = 0
+    # Runs for however many items are in the cart
+    for i in range(len(order)):
+        # Displays the item in the format of "Name" | "Amount" | "Price"
+        order_listlbl = customtkinter.CTkLabel(order_list_frame, text = (order[i][0] + " | x" + str(order[i][1]) + " | $" + str(order[i][2])), 
+                                           font = customtkinter.CTkFont(family = "Calibri", size=25))
+        order_listlbl.grid(row=rownum, column=0, pady=5, padx=5, sticky="nw")
+        # Makes the items display one row below each other
+        rownum += 1
+    
+    # Function to calculate the total cost
+    def totalprice():
+        global totalcost
+        totalcost = 0
+        # Runs for however many items are in the order
+        for i in range(len(order)): 
+            # Adds the total cost with the price specified in each list
+            totalcost += order[i][2]
+        return(str("{:.2f}".format(totalcost)))
+
+    # Updating the order total label
+    totalorder_lbl.configure(text="Total Price: $" + totalprice())
+
+
 # Function to create a description page
 def description_page(btn, img):
     # Creating a window for the description page
@@ -192,40 +222,106 @@ def place_order():
 
         # Widgets for the window
         # Title to give the general information of what went wrong
-        noitems_title = customtkinter.CTkLabel(noitems_window, text="Note: There are no items in the order", text_color="white", 
+        noitems_title = customtkinter.CTkLabel(noitems_window, text="Note: There are no items in the order.", text_color="white", 
                                                font=customtkinter.CTkFont(family="Calibri", size=20, weight="bold"))
         noitems_title.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news")
 
         # A label wich includes an explanation on what they need to do
-        noitems_lbl = customtkinter.CTkLabel(noitems_window, text="Please add a dish before placing order", text_color="white", 
+        noitems_lbl = customtkinter.CTkLabel(noitems_window, text="Please add a dish before placing order.", text_color="white", 
                                              font=customtkinter.CTkFont(family="Calibri", size=17, weight="bold"))
         noitems_lbl.grid(row=1, column=0, pady=(5, 0), padx=(20,0), sticky="news")
-    
-    # Runs if there are items in the order
-    else:
-        # Creates a .txt file in an Orders folder with the receipt ID as the file name
-        with open(f"Order/{receipt}", 'w') as file:
-            # Writes the information of the order in the .txt file
-            file.write("Austin's Restaurant Ordering App")
-            file.write("\n________________________________________________________\n")
-            file.write(order_day.strftime("%x"))        # Date of time order was made
-            file.write("\n")
-            file.write(order_time.strftime("%X"))       # Time of order
-            file.write(f"\n\nOrder ID: {order_name}\n")  # Order ID
-            file.write(f"Order: \n")
-            for item in order:      # For loop to keep running for however many items were in the order 
-                # Follows the format of "Name", "Amount", and "Price" in a new line
-                file.write(f"{item[0]} | Amount: {item[1]}\n      Price: ${item[2]}\n\n")
-            file.write("________________________________________________________")
-            file.write("\n")
-            file.write(totalorder_lbl.cget("text"))     # Total Cost of Order
 
-        totalorder_lbl.configure(text = "Total: $0")    # Resets the total price to zero
-        order_id_lbl.configure(text = "Order ID: " + order_id())    # Creates a new order ID
-        # Clears the order displayed in the order frame
-        for widget in order_list_frame.winfo_children():
-            widget.destroy()  
-        order.clear()       # Clears the list 
+    # Runs if there the total cost is between $0 and $5000
+    if totalcost > 0 and totalcost < 5000:
+        # Creates a .txt file in an Orders folder with the receipt ID as the file name
+        def createreceipt():
+            po_window.destroy()
+            with open(f"Order/{receipt}", 'w') as file:
+                # Writes the information of the order in the .txt file
+                file.write("Austin's Restaurant Ordering App")
+                file.write("\n________________________________________________________\n")
+                file.write(order_day.strftime("%x"))        # Date of time order was made
+                file.write("\n")
+                file.write(order_time.strftime("%X"))       # Time of order
+                file.write(f"\n\nOrder ID: {order_name}\n")  # Order ID
+                file.write(f"Order: \n")
+                for item in order:      # For loop to keep running for however many items were in the order 
+                    # Follows the format of "Name", "Amount", and "Price" in a new line
+                    file.write(f"{item[0]} | Amount: {item[1]}\n      Price: ${item[2]}\n\n")
+                file.write("________________________________________________________")
+                file.write("\n")
+                file.write(totalorder_lbl.cget("text"))     # Total Cost of Order
+
+            totalorder_lbl.configure(text = "Total: $0")    # Resets the total price to zero
+            order_id_lbl.configure(text = "Order ID: " + order_id())    # Creates a new order ID
+            # Clears the order displayed in the order frame
+            for widget in order_list_frame.winfo_children():
+                widget.destroy()  
+            order.clear()       # Clears the list 
+        
+        def no_clicked():
+            po_window.destroy()
+
+        po_window = customtkinter.CTkToplevel(window)
+        po_window.title("Place Order")       # Title of the window
+        # Makes the window unresizable on both axis
+        po_window.resizable(False, False)
+
+        # Dimensions for the pop up window
+        w = 340        # Width of window
+        h = 100         # height of window
+        ws = po_window.winfo_screenwidth()
+        hs = po_window.winfo_screenheight()
+        x = (ws/2) - (w/2)
+        y = (hs/2) - (h/2)
+        po_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
+        # Makes the window stay at the top
+        po_window.attributes('-topmost',True)
+
+        po_window.grid_rowconfigure(0, weight=1)
+
+        confirmationlbl = customtkinter.CTkLabel(po_window, text="Would you like to place your order?", font=customtkinter.CTkFont(family="Calibri", size=20))
+        confirmationlbl.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news", columnspan = 2)
+
+        yesbtn = customtkinter.CTkButton(po_window, text="Yes", fg_color="transparent", font=customtkinter.CTkFont(family="Calibri", size=15),
+                                         corner_radius=10, command=createreceipt, width=30)
+        yesbtn.grid(row=1, column=0, pady=10, padx=20, sticky="news")
+
+        nobtn = customtkinter.CTkButton(po_window, text="No", width=30, font=customtkinter.CTkFont(family="Calibri", size=15),
+                                        command=no_clicked, corner_radius=10, fg_color="transparent")
+        nobtn.grid(row=1, column=1, pady=10, padx=20, sticky="news")
+
+
+    # Runs if the total price is over $5,000
+    if totalcost > 5000:
+        # Creating pop up window
+        unablewindow = customtkinter.CTkToplevel(window)
+        unablewindow.title("Not enough ingredients")       # Title of the window
+        # Makes the window unresizable on both axis
+        unablewindow.resizable(False, False)
+
+        # Dimensions for the pop up window
+        w = 480        # Width of window
+        h = 100         # height of window
+        ws = unablewindow.winfo_screenwidth()
+        hs = unablewindow.winfo_screenheight()
+        x = (ws/2) - (w/2)
+        y = (hs/2) - (h/2)
+        unablewindow.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
+        # Makes the window stay at the top
+        unablewindow.attributes('-topmost',True)
+
+        unablelbl = customtkinter.CTkLabel(unablewindow, text="Unable to complete order due to lack of ingredients.", 
+                                           font=customtkinter.CTkFont(family="Calibri", size=20, weight="bold"))
+        unablelbl.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news")
+
+        unablelbl1 = customtkinter.CTkLabel(unablewindow, text="Please remove some items. Sorry for the inconvenience.",
+                                            font=customtkinter.CTkFont(family="Calibri", size=17, weight="bold"))
+        unablelbl1.grid(row=1, column=0, pady=(5, 0), padx=(20,0), sticky="news")
+
+    
 
 
 # Function to add the order to the order
@@ -278,35 +374,6 @@ def remove(btn):
                 # Updates the price to show cost after removing the one item
                 order[i][2] = round(order[i][2] - float(decimal),2)  
     printcart()
-
-
-# Function to display and update the cart
-def printcart():
-    # Looks for widgets and destroys the frame which stores the order
-    for widget in order_list_frame.winfo_children():
-        widget.destroy()  
-
-    rownum = 0
-    # Runs for however many items are in the cart
-    for i in range(len(order)):
-        # Displays the item in the format of "Name" | "Amount" | "Price"
-        order_listlbl = customtkinter.CTkLabel(order_list_frame, text = (order[i][0] + " | x" + str(order[i][1]) + " | $" + str(order[i][2])), 
-                                           font = customtkinter.CTkFont(family = "Calibri", size=25))
-        order_listlbl.grid(row=rownum, column=0, pady=5, padx=5, sticky="nw")
-        # Makes the items display one row below each other
-        rownum += 1
-    
-    # Function to calculate the total cost
-    def totalprice():
-        totalcost = 0
-        # Runs for however many items are in the order
-        for i in range(len(order)): 
-            # Adds the total cost with the price specified in each list
-            totalcost += order[i][2]
-        return(str("{:.2f}".format(totalcost)))
-
-    # Updating the order total label
-    totalorder_lbl.configure(text="Total Price: $" + totalprice())
 
 
 # --------------------------------- Classes ---------------------------------- #
