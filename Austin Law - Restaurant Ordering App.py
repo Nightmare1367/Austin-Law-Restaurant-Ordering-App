@@ -73,24 +73,27 @@ prices = {
 
 
 # List to store the customers order
-cart = []
+order = []
 
 # -------------------------------- Functions --------------------------------- #
 # Fucntion for Order ID
 def order_id():
-    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
+    # A list for the program to get the numbers and letters
+    number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
                'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 
                'Q', 'R', 'S', 'T', 'U','V', 'W', 'X', 'Y', 'Z']
-    
+    # Variables to store the randomised numbers and letters
     order_name = ""
-    random_letters = ""
-    random_digits = ""
-    for i in range(0,3):
-        random_letters += random.choice(letters)
-        random_digits += str(random.choice(numbers))
+    random_letter = ""
+    random_number = ""
 
-    order_name += random_letters + random_digits
+    # For loop to run 3 times 
+    for i in range(0,3):
+        random_letter += random.choice(letter)    # Selects 3 random letters and stores it in the random_letters variable
+        random_number += str(random.choice(number))    # Selects 3 random numbers and stores it in the random_numbers variable
+
+    order_name += random_letter + random_number
     return order_name
 
 
@@ -117,10 +120,14 @@ def description_page(btn, img):
     about_window.grid_rowconfigure((2), weight=1)
     about_window.grid_columnconfigure(1, weight=1)
 
-    item_list = list(about_page.description.keys())
-    item_list2 = list(about_page.description.values())
+    # Makes the keys and values from the description dictionary
+    # into a list 
+    item_list = list(about_page.description.keys())     # List for keys
+    item_list2 = list(about_page.description.values())  # List for values
+    # Finds the dish name and finds it in the keys from the description dictionary
     specific = item_list.index(btn.cget("text"))
 
+    # Function to close the window
     def delete_window():
         about_window.destroy()
     
@@ -141,11 +148,11 @@ def description_page(btn, img):
     # Widgets for description
     description_frame = customtkinter.CTkFrame(about_window, corner_radius=10)
     description_frame.grid(row=2, column=1, pady=(5,20), sticky="news", padx= 20)
-
+    # Provides the description of the item
     item_description = customtkinter.CTkLabel(description_frame, text=f"About the Dish: \n{item_list2[specific][0]}", wraplength=350, 
                                               font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
     item_description.grid(row=0, column=0, pady=10, padx=10, sticky="w")
-
+    # Provides the ingredients typically used
     item_ingredient = customtkinter.CTkLabel(description_frame, text=f"Ingredients: \n{item_list2[specific][1]}", wraplength=350, 
                                              font=customtkinter.CTkFont(family="Calibri", size=15), justify=LEFT)
     item_ingredient.grid(row=1, column=0, pady=10, padx=10,sticky="w")
@@ -156,14 +163,16 @@ def place_order():
     receipt = order_id_lbl.cget("text")
     receipt = receipt.replace("Order ID: ", "")
 
+    # Gets the time and day of when the "Place Order" button was pressed
     order_day = date.today()
     order_time = datetime.now()
 
-
-    if len(cart) == 0:
-        print("There is nothing in the order")
+    # Runs if there is nothing in the order list
+    if len(order) == 0:
+        # Creating pop up window
         noitems_window = customtkinter.CTkToplevel(window)
-        noitems_window.title("No Items in Order")
+        noitems_window.title("No Items in Order")       # Title of the window
+        # Makes the window unresizable on both axis
         noitems_window.resizable(False, False)
 
         # Dimensions for the pop up window
@@ -177,85 +186,94 @@ def place_order():
 
         # Makes the window stay at the top
         noitems_window.attributes('-topmost',True)
+
+        # Widgets for the window
+        # Title to give the general information of what went wrong
         noitems_title = customtkinter.CTkLabel(noitems_window, text="Note: There are no items in the order", text_color="white", 
                                                font=customtkinter.CTkFont(family="Calibri", size=20, weight="bold"))
         noitems_title.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news")
 
+        # A label wich includes an explanation on what they need to do
         noitems_lbl = customtkinter.CTkLabel(noitems_window, text="Please add a dish before placing order", text_color="white", 
                                              font=customtkinter.CTkFont(family="Calibri", size=17, weight="bold"))
         noitems_lbl.grid(row=1, column=0, pady=(5, 0), padx=(20,0), sticky="news")
     
+    # Runs if there are items in the order
     else:
+        # Creates a .txt file in an Orders folder with the receipt ID as the file name
         with open(f"Order/{receipt}", 'w') as file:
+            # Writes the information of the order in the .txt file
             file.write("Austin's Restaurant Ordering App")
             file.write("\n________________________________________________________\n")
-            file.write(order_day.strftime("%x"))
+            file.write(order_day.strftime("%x"))        # Date of time order was made
             file.write("\n")
-            file.write(order_time.strftime("%X"))
-            file.write(f"\n\nOrder ID:{order_id()}\n")
+            file.write(order_time.strftime("%X"))       # Time of order
+            file.write(f"\n\nOrder ID:{order_id()}\n")  # Order ID
             file.write(f"Order: \n")
-            for item in cart:
+            for item in order:      # For loop to keep running for however many items were in the order 
+                # Follows the format of "Name", "Amount", and "Price" in a new line
                 file.write(f"{item[0]} | Amount: {item[1]}\n      Price: ${item[2]}\n\n")
             file.write("________________________________________________________")
             file.write("\n")
-            file.write(totalorder_lbl.cget("text"))
+            file.write(totalorder_lbl.cget("text"))     # Total Cost of Order
 
-        totalorder_lbl.configure(text = "Total: $0")
-        order_id_lbl.configure(text = "Order ID: " + order_id())
+        totalorder_lbl.configure(text = "Total: $0")    # Resets the total price to zero
+        order_id_lbl.configure(text = "Order ID: " + order_id())    # Creates a new order ID
+        # Clears the order displayed in the order frame
         for widget in order_list_frame.winfo_children():
             widget.destroy()  
-        cart.clear()
+        order.clear()       # Clears the list 
 
 
-# Function to add the order to the cart
+# Function to add the order to the order
 def add(btn):
     # Globalling Variable
-    global cart
+    global order
     
     # Looks for the item selected
-    prices_value = (prices[btn.cget("text")])                      # Gets the price of the product
-    decimal = "{:.2f}".format(prices_value)                        # Makes the price show with 2 decimal places
-    item = btn.cget("text")                                        # Gets the item
+    prices_value = (prices[btn.cget("text")])         # Gets the price of the product
+    decimal = "{:.2f}".format(prices_value)           # Makes the price show with 2 decimal places
+    item = btn.cget("text")                           # Gets the name of the item
 
     # Updating the Order
-    # If statement which looks at whether there is an existing item in the cart
-    if len(cart) == 0:                              # If the item selected does not exist, this will run
-        cart.append([item, 1, float(decimal)])      # Appends the item to the list following the name, amount, and price
+    # If statement which looks at whether there is an existing item in the order
+    if len(order) == 0:                              # If the item selected does not exist, this will run
+        order.append([item, 1, float(decimal)])      # Appends the item to the list following the name, amount, and price
     # Runs this section if the item selected already exists in the list
     else:
         itemexist = False           # Variable which will be used to check if the item exists
-        for i in range (len(cart)): # For loop which will look at the specifed item 
-            if cart[i][0] == item:  # Runs if the item matches with cart
+        for i in range (len(order)): # For loop which will look at the specifed item 
+            if order[i][0] == item:  # Runs if the item matches with order
                 itemexist = True    # Changes variable to true
-                cart[i][1] += 1     # Adds 1 to the total amount of that item
-                cart[i][2] = round(cart[i][2] + float(decimal),2)       # Updates the price to match the amount selected.
+                order[i][1] += 1     # Adds 1 to the total amount of that item
+                order[i][2] = round(order[i][2] + float(decimal),2)       # Updates the price to match the amount selected.
 
         # Runs if the item does not exist in the list
         if itemexist == False: 
-            cart.append([item, 1, float(decimal)])
+            order.append([item, 1, float(decimal)])
     printcart()
 
 
 # Function to remove the selected order
 def remove(btn):
-    global cart
-    prices_value = (prices[btn.cget("text")])   # Price of the selected item
+    global order
+    prices_value = (prices[btn.cget("text")])   # Gets the price of the selected item
     decimal = "{:.2f}".format(prices_value)     # Converts the item to sho up to 2 decimal points
-    item = btn.cget("text")                     # Name of the item
+    item = btn.cget("text")                     # Gets the name of the item
     
     # For loop which will remove the item from the list
-    for i in range (len(cart)):
+    for i in range (len(order)):
         # Checks if the item matches with each other
-        if cart[i][0] == item: 
+        if order[i][0] == item: 
             # Runs if the amount of that item is one
-            if cart[i][1] == 1: 
-                del(cart[i])    # Delets the list
+            if order[i][1] == 1: 
+                del(order[i])    # Delets the list
                 break           # Breaks the code to prevent error
             # Runs if there are more than one of that item
             else:
-                cart[i][1] -= 1     # Subtracts one from the amount
+                order[i][1] -= 1     # Subtracts one from the amount
                 # Updates the price to show cost after removing the one item
-                cart[i][2] = round(cart[i][2] - float(decimal),2)  
+                order[i][2] = round(order[i][2] - float(decimal),2)  
     printcart()
 
 
@@ -264,21 +282,28 @@ def printcart():
     # Looks for widgets and destroys the frame which stores the order
     for widget in order_list_frame.winfo_children():
         widget.destroy()  
- 
+
     rownum = 0
-    for i in range(len(cart)):
-        order_listlbl = customtkinter.CTkLabel(order_list_frame, text = (cart[i][0] + " | x" + str(cart[i][1]) + " | $" + str(cart[i][2])), 
+    # Runs for however many items are in the cart
+    for i in range(len(order)):
+        # Displays the item in the format of "Name" | "Amount" | "Price"
+        order_listlbl = customtkinter.CTkLabel(order_list_frame, text = (order[i][0] + " | x" + str(order[i][1]) + " | $" + str(order[i][2])), 
                                            font = customtkinter.CTkFont(family = "Calibri", size=25))
         order_listlbl.grid(row=rownum, column=0, pady=5, padx=5, sticky="nw")
+        # Makes the items display one row below each other
         rownum += 1
- 
-    def costcalc():
+    
+    # Function to calculate the total cost
+    def totalprice():
         totalcost = 0
-        for i in range(len(cart)): totalcost += cart[i][2]
+        # Runs for however many items are in the order
+        for i in range(len(order)): 
+            # Adds the total cost with the price specified in each list
+            totalcost += order[i][2]
         return(str("{:.2f}".format(totalcost)))
 
     # Updating the order total label
-    totalorder_lbl.configure(text="Total Price: $"+costcalc())
+    totalorder_lbl.configure(text="Total Price: $" + totalprice())
 
 
 # --------------------------------- Classes ---------------------------------- #
@@ -314,6 +339,8 @@ class TopNavBar(customtkinter.CTkFrame):
         # endregion
 
         # region | Frames which would act as an indicator for the buttons
+        # The colour of the frame is made to match with the background colour of the navigation bar,
+        # The functions within the class will change the colour to black to indicate which page the user is on
         mains_indicator = customtkinter.CTkFrame(self, corner_radius=5, height=6, width=100, fg_color="#DEE2E6")
         mains_indicator.grid(row=0, column=0, sticky='s',pady=5)
         
