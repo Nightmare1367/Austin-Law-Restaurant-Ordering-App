@@ -85,6 +85,7 @@ def order_id():
     letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
                'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 
                'Q', 'R', 'S', 'T', 'U','V', 'W', 'X', 'Y', 'Z']
+    
     # Variables to store the randomised numbers and letters
     order_name = ""
     random_letter = ""
@@ -200,39 +201,49 @@ def place_order():
     order_day = date.today()
     order_time = datetime.now()
 
-    # Runs if there is nothing in the order list
-    if len(order) == 0:
+    def popupwindow():
+        global po_window
         # Creating pop up window
-        noitems_window = customtkinter.CTkToplevel(window)
-        noitems_window.title("No Items in Order")       # Title of the window
+        po_window = customtkinter.CTkToplevel(window)
+        po_window.title("No Items in Order")       # Title of the window
         # Makes the window unresizable on both axis
-        noitems_window.resizable(False, False)
+        po_window.resizable(False, False)
 
         # Dimensions for the pop up window
-        w = 350        # Width of window
-        h = 100         # height of window
-        ws = noitems_window.winfo_screenwidth()
-        hs = noitems_window.winfo_screenheight()
-        x = (ws/2) - (w/2)
-        y = (hs/2) - (h/2)
-        noitems_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+        W = 350        # Width of window
+        H = 120         # height of window
+        ws = po_window.winfo_screenwidth()
+        hs = po_window.winfo_screenheight()
+        x = (ws/2) - (W/2)
+        y = (hs/2) - (H/2)
+        po_window.geometry('%dx%d+%d+%d' % (W, H, x, y))
 
         # Makes the window stay at the top
-        noitems_window.attributes('-topmost',True)
+        po_window.attributes('-topmost',True)
+
+        # Makes the widgets appear in the middle horizontally
+        po_window.grid_columnconfigure(0, weight=1)
+
+    # Runs if there is nothing in the order list
+    if len(order) == 0:
+        # Opens window
+        popupwindow()
 
         # Widgets for the window
         # Title to give the general information of what went wrong
-        noitems_title = customtkinter.CTkLabel(noitems_window, text="Note: There are no items in the order.", text_color="white", 
+        noitems_title = customtkinter.CTkLabel(po_window, text="Note: There are no items in the order.", text_color="white", 
                                                font=customtkinter.CTkFont(family="Calibri", size=20, weight="bold"))
-        noitems_title.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news")
+        noitems_title.grid(row=0, column=0, pady=(20, 0), sticky="news")
 
         # A label wich includes an explanation on what they need to do
-        noitems_lbl = customtkinter.CTkLabel(noitems_window, text="Please add a dish before placing order.", text_color="white", 
+        noitems_lbl = customtkinter.CTkLabel(po_window, text="Please add a dish before placing order.", text_color="white", 
                                              font=customtkinter.CTkFont(family="Calibri", size=17, weight="bold"))
-        noitems_lbl.grid(row=1, column=0, pady=(5, 0), padx=(20,0), sticky="news")
+        noitems_lbl.grid(row=1, column=0, pady=(5, 0), sticky="news")
 
     # Runs if there the total cost is between $0 and $5000
     elif 0 <= totalcost <= 5000:
+        # Opens window
+        popupwindow()
         # Creates a .txt file in an Orders folder with the receipt ID as the file name
         def createreceipt():
             po_window.destroy()
@@ -262,66 +273,52 @@ def place_order():
         def no_clicked():
             po_window.destroy()
 
-        po_window = customtkinter.CTkToplevel(window)
-        po_window.title("Place Order")       # Title of the window
-        # Makes the window unresizable on both axis
-        po_window.resizable(False, False)
+        # Title of window
+        po_window.title("Place Order")
 
-        # Dimensions for the pop up window
-        w = 340        # Width of window
-        h = 100         # height of window
-        ws = po_window.winfo_screenwidth()
-        hs = po_window.winfo_screenheight()
-        x = (ws/2) - (w/2)
-        y = (hs/2) - (h/2)
-        po_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+        # Grid Configurations
+        po_window.grid_columnconfigure(0, weight=0)
+        po_window.grid_rowconfigure(0, weight=1)
+
+        # region | Widgets
+        # Label asking user if they want to place order
+        confirmationlbl = customtkinter.CTkLabel(po_window, text="Would you like to place your order?", 
+                                                 font=customtkinter.CTkFont(family="Calibri", size=20))
+        confirmationlbl.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news", columnspan = 2)
+
+        # Button to place order
+        yesbtn = customtkinter.CTkButton(po_window, text="Yes", fg_color="transparent", 
+                                         font=customtkinter.CTkFont(family="Calibri", size=15),
+                                         corner_radius=10, command=createreceipt, width=30)
+        yesbtn.grid(row=1, column=0, pady=10, padx=20, sticky="news")
+
+        # Button to let user continue their order
+        nobtn = customtkinter.CTkButton(po_window, text="No", width=30, 
+                                        font=customtkinter.CTkFont(family="Calibri", size=15),
+                                        command=no_clicked, corner_radius=10, fg_color="transparent")
+        nobtn.grid(row=1, column=1, pady=10, padx=20, sticky="news")
+        # endregion
+
+
+    # Runs if the total price is over $5,000
+    elif totalcost > 5000: 
+        # Opens window
+        popupwindow()
+        # Creating pop up window
+        po_window.title("Not enough ingredients")       # Title of the window
 
         # Makes the window stay at the top
         po_window.attributes('-topmost',True)
 
-        po_window.grid_rowconfigure(0, weight=1)
-
-        confirmationlbl = customtkinter.CTkLabel(po_window, text="Would you like to place your order?", font=customtkinter.CTkFont(family="Calibri", size=20))
-        confirmationlbl.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news", columnspan = 2)
-
-        yesbtn = customtkinter.CTkButton(po_window, text="Yes", fg_color="transparent", font=customtkinter.CTkFont(family="Calibri", size=15),
-                                         corner_radius=10, command=createreceipt, width=30)
-        yesbtn.grid(row=1, column=0, pady=10, padx=20, sticky="news")
-
-        nobtn = customtkinter.CTkButton(po_window, text="No", width=30, font=customtkinter.CTkFont(family="Calibri", size=15),
-                                        command=no_clicked, corner_radius=10, fg_color="transparent")
-        nobtn.grid(row=1, column=1, pady=10, padx=20, sticky="news")
-
-
-    # Runs if the total price is over $5,000
-    elif totalcost > 5000:
-        # Creating pop up window
-        unablewindow = customtkinter.CTkToplevel(window)
-        unablewindow.title("Not enough ingredients")       # Title of the window
-        # Makes the window unresizable on both axis
-        unablewindow.resizable(False, False)
-
-        # Dimensions for the pop up window
-        w = 480        # Width of window
-        h = 100         # height of window
-        ws = unablewindow.winfo_screenwidth()
-        hs = unablewindow.winfo_screenheight()
-        x = (ws/2) - (w/2)
-        y = (hs/2) - (h/2)
-        unablewindow.geometry('%dx%d+%d+%d' % (w, h, x, y))
-
-        # Makes the window stay at the top
-        unablewindow.attributes('-topmost',True)
-
-        unablelbl = customtkinter.CTkLabel(unablewindow, text="Unable to complete order due to lack of ingredients.", 
+        # region | Label telling user they ordered too much
+        unablelbl = customtkinter.CTkLabel(po_window, text="Unable to complete order due to \nlack of ingredients.", 
                                            font=customtkinter.CTkFont(family="Calibri", size=20, weight="bold"))
-        unablelbl.grid(row=0, column=0, pady=(20, 0), padx=(20,0), sticky="news")
+        unablelbl.grid(row=0, column=0, pady=(10, 0), sticky="news")
 
-        unablelbl1 = customtkinter.CTkLabel(unablewindow, text="Please remove some items. Sorry for the inconvenience.",
+        unablelbl1 = customtkinter.CTkLabel(po_window, text="Please remove some items.\nSorry for the inconvenience.",
                                             font=customtkinter.CTkFont(family="Calibri", size=17, weight="bold"))
-        unablelbl1.grid(row=1, column=0, pady=(5, 0), padx=(20,0), sticky="news")
-
-    
+        unablelbl1.grid(row=1, column=0, pady=(5, 0), sticky="news")
+        # endregion
 
 
 # Function to add the order to the order
@@ -357,7 +354,7 @@ def add(btn):
 def remove(btn):
     global order
     prices_value = (PRICES[btn.cget("text")])   # Gets the price of the selected item
-    decimal = "{:.2f}".format(prices_value)     # Converts the item to sho up to 2 decimal points
+    decimal = "{:.2f}".format(prices_value)     # Converts the item to show up to 2 decimal points
     item = btn.cget("text")                     # Gets the name of the item
     
     # For loop which will remove the item from the list
@@ -383,24 +380,28 @@ class TopNavBar(customtkinter.CTkFrame):
         global indicate, mains_indicator, mains_page
         # ---------------------------------- Widgets ---------------------------------- #
         # region | Buttons for the Top Navigation Bar
+        # Mains Button
         mains_btn = customtkinter.CTkButton(self, text="Mains",
                                            font=customtkinter.CTkFont(family="Calibri", size=35), 
                                            fg_color="transparent", text_color="black", hover_color="gray",
                                            command=lambda: indicate(mains_indicator, mains_page))
         mains_btn.grid(column=0, row=0, padx=10, pady=10, sticky='we')
 
+        # Appetisers Button
         appetisers_btn = customtkinter.CTkButton(self, text="Appetisers", 
                                                  font=customtkinter.CTkFont(family="Calibri", size=35), 
                                                  fg_color="transparent", text_color="black", hover_color="gray", 
                                                  command=lambda: indicate(appetisers_indicator, appetisers_page))
         appetisers_btn.grid(column=1, row=0, padx=10, pady=10, sticky='we')
 
+        # Desserts Button
         dessert_btn = customtkinter.CTkButton(self, text="Desserts", 
                                               font=customtkinter.CTkFont(family="Calibri", size=35), 
                                               fg_color="transparent", text_color="black", hover_color="gray", 
                                               command=lambda: indicate(dessert_indicator, desserts_page))
         dessert_btn.grid(column=2, row=0, padx=10, pady=10, sticky='we')
 
+        # Drinks Button
         drink_btn = customtkinter.CTkButton(self, text="Drinks", width=100,
                                               font=customtkinter.CTkFont(family="Calibri", size=35), 
                                               fg_color="transparent", text_color="black", hover_color="gray", 
@@ -432,7 +433,7 @@ class TopNavBar(customtkinter.CTkFrame):
         # endregion
 
         # region | Function for the indicator
-        def hide_indicate():                    # Changes the indicators white to match the background of the top navigation frame
+        def hide_indicate():                    # Changes the indicators #DEE2E6 to match the background of the top navigation frame
             mains_indicator.configure(fg_color="#DEE2E6")
             appetisers_indicator.configure(fg_color="#DEE2E6")
             dessert_indicator.configure(fg_color="#DEE2E6")
@@ -449,6 +450,7 @@ class TopNavBar(customtkinter.CTkFrame):
 class WelcomePage(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
+
         # ---------- Grid Configurations ---------- #
         self.grid_columnconfigure(0, weight=1)
 
@@ -482,11 +484,11 @@ class WelcomePage(customtkinter.CTkFrame):
         # endregion
 
         # region | Button To Mains Section
-        mains_button = customtkinter.CTkButton(self, text="Get Started", text_color="black", 
+        getstartedbtn = customtkinter.CTkButton(self, text="Get Started", text_color="black", 
                                                fg_color="#DEE2E6", hover_color="gray",
                                                command = lambda: indicate(mains_indicator, mains_page),
                                                font=customtkinter.CTkFont(family="Calibri", size=25))
-        mains_button.grid(row=4, column=0, pady=5, ipady=5, ipadx=10)
+        getstartedbtn.grid(row=4, column=0, pady=5, ipady=5, ipadx=10)
         # endregion
 
 
