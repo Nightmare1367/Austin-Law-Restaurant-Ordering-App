@@ -202,7 +202,7 @@ def place_order():
     order_time = datetime.now()
 
     def popupwindow():
-        global pu_window
+        global po_window, sizing
         # Creating pop up window
         pu_window = customtkinter.CTkToplevel(window)
         pu_window.title("No Items in Order")       # Title of the window
@@ -210,13 +210,12 @@ def place_order():
         pu_window.resizable(False, False)
 
         # Dimensions for the pop up window
-        W = 350        # Width of window
-        H = 120         # height of window
-        ws = pu_window.winfo_screenwidth()
-        hs = pu_window.winfo_screenheight()
-        x = (ws/2) - (W/2)
-        y = (hs/2) - (H/2)
-        pu_window.geometry('%dx%d+%d+%d' % (W, H, x, y))
+        def sizing(w, h):
+            ws = po_window.winfo_screenwidth()
+            hs = po_window.winfo_screenheight()
+            x = (ws/2) - (w/2)
+            y = (hs/2) - (h/2)
+            po_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
         # Makes the window stay at the top
         pu_window.attributes('-topmost',True)
@@ -228,6 +227,7 @@ def place_order():
     if len(order) == 0:
         # Opens window
         popupwindow()
+        sizing(350, 120)
 
         # Widgets for the window
         # Title to give the general information of what went wrong
@@ -244,10 +244,28 @@ def place_order():
     elif 0 <= totalcost <= 5000:
         # Opens window
         popupwindow()
-
-        # Creates a .txt file in an Orders folder with the receipt ID as the file name
+        sizing(350, 120)
+        
+        # Called out when the yes button is pressed
         def createreceipt():
-            pu_window.destroy()
+            # Destroys confirmation window
+            po_window.destroy()
+
+            # Creates a new window
+            popupwindow()
+            sizing(200, 120)    # Changes the dimensions to have a width of 200 and height of 120
+            po_window.title("") # Title of Window
+
+            # Thank You Label
+            thankyou_title = customtkinter.CTkLabel(po_window, text = "Thank You", 
+                                                    font = customtkinter.CTkFont(family = "Calibri", size=20))
+            thankyou_title.grid(row=0, column=0, pady=(20, 0), sticky="news")
+
+            thankyou_lbl = customtkinter.CTkLabel(po_window, text="for ordering",
+                                                  font = customtkinter.CTkFont(family = "Calibri", size=20))
+            thankyou_lbl.grid(row=1, column=0, pady=(5, 0), sticky="news")
+
+            # Creates .txt file
             with open(f"Order/{receipt}", 'w') as file:
                 # Writes the information of the order in the .txt file
                 file.write("Austin's Restaurant Ordering App")
@@ -304,7 +322,7 @@ def place_order():
     elif totalcost > 5000: 
         # Opens window
         popupwindow()
-
+        sizing(350, 120)
         # Creating pop up window
         pu_window.title("Not enough ingredients")       # Title of the window
 
@@ -1743,10 +1761,12 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
 # ------------------------ Main Window Configurations ------------------------ #
 window=customtkinter.CTk()                          # Creates a window 
 window.title("Austin's Restaurant Ordering App")    # Title of the window
+
 # Sets the size of the window to fill screen 
 # The values in the string wil find the screen width and height and tuck it into the top left corner of the screen
 window.geometry("1536x800-7+0")
-window.resizable(False, False)      # Window is unable to be resized
+window.resizable(False, False)
+# 1536x945-7+0  (Old Dimensions)
 
 
 # ---------------------------------- Frames ---------------------------------- #
@@ -1830,11 +1850,10 @@ order_id_lbl = customtkinter.CTkLabel(order_frame, text = "Order ID: " + order_i
 order_id_lbl.grid(row=0, column=0, sticky='es', pady=10, padx=20)
 # endregion
 
-# region | Total Label
+# region | Total Price Label
 totalorder_lbl = customtkinter.CTkLabel(order_frame, text = "Total Price: $0", text_color="#DEE2E6", 
                                         font=customtkinter.CTkFont(family="Calibri", size=30))
 totalorder_lbl.grid(row=2, column=0, sticky='nw', pady=5, padx=(20,0))
-
 # endregion
 
 # region | Button to place order
