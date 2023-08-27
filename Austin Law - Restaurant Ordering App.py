@@ -202,7 +202,7 @@ def place_order():
     order_time = datetime.now()
 
     def popupwindow():
-        global po_window, sizing
+        global pu_window, sizing
         # Creating pop up window
         pu_window = customtkinter.CTkToplevel(window)
         pu_window.title("No Items in Order")       # Title of the window
@@ -211,11 +211,11 @@ def place_order():
 
         # Dimensions for the pop up window
         def sizing(w, h):
-            ws = po_window.winfo_screenwidth()
-            hs = po_window.winfo_screenheight()
+            ws = pu_window.winfo_screenwidth()
+            hs = pu_window.winfo_screenheight()
             x = (ws/2) - (w/2)
             y = (hs/2) - (h/2)
-            po_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+            pu_window.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
         # Makes the window stay at the top
         pu_window.attributes('-topmost',True)
@@ -249,19 +249,19 @@ def place_order():
         # Called out when the yes button is pressed
         def createreceipt():
             # Destroys confirmation window
-            po_window.destroy()
+            pu_window.destroy()
 
             # Creates a new window
             popupwindow()
             sizing(200, 120)    # Changes the dimensions to have a width of 200 and height of 120
-            po_window.title("") # Title of Window
+            pu_window.title("") # Title of Window
 
             # Thank You Label
-            thankyou_title = customtkinter.CTkLabel(po_window, text = "Thank You", 
+            thankyou_title = customtkinter.CTkLabel(pu_window, text = "Thank You", 
                                                     font = customtkinter.CTkFont(family = "Calibri", size=20))
             thankyou_title.grid(row=0, column=0, pady=(20, 0), sticky="news")
 
-            thankyou_lbl = customtkinter.CTkLabel(po_window, text="for ordering",
+            thankyou_lbl = customtkinter.CTkLabel(pu_window, text="for ordering",
                                                   font = customtkinter.CTkFont(family = "Calibri", size=20))
             thankyou_lbl.grid(row=1, column=0, pady=(5, 0), sticky="news")
 
