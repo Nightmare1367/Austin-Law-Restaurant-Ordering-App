@@ -1739,6 +1739,7 @@ class DrinkSelection(customtkinter.CTkScrollableFrame):
         # endregion
 # endregion
 
+
 # ------------------------ Main Window Configurations ------------------------ #
 window=customtkinter.CTk()                          # Creates a window 
 window.title("Austin's Restaurant Ordering App")    # Title of the window
