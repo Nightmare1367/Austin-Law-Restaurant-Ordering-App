@@ -10,7 +10,7 @@ top right corner of the program.
 
 The programming language used in the code is Python and uses CustomTkinter for the aesthetics of the program.
 
-You would want to make sure that you have CustomTkinter and Pillow installed.
+You would want to make sure that you have CustomTkinter and Pillow installed before running the program.
 The installation process for CustomTkinter is as follows;
 Typing "pip3 install customtkinter" in your command prompt as an administrator
 
