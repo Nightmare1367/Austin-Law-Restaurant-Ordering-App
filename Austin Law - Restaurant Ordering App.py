@@ -227,6 +227,8 @@ def place_order():
     if len(order) == 0:
         # Opens window
         popupwindow()
+
+        # Changes the dimensions to have a width of 350 and height of 120
         sizing(350, 120)
 
         # Widgets for the window
@@ -244,7 +246,9 @@ def place_order():
     elif 0 <= totalcost <= 5000:
         # Opens window
         popupwindow()
-        sizing(350, 120)
+
+        # Changes the dimensions to have a width of 350 and height of 120
+        sizing(350, 120)    
         
         # Called out when the yes button is pressed
         def createreceipt():
@@ -253,7 +257,9 @@ def place_order():
 
             # Creates a new window
             popupwindow()
-            sizing(200, 120)    # Changes the dimensions to have a width of 200 and height of 120
+            
+            # Changes the dimensions to have a width of 200 and height of 120
+            sizing(200, 120)    
             pu_window.title("") # Title of Window
 
             # Thank You Label
@@ -322,6 +328,8 @@ def place_order():
     elif totalcost > 5000: 
         # Opens window
         popupwindow()
+
+        # Changes the dimensions to have a width of 350 and height of 120
         sizing(350, 120)
         # Creating pop up window
         pu_window.title("Not enough ingredients")       # Title of the window
